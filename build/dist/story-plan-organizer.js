@@ -1,7 +1,4 @@
-import * as uuid from 'uuid';
-const temp1 = uuid.v4();
-console.log(temp1);
-import { randomUUID } from 'crypto';
+import { randomUUID } from '../../node_modules/@types/node/crypto';
 /**
  * Node Type.
  */
