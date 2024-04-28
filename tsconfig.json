@@ -1,0 +1,47 @@
+{
+    "compilerOptions": {
+        "allowJs": false,
+        "baseUrl": "./src",
+        "declaration": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "lib": ["DOM", "ES2020"],
+        "incremental": true,
+        "module": "ES6",
+        "moduleResolution": "node",
+        "outDir": "./build/dist",
+        "resolveJsonModule": true,
+        "rootDir": "./src",
+        "skipLibCheck": false,
+        "sourceMap": true,
+        "target": "ES6",
+        "types": ["node"],
+        "typeRoots": ["node_modules/@types", "src/types"],
+
+        // Strict options
+        "alwaysStrict": true,
+        "noEmitOnError": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "removeComments": false,
+        "strict": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
+
+        // Checks
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitReturns": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+
+        // Debugging
+        "listEmittedFiles": false,
+        "listFiles": false,
+        "pretty": true,
+        "traceResolution": false,
+    },
+    "compileOnSave": false,
+    "include": ["src/**/*.ts"],
+    "exclude": ["**/node_modules/**"],
+}

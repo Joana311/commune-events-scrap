@@ -1,0 +1,64 @@
+body
+{
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+    margin: 0px;
+}
+
+button
+{
+    background-color: blue;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    opacity: 0.7;
+    border: 1px solid black;
+    display: inline-block;
+    transition: 0.3s;
+    padding: 10px 0px;
+}
+
+button:hover
+{
+    opacity: 1;
+}
+
+.node
+{
+    position: absolute;
+    z-index: 9;
+    background-color: red;
+    border: 10px solid blue;
+    opacity: 1.0;
+}
+
+.node-selected
+{
+    border: 10px solid yellow;
+}
+
+.move
+{
+    width: 60px;
+    height: 60px;
+    cursor: move;
+    color: white;
+    background-color: #2196F3;
+}
+
+.name
+{
+    color: white;
+    background-color: green;
+}
+
+.line
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    pointer-events: none;
+    z-index: -9;
+    opacity: 1.0;
+}
