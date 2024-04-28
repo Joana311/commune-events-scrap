@@ -623,10 +623,10 @@ window.addEventListener('keyup', keyupResponse, false);
 
 /**
  *
- * @param {KeyboardEvent} event
- * @param {Node[]} nodes Array of all the nodes.
- * @param {Link[]} links Array of all the links.
- * @param {HTMLDivElement[]} linesCached Array of HTML elements of lines.
+ * @param event
+ * @param nodes Array of all the nodes.
+ * @param links Array of all the links.
+ * @param linesCached Array of HTML elements of lines.
  */
 function keydownResponse(event: KeyboardEvent, nodes: Node[], links: Link[], linesCached: HTMLDivElement[]): void {
   if (event.key === 'Escape') {
