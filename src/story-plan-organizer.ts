@@ -1,4 +1,9 @@
 import { UUID, randomUUID } from 'crypto';
+import * as uuid from 'uuid';
+
+
+const temp1 = uuid.v4();
+console.log(temp1);
 
 /**
  * Point.
