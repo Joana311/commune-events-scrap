@@ -1,4 +1,4 @@
-import { randomUUID } from '../../node_modules/@types/node/crypto';
+import { randomUUID } from '@types/node/crypto';
 /**
  * Node Type.
  */
