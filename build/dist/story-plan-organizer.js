@@ -1,4 +1,4 @@
-import { randomUUID } from './@types/node/crypto.d.ts';
+import { randomUUID } from 'crypto';
 /**
  * Node Type.
  */
