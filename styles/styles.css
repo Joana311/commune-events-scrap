@@ -85,12 +85,12 @@ button:hover
     opacity: 1.0;
 }
 
-.node-selected
+.node-highlighted
 {
     border-width: 14px;
 }
 
-.node-unselected
+.node-unhighlighted
 {
     opacity: 0.3;
 }
@@ -119,12 +119,12 @@ button:hover
     z-index: 0;
 }
 
-.line-selected
+.line-highlighted
 {
     stroke-width: 8px;
 }
 
-.line-unselected
+.line-unhighlighted
 {
     stroke-width: 4px;
     stroke-opacity: 0.3;

@@ -166,15 +166,6 @@ const drag_node_element = (element: HTMLDivElement, state: State): void => {
         return;
       }
 
-      /*
-      if (element !== state.selectedNodeElement) {
-        if (state.selectedNodeElement) {
-          state.selectedNodeElement.classList.remove('node-selected');
-        }
-        state.selectedNodeElement = element;
-        state.selectedNodeElement.classList.add('node-selected');
-      }
-      */
       if (element !== state.selectedNodeElement) {
         state.selectedNodeElement = element;
       }
@@ -251,12 +242,12 @@ const create_line = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
     const nodeElement2 = get_node_element(nodeId2);
     if (state.selectedNodeElement) {
       if (nodeElement1 === state.selectedNodeElement || nodeElement2 === state.selectedNodeElement) {
-        newElement.classList.remove('line-unselected');
+        newElement.classList.remove('line-unhighlighted');
       } else {
-        newElement.classList.add('line-unselected');
+        newElement.classList.add('line-unhighlighted');
       }
     } else {
-      newElement.classList.remove('line-unselected');
+      newElement.classList.remove('line-unhighlighted');
     }
 
     state.linesCached.push(newElement);
@@ -345,15 +336,15 @@ const refresh = (state: State): void => {
   for (const nodeElement of state.nodesCached) {
     if (state.selectedNodeElement) {
       if (nodeElement === state.selectedNodeElement) {
-        state.selectedNodeElement.classList.add('node-selected');
-        state.selectedNodeElement.classList.remove('node-unselected');
+        state.selectedNodeElement.classList.add('node-highlighted');
+        state.selectedNodeElement.classList.remove('node-unhighlighted');
       } else {
-        nodeElement.classList.remove('node-selected');
-        nodeElement.classList.add('node-unselected');
+        nodeElement.classList.remove('node-highlighted');
+        nodeElement.classList.add('node-unhighlighted');
       }
     } else {
-      nodeElement.classList.remove('node-selected');
-      nodeElement.classList.remove('node-unselected');
+      nodeElement.classList.remove('node-highlighted');
+      nodeElement.classList.remove('node-unhighlighted');
     }
   }
 

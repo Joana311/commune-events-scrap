@@ -126,15 +126,6 @@ const drag_node_element = (element, state) => {
                 delete_node(element, state);
                 return;
             }
-            /*
-            if (element !== state.selectedNodeElement) {
-              if (state.selectedNodeElement) {
-                state.selectedNodeElement.classList.remove('node-selected');
-              }
-              state.selectedNodeElement = element;
-              state.selectedNodeElement.classList.add('node-selected');
-            }
-            */
             if (element !== state.selectedNodeElement) {
                 state.selectedNodeElement = element;
             }
@@ -194,26 +185,35 @@ const create_line = (nodeId1, nodeId2, state) => {
             <stop stop-color="${node2.color}" offset="1"/>
           </linearGradient>
         </defs>
-        <line x1='${points.point1.x}' y1='${points.point1.y}' x2='${points.point2.x}' y2='${points.point2.y}' stroke-width='6' stroke='url(#${gradientId})' style='pointer-events: all;'/>
+        <line x1='${points.point1.x}' y1='${points.point1.y}' x2='${points.point2.x}' y2='${points.point2.y}' stroke='url(#${gradientId})' style='pointer-events: all; stroke-width: '6px';/>
       </svg>
     `;
         const nodeElement1 = get_node_element(nodeId1);
         const nodeElement2 = get_node_element(nodeId2);
         if (state.selectedNodeElement) {
             if (nodeElement1 === state.selectedNodeElement || nodeElement2 === state.selectedNodeElement) {
-                newElement.classList.remove('line-unselected');
+                newElement.classList.remove('line-unhighlighted');
             }
             else {
-                newElement.classList.add('line-unselected');
+                newElement.classList.add('line-unhighlighted');
             }
         }
         else {
-            newElement.classList.remove('line-unselected');
+            newElement.classList.remove('line-unhighlighted');
         }
         state.linesCached.push(newElement);
+        console.log('\n\n\n\n\nPOINT_A');
+        console.log(state);
+        console.log('\n\n\n\n\n');
         if (newLine.firstElementChild && newLine.firstElementChild.firstElementChild) {
             newLine.firstElementChild.firstElementChild.addEventListener('click', () => {
+                console.log('\n\n\n\n\nPOINT_B');
+                console.log(state);
+                console.log('\n\n\n\n\n');
                 if (state.deleting) {
+                    console.log('\n\n\n\n\nPOINT_C');
+                    console.log(state);
+                    console.log('\n\n\n\n\n');
                     delete_link(nodeId1, nodeId2, state);
                 }
             });
@@ -242,9 +242,6 @@ const delete_link = (nodeId1, nodeId2, state) => {
             state.links.splice(i, 1);
         }
     }
-    console.log('\n\n\n\n\nPOINT_A');
-    console.log(state);
-    console.log('\n\n\n\n\n');
     redraw_lines(state);
 };
 const delete_node = (nodeElement, state) => {
@@ -274,17 +271,17 @@ const refresh = (state) => {
     for (const nodeElement of state.nodesCached) {
         if (state.selectedNodeElement) {
             if (nodeElement === state.selectedNodeElement) {
-                state.selectedNodeElement.classList.add('node-selected');
-                state.selectedNodeElement.classList.remove('node-unselected');
+                state.selectedNodeElement.classList.add('node-highlighted');
+                state.selectedNodeElement.classList.remove('node-unhighlighted');
             }
             else {
-                nodeElement.classList.remove('node-selected');
-                nodeElement.classList.add('node-unselected');
+                nodeElement.classList.remove('node-highlighted');
+                nodeElement.classList.add('node-unhighlighted');
             }
         }
         else {
-            nodeElement.classList.remove('node-selected');
-            nodeElement.classList.remove('node-unselected');
+            nodeElement.classList.remove('node-highlighted');
+            nodeElement.classList.remove('node-unhighlighted');
         }
     }
     for (const node of state.nodes) {
