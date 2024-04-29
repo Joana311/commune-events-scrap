@@ -29,6 +29,11 @@
       <i class="material-icons icon" style="font-size: 50px;">share</i>
       <span class="tooltiptext">+ Relation</span>
     </button>
+    
+    <button id="undo-delete" class="tooltip">
+      <i class="material-icons icon" style="font-size: 50px;">undo</i>
+      <span class="tooltiptext">Undo Delete</span>
+    </button>
 
     Import: <input id="input-import-file" type="file">
     <button id="export" class="tooltip">
@@ -38,4 +43,24 @@
   </body>
 
   <script src="build/dist/story-plan-organizer.js" type="module"></script>
+
+
+
+  
+  <!--
+    TODO:
+    - Import
+    - Export
+    - Instructions
+    - Undo / History
+      - Have Undo button: Undo Delete Node/Link
+    - Selected node highlights connecting links and nodes, possibly opacity the unrelated nodes/links
+      - loop through all nodes and links and set ccs opacity
+      - unselected nodes should be minimized (just name and image)
+    - Line colors, with gradient color
+    - Move should have material icon
+    - Zoom, scrolling
+    - Cache node elements
+    - Refresh
+  -->
 </html>
