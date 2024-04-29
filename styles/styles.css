@@ -117,6 +117,7 @@ button:hover
     left: 0px;
     pointer-events: none;
     z-index: 0;
+    stroke-width: 6px;
 }
 
 .line-highlighted

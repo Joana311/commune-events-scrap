@@ -234,7 +234,7 @@ const create_line = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
             <stop stop-color="${node2.color}" offset="1"/>
           </linearGradient>
         </defs>
-        <line x1='${points.point1.x}' y1='${points.point1.y}' x2='${points.point2.x}' y2='${points.point2.y}' stroke='url(#${gradientId})' style='pointer-events: all; stroke-width: 6px;'/>
+        <line x1='${points.point1.x}' y1='${points.point1.y}' x2='${points.point2.x}' y2='${points.point2.y}' stroke='url(#${gradientId})' style='pointer-events: all;'/>
       </svg>
     `;
 
