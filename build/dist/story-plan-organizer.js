@@ -242,6 +242,9 @@ const delete_link = (nodeId1, nodeId2, state) => {
             state.links.splice(i, 1);
         }
     }
+    console.log('\n\n\n\n\nPOINT_A');
+    console.log(state);
+    console.log('\n\n\n\n\n');
     redraw_lines(state);
 };
 const delete_node = (nodeElement, state) => {
