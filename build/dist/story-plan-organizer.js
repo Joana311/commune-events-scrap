@@ -1,4 +1,4 @@
-import { randomUUID } from 'crypto';
+import { randomUUID } from 'uuid';
 /**
  * Node Type.
  */

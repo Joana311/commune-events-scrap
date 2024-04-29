@@ -1,4 +1,4 @@
-import { UUID, randomUUID } from 'crypto';
+import { UUID, randomUUID } from 'uuid';
 
 /**
  * Point.
