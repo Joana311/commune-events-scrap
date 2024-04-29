@@ -17,5 +17,5 @@ export var NodeStatus;
     NodeStatus[NodeStatus["Investigate"] = 3] = "Investigate";
     NodeStatus[NodeStatus["Rejected"] = 4] = "Rejected";
 })(NodeStatus || (NodeStatus = {}));
-export const CALCULATION_INCREMENT = 10;
+export const CALCULATION_INCREMENT = 5;
 //# sourceMappingURL=definition.js.map

@@ -337,8 +337,6 @@ const refresh = (state: State): void => {
     }
   }
 
-
-
   if (state.selectedNodeElement) {
     const connectedNodeIds: UUID[] = [];
     for (const link of state.links) {
@@ -353,22 +351,10 @@ const refresh = (state: State): void => {
       const nodeElement = get_node_element(nodeId);
       if (nodeElement) {
         nodeElement.classList.add('node-highlighted');
-        nodeElement.classList.add('node-highlighted');
-        nodeElement.classList.add('node-highlighted');
-        nodeElement.classList.add('node-highlighted');
-        nodeElement.classList.add('node-highlighted');
         nodeElement.classList.remove('node-unhighlighted');
       }
     }
   }
-
-
-  // loop through every link
-  // compare if it is the same as selectedNodeElement.id
-  // keep references of nodes to highlight
-  // at the end, highlight them
-
-
 
   for (const node of state.nodes) {
     if (node.location.x < 0) {
