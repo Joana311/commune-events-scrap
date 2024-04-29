@@ -315,10 +315,18 @@ const delete_node = (nodeElement: HTMLDivElement, state: State): void => {
 
 const refresh = (state: State): void => {
   for (const nodeElement of state.nodesCached) {
-    if (state.selectedNodeElement && nodeElement === state.selectedNodeElement) {
-      state.selectedNodeElement.classList.remove('node-selected');
-    } else {
+    if (state.selectedNodeElement) {
+      if (nodeElement === state.selectedNodeElement) {
+        state.selectedNodeElement.classList.add('node-selected');
+        state.selectedNodeElement.classList.remove('node-unselected');
+      } else {
+        nodeElement.classList.remove('node-selected');
+        nodeElement.classList.add('node-unselected');
+      }
+    }
+    else {
       nodeElement.classList.remove('node-selected');
+      nodeElement.classList.remove('node-unselected');
     }
   }
 

@@ -185,7 +185,7 @@ const create_line = (nodeId1, nodeId2, state) => {
         const newLine = document.body.appendChild(newElement);
         newLine.className = 'line';
         const points = calculate_shortest_distance(node1, node2);
-        const gradientId = nodeId1 + "_" + nodeId2;
+        const gradientId = nodeId1 + '_' + nodeId2;
         newLine.innerHTML = `
       <svg width='9999' height='9999'>
         <defs>
@@ -256,11 +256,19 @@ const delete_node = (nodeElement, state) => {
 };
 const refresh = (state) => {
     for (const nodeElement of state.nodesCached) {
-        if (state.selectedNodeElement && nodeElement === state.selectedNodeElement) {
-            state.selectedNodeElement.classList.remove('node-selected');
+        if (state.selectedNodeElement) {
+            if (nodeElement === state.selectedNodeElement) {
+                state.selectedNodeElement.classList.add('node-selected');
+                state.selectedNodeElement.classList.remove('node-unselected');
+            }
+            else {
+                nodeElement.classList.remove('node-selected');
+                nodeElement.classList.add('node-unselected');
+            }
         }
         else {
             nodeElement.classList.remove('node-selected');
+            nodeElement.classList.remove('node-unselected');
         }
     }
     for (const node of state.nodes) {

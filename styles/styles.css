@@ -90,6 +90,11 @@ button:hover
     border-width: 14px;
 }
 
+.node-unselected
+{
+    border-width: 14px;
+}
+
 .move
 {
     width: 60px;
