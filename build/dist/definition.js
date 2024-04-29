@@ -25,5 +25,5 @@ export var CharacterImportance;
     CharacterImportance[CharacterImportance["Supporting"] = 2] = "Supporting";
     CharacterImportance[CharacterImportance["Minor"] = 3] = "Minor";
 })(CharacterImportance || (CharacterImportance = {}));
-export const CALCULATION_INCREMENT = 1;
+export const CALCULATION_INCREMENT = 20;
 //# sourceMappingURL=definition.js.map

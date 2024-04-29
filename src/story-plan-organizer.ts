@@ -19,10 +19,10 @@ import {
 import { UUID, randomUUID } from './uuid.js';
 import { get_node, get_node_element, calculate_shortest_distance, does_link_exist } from './helper.js';
 
-const create_node = (type: NodeType, nodes: Node[]): void => {
+const create_node = (location: Point, type: NodeType, nodes: Node[]): void => {
   const baseNode: Node = {
     id: randomUUID(),
-    location: { x: 0, y: 0 },
+    location,
     type,
     name: '',
     status: NodeStatus.None,
@@ -623,9 +623,9 @@ function keyupResponse(event: KeyboardEvent, state: State): void {
   }
 }
 
-document.getElementById('create-node-character')?.addEventListener('click', (event: Event) => {
+document.getElementById('create-node-character')?.addEventListener('click', (event: MouseEvent) => {
   console.log(event);
-  create_node(NodeType.Character, state.nodes);
+  create_node({x: event.x, y: event.y}, NodeType.Character, state.nodes);
 });
 
 /*

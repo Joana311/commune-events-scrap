@@ -4,10 +4,10 @@ import { CharacterImportance,
 NodeStatus, NodeType, } from './definition.js';
 import { randomUUID } from './uuid.js';
 import { get_node, get_node_element, calculate_shortest_distance, does_link_exist } from './helper.js';
-const create_node = (type, nodes) => {
+const create_node = (location, type, nodes) => {
     const baseNode = {
         id: randomUUID(),
-        location: { x: 0, y: 0 },
+        location,
         type,
         name: '',
         status: NodeStatus.None,
@@ -523,7 +523,7 @@ function keyupResponse(event, state) {
 }
 (_a = document.getElementById('create-node-character')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', (event) => {
     console.log(event);
-    create_node(NodeType.Character, state.nodes);
+    create_node({ x: event.x, y: event.y }, NodeType.Character, state.nodes);
 });
 /*
 const inputImportFileElement = document.getElementById('input-import-file');
