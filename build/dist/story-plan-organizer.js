@@ -201,8 +201,8 @@ const create_line = (nodeId1, nodeId2, state) => {
       <svg width='9999' height='9999'>
         <defs>
           <linearGradient id="${gradientId}" x1='${points.point1.x}' y1='${points.point1.y}' x2='${points.point2.x}' y2='${points.point2.y}' gradientUnits="userSpaceOnUse">
-            <stop stop-color="steelblue" offset="0" />
-            <stop stop-color="red" offset="1" />
+            <stop stop-color="${node1.color}" offset="0"/>
+            <stop stop-color="${node2.color}" offset="1"/>
           </linearGradient>
         </defs>
         <line x1='${points.point1.x}' y1='${points.point1.y}' x2='${points.point2.x}' y2='${points.point2.y}' stroke-width='6' stroke='url(#${gradientId})' style='pointer-events: all;'/>
@@ -309,7 +309,7 @@ state.nodes.push({
     type: NodeType.Character,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#FF0000',
     imageSrc: '',
     description: '',
     age: 18,
@@ -322,7 +322,7 @@ state.nodes.push({
     type: NodeType.Location,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#0000FF',
     imageSrc: '',
     description: 'This is a description.',
 }, {
@@ -334,7 +334,7 @@ state.nodes.push({
     type: NodeType.Organization,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#00FF00',
     description: 'This is a description.',
 }, {
     id: '53b21444-da1e-43a1-a83a-fdf4ba93f0ad',
@@ -345,7 +345,7 @@ state.nodes.push({
     type: NodeType.Plot,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#00FFFF',
     text: 'This is a description.',
 }, {
     id: '22903bda-eedf-406e-b4c4-e857d289f5d9',
@@ -356,7 +356,7 @@ state.nodes.push({
     type: NodeType.Relation,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#FF00FF',
     description: 'This is a description.',
 }, {
     id: '018eed2c-431c-4c11-95af-036fe40f4c7a',
@@ -367,7 +367,7 @@ state.nodes.push({
     type: NodeType.Plot,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#FFFF00',
     text: 'This is a description.',
 }, {
     id: '8ea99741-5b1e-4885-be6f-4e890d8cf684',
@@ -378,7 +378,7 @@ state.nodes.push({
     type: NodeType.Plot,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#66FF00',
     text: 'This is a description.',
 }, {
     id: '25839240-5f8b-43ec-bf2f-9aca680cdd20',
@@ -389,7 +389,7 @@ state.nodes.push({
     type: NodeType.Plot,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#FF6600',
     text: 'This is a description.',
 }, {
     id: '4960b134-5e62-4b6b-9e94-84f9d6fa45b1',
@@ -400,7 +400,7 @@ state.nodes.push({
     type: NodeType.Plot,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#FF0066',
     text: 'This is a description.',
 }, {
     id: 'bb6a4fd4-74ea-4013-bcf6-b5c35a68ca19',
@@ -411,7 +411,7 @@ state.nodes.push({
     type: NodeType.Plot,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#6600FF',
     text: 'This is a description.',
 });
 for (const node of state.nodes) {

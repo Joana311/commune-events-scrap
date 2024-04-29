@@ -234,8 +234,8 @@ const create_line = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
       <svg width='9999' height='9999'>
         <defs>
           <linearGradient id="${gradientId}" x1='${points.point1.x}' y1='${points.point1.y}' x2='${points.point2.x}' y2='${points.point2.y}' gradientUnits="userSpaceOnUse">
-            <stop stop-color="steelblue" offset="0" />
-            <stop stop-color="red" offset="1" />
+            <stop stop-color="${node1.color}" offset="0"/>
+            <stop stop-color="${node2.color}" offset="1"/>
           </linearGradient>
         </defs>
         <line x1='${points.point1.x}' y1='${points.point1.y}' x2='${points.point2.x}' y2='${points.point2.y}' stroke-width='6' stroke='url(#${gradientId})' style='pointer-events: all;'/>
@@ -357,7 +357,7 @@ state.nodes.push(
     type: NodeType.Character,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#FF0000',
     imageSrc: '',
     description: '',
     age: 18,
@@ -371,7 +371,7 @@ state.nodes.push(
     type: NodeType.Location,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#0000FF',
     imageSrc: '',
     description: 'This is a description.',
   } as Location,
@@ -384,7 +384,7 @@ state.nodes.push(
     type: NodeType.Organization,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#00FF00',
     description: 'This is a description.',
   } as Organization,
   {
@@ -396,7 +396,7 @@ state.nodes.push(
     type: NodeType.Plot,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#00FFFF',
     text: 'This is a description.',
   } as Plot,
   {
@@ -408,7 +408,7 @@ state.nodes.push(
     type: NodeType.Relation,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#FF00FF',
     description: 'This is a description.',
   } as Relation,
   {
@@ -420,7 +420,7 @@ state.nodes.push(
     type: NodeType.Plot,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#FFFF00',
     text: 'This is a description.',
   } as Plot,
   {
@@ -432,7 +432,7 @@ state.nodes.push(
     type: NodeType.Plot,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#66FF00',
     text: 'This is a description.',
   } as Plot,
   {
@@ -444,7 +444,7 @@ state.nodes.push(
     type: NodeType.Plot,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#FF6600',
     text: 'This is a description.',
   } as Plot,
   {
@@ -456,7 +456,7 @@ state.nodes.push(
     type: NodeType.Plot,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#FF0066',
     text: 'This is a description.',
   } as Plot,
   {
@@ -468,7 +468,7 @@ state.nodes.push(
     type: NodeType.Plot,
     name: '',
     status: NodeStatus.None,
-    color: '#FFFFFF',
+    color: '#6600FF',
     text: 'This is a description.',
   } as Plot,
 );
