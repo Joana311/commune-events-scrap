@@ -24,6 +24,11 @@ button:hover
     opacity: 1;
 }
 
+.material-icons
+{
+  font-size: 20px;
+}
+
 .node
 {
     position: absolute;
