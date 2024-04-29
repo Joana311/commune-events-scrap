@@ -229,15 +229,16 @@ const create_line = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
     newLine.className = 'line';
 
     const points: { point1: Point; point2: Point } = calculate_shortest_distance(node1, node2);
+    const gradientId = nodeId1 + "_" + nodeId2;
     newLine.innerHTML = `
       <svg width='9999' height='9999'>
         <defs>
-          <linearGradient id="gradientId" x1='${points.point1.x}' y1='${points.point1.y}' x2='${points.point2.x}' y2='${points.point2.y}' gradientUnits="userSpaceOnUse">
+          <linearGradient id="${gradientId}" x1='${points.point1.x}' y1='${points.point1.y}' x2='${points.point2.x}' y2='${points.point2.y}' gradientUnits="userSpaceOnUse">
             <stop stop-color="steelblue" offset="0" />
             <stop stop-color="red" offset="1" />
           </linearGradient>
         </defs>
-        <line x1='${points.point1.x}' y1='${points.point1.y}' x2='${points.point2.x}' y2='${points.point2.y}' stroke-width='6' stroke='url(#gradientId)' style='pointer-events: all;'/>
+        <line x1='${points.point1.x}' y1='${points.point1.y}' x2='${points.point2.x}' y2='${points.point2.y}' stroke-width='6' stroke='url(#${gradientId})' style='pointer-events: all;'/>
       </svg>
     `;
 
