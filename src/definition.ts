@@ -101,4 +101,4 @@ export type State = {
   deleting: boolean;
 };
 
-export const CALCULATION_INCREMENT: number = 5;
+export const CALCULATION_INCREMENT: number = 2;
