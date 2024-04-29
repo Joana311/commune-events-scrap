@@ -337,6 +337,39 @@ const refresh = (state: State): void => {
     }
   }
 
+
+
+  if (state.selectedNodeElement) {
+    const connectedNodeIds: UUID[] = [];
+    for (const link of state.links) {
+      if (link.nodeFromId === state.selectedNodeElement.id) {
+        connectedNodeIds.push(link.nodeToId);
+      }
+      else if (link.nodeToId === state.selectedNodeElement.id) {
+        connectedNodeIds.push(link.nodeFromId);
+      }
+    }
+    for (const nodeId of connectedNodeIds) {
+      const nodeElement = get_node_element(nodeId);
+      if (nodeElement) {
+        nodeElement.classList.add('node-highlighted');
+        nodeElement.classList.add('node-highlighted');
+        nodeElement.classList.add('node-highlighted');
+        nodeElement.classList.add('node-highlighted');
+        nodeElement.classList.add('node-highlighted');
+        nodeElement.classList.remove('node-unhighlighted');
+      }
+    }
+  }
+
+
+  // loop through every link
+  // compare if it is the same as selectedNodeElement.id
+  // keep references of nodes to highlight
+  // at the end, highlight them
+
+
+
   for (const node of state.nodes) {
     if (node.location.x < 0) {
       node.location.x = 0;
