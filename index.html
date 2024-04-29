@@ -9,14 +9,32 @@
   </head>
 
   <body>
-    <button id="create-node-character"><i class="material-icons">person</i>+ Character</button>
-    <button id="create-node-location"><i class="material-icons">location_city</i>+ Location</button>
-    <button id="create-node-organization"><i class="material-icons">hub</i>+ Organization</button>
-    <button id="create-node-plot"><i class="material-icons">article</i>+ Plot</button>
-    <button id="create-node-relation"><i class="material-icons">share</i>+ Relation</button>
+    <button id="create-node-character" class="tooltip">
+      <i class="icon">person</i>
+      <span class="tooltiptext">+ Character</span>
+    </button>
+    <button id="create-node-location" class="tooltip">
+      <i class="icon">location_city</i>
+      <span class="tooltiptext">+ Location</span>
+    </button>
+    <button id="create-node-organization" class="tooltip">
+      <i class="icon">hub</i>
+      <span class="tooltiptext">+ Organization</span>
+    </button>
+    <button id="create-node-plot" class="tooltip">
+      <i class="icon">article</i>
+      <span class="tooltiptext">+ Plot</span>
+    </button>
+    <button id="create-node-relation" class="tooltip">
+      <i class="icon">share</i>
+      <span class="tooltiptext">+ Relation</span>
+    </button>
 
     Import: <input id="input-import-file" type="file">
-    <button id="export"><i class="material-icons">download</i>Export</button>
+    <button id="export" class="tooltip">
+      <i class="icon">download</i>
+      <span class="tooltiptext">Export</span>
+    </button>
   </body>
 
   <script src="build/dist/story-plan-organizer.js" type="module"></script>
