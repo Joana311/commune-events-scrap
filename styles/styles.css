@@ -80,13 +80,13 @@ button:hover
     position: absolute;
     z-index: 1;
     background-color: red;
-    border: 10px solid blue;
+    border: 6px solid black;
     opacity: 1.0;
 }
 
 .node-selected
 {
-    border: 10px solid yellow;
+    margin: 10px solid yellow;
 }
 
 .move

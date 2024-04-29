@@ -80,6 +80,7 @@ const create_node_element = (node: Node, state: State): void => {
   newNodeElement.className = 'node';
   newNodeElement.style.top = node.location.y + 'px';
   newNodeElement.style.left = node.location.x + 'px';
+  newNodeElement.style.borderColor = node.color;
 
   switch (node.type) {
     case NodeType.Character:
