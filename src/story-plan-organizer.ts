@@ -18,48 +18,44 @@ import { UUID, randomUUID } from './uuid.js';
 import { get_node, get_node_element, calculate_shortest_distance, does_link_exist } from './helper.js';
 
 const create_node = (type: NodeType, nodes: Node[]): void => {
-  const id: UUID = randomUUID();
-  const location: Point = { x: 0, y: 0 };
+  const baseNode: Node = {
+    id: randomUUID(),
+    location: { x: 0, y: 0 },
+    type,
+    name: '',
+    status: NodeStatus.None,
+    color: '#FFFFFF',
+  };
 
   let node: Node | undefined;
   switch (type) {
     case NodeType.Character:
       node = {
-        id,
-        location,
-        type: NodeType.Character,
+        ...baseNode,
         age: 0,
       } as Character;
       break;
     case NodeType.Location:
       node = {
-        id,
-        location,
-        type: NodeType.Character,
+        ...baseNode,
         description: '',
       } as Location;
       break;
     case NodeType.Organization:
       node = {
-        id,
-        location,
-        type: NodeType.Character,
+        ...baseNode,
         description: '',
       } as Organization;
       break;
     case NodeType.Plot:
       node = {
-        id,
-        location,
-        type: NodeType.Character,
+        ...baseNode,
         text: '',
       } as Plot;
       break;
     case NodeType.Relation:
       node = {
-        id,
-        location,
-        type: NodeType.Character,
+        ...baseNode,
         description: '',
       } as Relation;
       break;
@@ -133,6 +129,8 @@ const create_node_element = (node: Node, state: State): void => {
   }
 
   drag_node_element(newElement, state);
+
+  state.nodesCached.push(newElement);
 };
 
 const drag_node_element = (element: HTMLDivElement, state: State): void => {
@@ -168,6 +166,7 @@ const drag_node_element = (element: HTMLDivElement, state: State): void => {
         return;
       }
 
+      /*
       if (element !== state.selectedNodeElement) {
         if (state.selectedNodeElement) {
           state.selectedNodeElement.classList.remove('node-selected');
@@ -175,6 +174,11 @@ const drag_node_element = (element: HTMLDivElement, state: State): void => {
         state.selectedNodeElement = element;
         state.selectedNodeElement.classList.add('node-selected');
       }
+      */
+      if (element !== state.selectedNodeElement) {
+        state.selectedNodeElement = element;
+      }
+      refresh(state);
 
       pos3 = event.clientX;
       pos4 = event.clientY;
@@ -230,7 +234,7 @@ const create_line = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
     newLine.className = 'line';
 
     const points: { point1: Point; point2: Point } = calculate_shortest_distance(node1, node2);
-    const gradientId = nodeId1 + "_" + nodeId2;
+    const gradientId = nodeId1 + '_' + nodeId2;
     newLine.innerHTML = `
       <svg width='9999' height='9999'>
         <defs>
@@ -287,6 +291,10 @@ const delete_link = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
 
 const delete_node = (nodeElement: HTMLDivElement, state: State): void => {
   if (nodeElement) {
+    const indexElement = state.nodesCached.indexOf(nodeElement);
+    if (indexElement !== -1) {
+      state.nodesCached.splice(indexElement, 1);
+    }
     const nodeFound: Node | undefined = get_node(nodeElement.id as UUID, state.nodes);
     if (nodeFound) {
       const index = state.nodes.indexOf(nodeFound);
@@ -305,11 +313,14 @@ const delete_node = (nodeElement: HTMLDivElement, state: State): void => {
   clear(state);
 };
 
-const clear = (state: State): void => {
-  if (state.selectedNodeElement) {
-    state.selectedNodeElement.classList.remove('node-selected');
+const refresh = (state: State): void => {
+  for (const nodeElement of state.nodesCached) {
+    if (state.selectedNodeElement && nodeElement === state.selectedNodeElement) {
+      state.selectedNodeElement.classList.remove('node-selected');
+    } else {
+      nodeElement.classList.remove('node-selected');
+    }
   }
-  state.selectedNodeElement = null;
 
   for (const node of state.nodes) {
     if (node.location.x < 0) {
@@ -327,11 +338,19 @@ const clear = (state: State): void => {
       }
     }
   }
+
   redraw_lines(state);
+};
+
+const clear = (state: State): void => {
+  state.selectedNodeElement = null;
+
+  refresh(state);
 };
 
 const state: State = {
   nodes: [],
+  nodesCached: [],
   links: [],
   linesCached: [],
   selectedNodeElement: null,

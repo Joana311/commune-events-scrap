@@ -4,49 +4,30 @@ NodeStatus, NodeType, } from './definition.js';
 import { randomUUID } from './uuid.js';
 import { get_node, get_node_element, calculate_shortest_distance, does_link_exist } from './helper.js';
 const create_node = (type, nodes) => {
-    const id = randomUUID();
-    const location = { x: 0, y: 0 };
+    const baseNode = {
+        id: randomUUID(),
+        location: { x: 0, y: 0 },
+        type,
+        name: '',
+        status: NodeStatus.None,
+        color: '#FFFFFF',
+    };
     let node;
     switch (type) {
         case NodeType.Character:
-            node = {
-                id,
-                location,
-                type: NodeType.Character,
-                age: 0,
-            };
+            node = Object.assign(Object.assign({}, baseNode), { age: 0 });
             break;
         case NodeType.Location:
-            node = {
-                id,
-                location,
-                type: NodeType.Character,
-                description: '',
-            };
+            node = Object.assign(Object.assign({}, baseNode), { description: '' });
             break;
         case NodeType.Organization:
-            node = {
-                id,
-                location,
-                type: NodeType.Character,
-                description: '',
-            };
+            node = Object.assign(Object.assign({}, baseNode), { description: '' });
             break;
         case NodeType.Plot:
-            node = {
-                id,
-                location,
-                type: NodeType.Character,
-                text: '',
-            };
+            node = Object.assign(Object.assign({}, baseNode), { text: '' });
             break;
         case NodeType.Relation:
-            node = {
-                id,
-                location,
-                type: NodeType.Character,
-                description: '',
-            };
+            node = Object.assign(Object.assign({}, baseNode), { description: '' });
             break;
         default:
             break;
@@ -114,6 +95,7 @@ const create_node_element = (node, state) => {
             break;
     }
     drag_node_element(newElement, state);
+    state.nodesCached.push(newElement);
 };
 const drag_node_element = (element, state) => {
     let pos1 = 0;
@@ -144,13 +126,19 @@ const drag_node_element = (element, state) => {
                 delete_node(element, state);
                 return;
             }
+            /*
             if (element !== state.selectedNodeElement) {
-                if (state.selectedNodeElement) {
-                    state.selectedNodeElement.classList.remove('node-selected');
-                }
-                state.selectedNodeElement = element;
-                state.selectedNodeElement.classList.add('node-selected');
+              if (state.selectedNodeElement) {
+                state.selectedNodeElement.classList.remove('node-selected');
+              }
+              state.selectedNodeElement = element;
+              state.selectedNodeElement.classList.add('node-selected');
             }
+            */
+            if (element !== state.selectedNodeElement) {
+                state.selectedNodeElement = element;
+            }
+            refresh(state);
             pos3 = event.clientX;
             pos4 = event.clientY;
             document.onmouseup = closeDragElement;
@@ -245,6 +233,10 @@ const delete_link = (nodeId1, nodeId2, state) => {
 };
 const delete_node = (nodeElement, state) => {
     if (nodeElement) {
+        const indexElement = state.nodesCached.indexOf(nodeElement);
+        if (indexElement !== -1) {
+            state.nodesCached.splice(indexElement, 1);
+        }
         const nodeFound = get_node(nodeElement.id, state.nodes);
         if (nodeFound) {
             const index = state.nodes.indexOf(nodeFound);
@@ -262,11 +254,15 @@ const delete_node = (nodeElement, state) => {
     }
     clear(state);
 };
-const clear = (state) => {
-    if (state.selectedNodeElement) {
-        state.selectedNodeElement.classList.remove('node-selected');
+const refresh = (state) => {
+    for (const nodeElement of state.nodesCached) {
+        if (state.selectedNodeElement && nodeElement === state.selectedNodeElement) {
+            state.selectedNodeElement.classList.remove('node-selected');
+        }
+        else {
+            nodeElement.classList.remove('node-selected');
+        }
     }
-    state.selectedNodeElement = null;
     for (const node of state.nodes) {
         if (node.location.x < 0) {
             node.location.x = 0;
@@ -285,8 +281,13 @@ const clear = (state) => {
     }
     redraw_lines(state);
 };
+const clear = (state) => {
+    state.selectedNodeElement = null;
+    refresh(state);
+};
 const state = {
     nodes: [],
+    nodesCached: [],
     links: [],
     linesCached: [],
     selectedNodeElement: null,

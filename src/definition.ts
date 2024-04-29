@@ -93,6 +93,7 @@ export type Link = {
 
 export type State = {
   nodes: Node[];
+  nodesCached: HTMLDivElement[];
   links: Link[];
   linesCached: HTMLDivElement[];
   selectedNodeElement: HTMLDivElement | null;
