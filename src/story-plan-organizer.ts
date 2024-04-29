@@ -247,6 +247,18 @@ const create_line = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
       </svg>
     `;
 
+    const nodeElement1 = get_node_element(nodeId1);
+    const nodeElement2 = get_node_element(nodeId2);
+    if (state.selectedNodeElement) {
+      if (nodeElement1 === state.selectedNodeElement || nodeElement2 === state.selectedNodeElement) {
+        newElement.classList.remove('line-unselected');
+      } else {
+        newElement.classList.add('line-unselected');
+      }
+    } else {
+      newElement.classList.remove('line-unselected');
+    }
+
     state.linesCached.push(newElement);
 
     if (newLine.firstElementChild && newLine.firstElementChild.firstElementChild) {
@@ -323,8 +335,7 @@ const refresh = (state: State): void => {
         nodeElement.classList.remove('node-selected');
         nodeElement.classList.add('node-unselected');
       }
-    }
-    else {
+    } else {
       nodeElement.classList.remove('node-selected');
       nodeElement.classList.remove('node-unselected');
     }

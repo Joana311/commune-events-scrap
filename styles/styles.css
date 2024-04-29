@@ -92,7 +92,7 @@ button:hover
 
 .node-unselected
 {
-    border-width: 14px;
+    opacity: 0.3;
 }
 
 .move
@@ -120,7 +120,7 @@ button:hover
     opacity: 1.0;
 }
 
-.opacity
+.line-unselected
 {
     opacity: 0.3;
 }

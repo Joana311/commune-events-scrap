@@ -197,6 +197,19 @@ const create_line = (nodeId1, nodeId2, state) => {
         <line x1='${points.point1.x}' y1='${points.point1.y}' x2='${points.point2.x}' y2='${points.point2.y}' stroke-width='6' stroke='url(#${gradientId})' style='pointer-events: all;'/>
       </svg>
     `;
+        const nodeElement1 = get_node_element(nodeId1);
+        const nodeElement2 = get_node_element(nodeId2);
+        if (state.selectedNodeElement) {
+            if (nodeElement1 === state.selectedNodeElement || nodeElement2 === state.selectedNodeElement) {
+                newElement.classList.remove('line-unselected');
+            }
+            else {
+                newElement.classList.add('line-unselected');
+            }
+        }
+        else {
+            newElement.classList.remove('line-unselected');
+        }
         state.linesCached.push(newElement);
         if (newLine.firstElementChild && newLine.firstElementChild.firstElementChild) {
             newLine.firstElementChild.firstElementChild.addEventListener('click', () => {
