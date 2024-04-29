@@ -1,62 +1,28 @@
-import { UUID, randomUUID } from './uuid.js';
-
-/**
- * Point.
- */
-type Point = {
-  /**
-   * X coordinate.
-   */
-  x: number;
-  /**
-   * Y coordinate.
-   */
-  y: number;
-};
-
-type Node = {
-  id: UUID;
-  location: Point;
-  type: NodeType;
-};
-
-type Character = Node & {
-  age: number;
-};
-
-type Location = Node & {
-  description: string;
-};
-
-type Organization = Node & {
-  description: string;
-};
-
-type Plot = Node & {
-  text: string;
-};
-
-type Relation = Node & {
-  description: string;
-};
-
-type Link = {
-  nodeFromId: UUID;
-  nodeToId: UUID;
-};
-
-/**
- * Node Type.
- */
-enum NodeType {
+import {
   Character,
+  Color_Hex,
+  Link,
   Location,
+  ManaBorn,
+  Node,
+  NodePositionResults,
+  NodeStatus,
+  NodeType,
   Organization,
   Plot,
+  Point,
   Relation,
-}
+  State,
+} from 'definition.js';
+import { UUID, randomUUID } from './uuid.js';
+import {
+  get_node,
+  get_node_element,
+  calculate_shortest_distance,
+  does_link_exist,
+} from './helper.js';
 
-const create_node = (type: NodeType, nodes: Node[], links: Link[], linesCached: HTMLDivElement[]): void => {
+const create_node = (type: NodeType, nodes: Node[]): void => {
   const id: UUID = randomUUID();
   const location: Point = { x: 0, y: 0 };
 
@@ -108,11 +74,11 @@ const create_node = (type: NodeType, nodes: Node[], links: Link[], linesCached: 
 
   if (node) {
     nodes.push(node);
-    create_node_element(node, nodes, links, linesCached);
+    create_node_element(node, state);
   }
 };
 
-const create_node_element = (node: Node, nodes: Node[], links: Link[], linesCached: HTMLDivElement[]): void => {
+const create_node_element = (node: Node, state: State): void => {
   const newElement: HTMLDivElement = document.createElement('div');
   const newNodeElement: HTMLDivElement = document.body.appendChild(newElement);
   newNodeElement.id = node.id;
@@ -170,14 +136,12 @@ const create_node_element = (node: Node, nodes: Node[], links: Link[], linesCach
       break;
   }
 
-  drag_node_element(newElement, nodes, links, linesCached);
+  drag_node_element(newElement, state);
 };
 
 const drag_node_element = (
   element: HTMLDivElement,
-  nodes: Node[],
-  links: Link[],
-  linesCached: HTMLDivElement[],
+  state: State
 ): void => {
   let pos1: number = 0;
   let pos2: number = 0;
@@ -189,10 +153,10 @@ const drag_node_element = (
   moveElement.addEventListener('mouseup', (event: MouseEvent) => {
     if (event.button === 2) {
       // Right mouse button
-      if (element.id && createOngoingLinkId) {
-        create_link(element.id as UUID, createOngoingLinkId, nodes, links, linesCached);
+      if (element.id && state.createOngoingLinkId) {
+        create_link(element.id as UUID, state.createOngoingLinkId, state);
       }
-      createOngoingLinkId = null;
+      state.createOngoingLinkId = null;
     }
   });
 
@@ -206,17 +170,17 @@ const drag_node_element = (
 
     if (event.button === 0) {
       // Left mouse button
-      if (deleting) {
-        delete_node(element, nodes, links, linesCached);
+      if (state.deleting) {
+        delete_node(element, state);
         return;
       }
 
-      if (element !== selectedNodeElement) {
-        if (selectedNodeElement) {
-          selectedNodeElement.classList.remove('node-selected');
+      if (element !== state.selectedNodeElement) {
+        if (state.selectedNodeElement) {
+          state.selectedNodeElement.classList.remove('node-selected');
         }
-        selectedNodeElement = element;
-        selectedNodeElement.classList.add('node-selected');
+        state.selectedNodeElement = element;
+        state.selectedNodeElement.classList.add('node-selected');
       }
 
       pos3 = event.clientX;
@@ -226,7 +190,7 @@ const drag_node_element = (
       document.onmousemove = elementDrag;
     } else if (event.button === 2) {
       // Right mouse button
-      createOngoingLinkId = element.id as UUID;
+      state.createOngoingLinkId = element.id as UUID;
     }
   }
 
@@ -243,7 +207,7 @@ const drag_node_element = (
     pos3 = event.clientX;
     pos4 = event.clientY;
 
-    const node: Node | undefined = get_node(element.id as UUID, nodes);
+    const node: Node | undefined = get_node(element.id as UUID, state.nodes);
     if (node) {
       node.location.x = element.offsetLeft - pos1;
       node.location.y = element.offsetTop - pos2;
@@ -251,7 +215,7 @@ const drag_node_element = (
       element.style.top = node.location.y + 'px';
       element.style.left = node.location.x + 'px';
 
-      redraw_lines(nodes, links, linesCached);
+      redraw_lines(state);
     }
   }
 
@@ -264,163 +228,13 @@ const drag_node_element = (
   }
 };
 
-const get_node = (id: UUID, nodes: Node[]): Node | undefined => {
-  let foundNode;
-  for (const node of nodes) {
-    if (node.id === id) {
-      foundNode = node;
-      break;
-    }
-  }
-  return foundNode;
-};
-
-const get_node_element = (id: UUID): HTMLDivElement | null => {
-  const htmlElement: HTMLElement | null = document.getElementById(id);
-  return htmlElement ? (htmlElement as HTMLDivElement) : null;
-};
-
-type NodePositionResults = {
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
-  topLeft: Point;
-  topRight: Point;
-  bottomLeft: Point;
-  bottomRight: Point;
-};
-
-const calculate_element_positions = (node: Node): NodePositionResults | undefined => {
-  const element = get_node_element(node.id);
-  if (element) {
-    const top = node.location.y;
-    const bottom = node.location.y + element.offsetHeight;
-    const left = node.location.x;
-    const right = node.location.x + element.offsetWidth;
-
-    const topLeft = { x: node.location.x, y: node.location.y };
-    const topRight = { x: node.location.x + element.offsetWidth, y: node.location.y };
-    const bottomLeft = { x: node.location.x, y: node.location.y + element.offsetHeight };
-    const bottomRight = { x: node.location.x + element.offsetWidth, y: node.location.y + element.offsetHeight };
-
-    return { top, bottom, left, right, topLeft, topRight, bottomLeft, bottomRight };
-  } else {
-    return undefined;
-  }
-};
-
-const calculate_distance = (point1: Point, point2: Point): number => {
-  const a = point1.x - point2.x;
-  const b = point1.y - point2.y;
-  return Math.sqrt(a * a + b * b);
-};
-
-const calculate_shortest_distance_2 = (point: Point, node2: Node): { point: Point; distance: number } => {
-  const currentShortestPoint = { point: { x: 0, y: 0 }, distance: 999999999999 };
-
-  const nodePositions2: NodePositionResults | undefined = calculate_element_positions(node2);
-  if (nodePositions2) {
-    // 1. Sweep TopLeft to TopRight
-    for (let x = nodePositions2.left; x < nodePositions2.right; x = x + CALCULATION_INCREMENT) {
-      const tempPoint = { x: x, y: nodePositions2.top };
-      const distance = calculate_distance(point, tempPoint);
-      if (distance < currentShortestPoint.distance) {
-        currentShortestPoint.point = tempPoint;
-        currentShortestPoint.distance = distance;
-      }
-    }
-    // 2. Sweep TopRight to BottomRight
-    for (let y = nodePositions2.top; y < nodePositions2.bottom; y = y + CALCULATION_INCREMENT) {
-      const tempPoint = { x: nodePositions2.right, y: y };
-      const distance = calculate_distance(point, tempPoint);
-      if (distance < currentShortestPoint.distance) {
-        currentShortestPoint.point = tempPoint;
-        currentShortestPoint.distance = distance;
-      }
-    }
-    // 3. Sweep BottomLeft to BottomRight
-    for (let x = nodePositions2.left; x < nodePositions2.right; x = x + CALCULATION_INCREMENT) {
-      const tempPoint = { x: x, y: nodePositions2.bottom };
-      const distance = calculate_distance(point, tempPoint);
-      if (distance < currentShortestPoint.distance) {
-        currentShortestPoint.point = tempPoint;
-        currentShortestPoint.distance = distance;
-      }
-    }
-    // 4. Sweep TopLeft to BottomLeft
-    for (let y = nodePositions2.top; y < nodePositions2.bottom; y = y + CALCULATION_INCREMENT) {
-      const tempPoint = { x: nodePositions2.left, y: y };
-      const distance = calculate_distance(point, tempPoint);
-      if (distance < currentShortestPoint.distance) {
-        currentShortestPoint.point = tempPoint;
-        currentShortestPoint.distance = distance;
-      }
-    }
-  }
-
-  return currentShortestPoint;
-};
-
-const calculate_shortest_distance = (node1: Node, node2: Node): { point1: Point; point2: Point } => {
-  const currentShortestPoints = { point1: { x: 0, y: 0 }, point2: { x: 0, y: 0 }, distance: 999999999999 };
-
-  const nodePositions1: NodePositionResults | undefined = calculate_element_positions(node1);
-  if (nodePositions1) {
-    // 1. Sweep TopLeft to TopRight
-    for (let x = nodePositions1.left; x < nodePositions1.right; x = x + CALCULATION_INCREMENT) {
-      const tempPoint = { x: x, y: nodePositions1.top };
-      const result: { point: Point; distance: number } = calculate_shortest_distance_2(tempPoint, node2);
-      if (result.distance < currentShortestPoints.distance) {
-        currentShortestPoints.point1 = tempPoint;
-        currentShortestPoints.point2 = result.point;
-        currentShortestPoints.distance = result.distance;
-      }
-    }
-    // 2. Sweep TopRight to BottomRight
-    for (let y = nodePositions1.top; y < nodePositions1.bottom; y = y + CALCULATION_INCREMENT) {
-      const tempPoint = { x: nodePositions1.right, y: y };
-      const result: { point: Point; distance: number } = calculate_shortest_distance_2(tempPoint, node2);
-      if (result.distance < currentShortestPoints.distance) {
-        currentShortestPoints.point1 = tempPoint;
-        currentShortestPoints.point2 = result.point;
-        currentShortestPoints.distance = result.distance;
-      }
-    }
-    // 3. Sweep BottomLeft to BottomRight
-    for (let x = nodePositions1.left; x < nodePositions1.right; x = x + CALCULATION_INCREMENT) {
-      const tempPoint = { x: x, y: nodePositions1.bottom };
-      const result: { point: Point; distance: number } = calculate_shortest_distance_2(tempPoint, node2);
-      if (result.distance < currentShortestPoints.distance) {
-        currentShortestPoints.point1 = tempPoint;
-        currentShortestPoints.point2 = result.point;
-        currentShortestPoints.distance = result.distance;
-      }
-    }
-    // 4. Sweep TopLeft to BottomLeft
-    for (let y = nodePositions1.top; y < nodePositions1.bottom; y = y + CALCULATION_INCREMENT) {
-      const tempPoint = { x: nodePositions1.left, y: y };
-      const result: { point: Point; distance: number } = calculate_shortest_distance_2(tempPoint, node2);
-      if (result.distance < currentShortestPoints.distance) {
-        currentShortestPoints.point1 = tempPoint;
-        currentShortestPoints.point2 = result.point;
-        currentShortestPoints.distance = result.distance;
-      }
-    }
-  }
-
-  return { point1: currentShortestPoints.point1, point2: currentShortestPoints.point2 };
-};
-
 const create_line = (
   nodeId1: UUID,
   nodeId2: UUID,
-  nodes: Node[],
-  links: Link[],
-  linesCached: HTMLDivElement[],
+  state: State,
 ): void => {
-  const node1 = get_node(nodeId1, nodes);
-  const node2 = get_node(nodeId2, nodes);
+  const node1 = get_node(nodeId1, state.nodes);
+  const node2 = get_node(nodeId2, state.nodes);
   if (node1 && node2) {
     const newElement: HTMLDivElement = document.createElement('div');
     const newLine: HTMLDivElement = document.body.appendChild(newElement);
@@ -433,105 +247,86 @@ const create_line = (
       </svg>
     `;
 
-    linesCached.push(newElement);
+    state.linesCached.push(newElement);
 
     if (newLine.firstElementChild && newLine.firstElementChild.firstElementChild) {
       newLine.firstElementChild.firstElementChild.addEventListener('click', () => {
-        if (deleting) {
-          delete_link(nodeId1, nodeId2, nodes, links, linesCached);
+        if (state.deleting) {
+          delete_link(nodeId1, nodeId2, state);
         }
       });
     }
   }
 };
 
-const redraw_lines = (nodes: Node[], links: Link[], linesCached: HTMLDivElement[]): void => {
-  for (const line of linesCached) {
+const redraw_lines = (state: State,): void => {
+  for (const line of state.linesCached) {
     line.remove();
   }
 
-  for (const link of links) {
-    create_line(link.nodeFromId, link.nodeToId, nodes, links, linesCached);
+  for (const link of state.links) {
+    create_line(link.nodeFromId, link.nodeToId, state);
   }
 };
 
 const create_link = (
   nodeId1: UUID,
   nodeId2: UUID,
-  nodes: Node[],
-  links: Link[],
-  linesCached: HTMLDivElement[],
+  state: State,
 ): void => {
-  if (nodeId1 && nodeId2 && !does_link_exist(nodeId1, nodeId2, links)) {
-    links.push({ nodeFromId: nodeId1, nodeToId: nodeId2 });
-    redraw_lines(nodes, links, linesCached);
+  if (nodeId1 && nodeId2 && !does_link_exist(nodeId1, nodeId2, state.links)) {
+    state.links.push({ nodeFromId: nodeId1, nodeToId: nodeId2 });
+    redraw_lines(state);
   }
-};
-
-const does_link_exist = (nodeId1: UUID, nodeId2: UUID, links: Link[]): boolean => {
-  for (const link of links) {
-    if (
-      (nodeId1 === link.nodeFromId && nodeId2 === link.nodeToId) ||
-      (nodeId2 === link.nodeFromId && nodeId1 === link.nodeToId)
-    ) {
-      return true;
-    }
-  }
-  return false;
 };
 
 const delete_link = (
   nodeId1: UUID,
   nodeId2: UUID,
-  nodes: Node[],
-  links: Link[],
-  linesCached: HTMLDivElement[],
+  state: State,
 ): void => {
-  for (let i = links.length - 1; i >= 0; i--) {
-    const link: Link = links[i];
+  for (let i = state.links.length - 1; i >= 0; i--) {
+    const link: Link = state.links[i];
     if (
       (nodeId1 === link.nodeFromId && nodeId2 === link.nodeToId) ||
       (nodeId2 === link.nodeFromId && nodeId1 === link.nodeToId)
     ) {
-      links.splice(i, 1);
+      state.links.splice(i, 1);
     }
   }
-  redraw_lines(nodes, links, linesCached);
+  redraw_lines(state);
 };
 
 const delete_node = (
   nodeElement: HTMLDivElement,
-  nodes: Node[],
-  links: Link[],
-  linesCached: HTMLDivElement[],
+  state: State,
 ): void => {
   if (nodeElement) {
-    const nodeFound: Node | undefined = get_node(nodeElement.id as UUID, nodes);
+    const nodeFound: Node | undefined = get_node(nodeElement.id as UUID, state.nodes);
     if (nodeFound) {
-      const index = nodes.indexOf(nodeFound);
+      const index = state.nodes.indexOf(nodeFound);
       if (index !== -1) {
-        nodes.splice(index, 1);
-        for (let i = links.length - 1; i >= 0; i--) {
-          const link: Link = links[i];
+        state.nodes.splice(index, 1);
+        for (let i = state.links.length - 1; i >= 0; i--) {
+          const link: Link = state.links[i];
           if (nodeElement.id === link.nodeFromId || nodeElement.id === link.nodeToId) {
-            links.splice(i, 1);
+            state.links.splice(i, 1);
           }
         }
         nodeElement.remove();
       }
     }
   }
-  clear(nodes, links, linesCached);
-  redraw_lines(nodes, links, linesCached);
+  clear(state);
 };
 
-const clear = (nodes: Node[], links: Link[], linesCached: HTMLDivElement[]): void => {
-  if (selectedNodeElement) {
-    selectedNodeElement.classList.remove('node-selected');
+const clear = (state: State): void => {
+  if (state.selectedNodeElement) {
+    state.selectedNodeElement.classList.remove('node-selected');
   }
-  selectedNodeElement = null;
+  state.selectedNodeElement = null;
 
-  for (const node of nodes) {
+  for (const node of state.nodes) {
     if (node.location.x < 0) {
       node.location.x = 0;
       const nodeElement: HTMLDivElement | null = get_node_element(node.id);
@@ -547,18 +342,38 @@ const clear = (nodes: Node[], links: Link[], linesCached: HTMLDivElement[]): voi
       }
     }
   }
-  redraw_lines(nodes, links, linesCached);
+  redraw_lines(state);
 };
 
+
+
+
+
+
+
+const state: State = {
+  nodes: [],
+  links: [],
+  linesCached: [],
+  selectedNodeElement: null,
+  createOngoingLinkId: null,
+  deleting: false,
+};
+
+
+
+
+
+/*
 const nodes: Node[] = [];
 const links: Link[] = [];
 const linesCached: HTMLDivElement[] = [];
 let selectedNodeElement: HTMLDivElement | null = null;
 let createOngoingLinkId: UUID | null = null;
 let deleting: boolean = false;
-const CALCULATION_INCREMENT: number = 10;
+*/
 
-nodes.push(
+state.nodes.push(
   {
     id: 'dc4090ef-6c95-4c24-ac57-ff4126811365',
     location: {
@@ -606,20 +421,20 @@ nodes.push(
   } as Relation,
 );
 
-for (const node of nodes) {
-  create_node_element(node, nodes, links, linesCached);
+for (const node of state.nodes) {
+  create_node_element(node, state);
 }
 
-links.push({ nodeFromId: 'f6f06d09-986e-43fb-a28c-eb0c1b9d3394', nodeToId: 'dc4090ef-6c95-4c24-ac57-ff4126811365' });
-links.push({ nodeFromId: '53b21444-da1e-43a1-a83a-fdf4ba93f0ad', nodeToId: '22903bda-eedf-406e-b4c4-e857d289f5d9' });
-links.push({ nodeFromId: 'dc7d4b9b-cec0-48a5-af38-f025d96e088d', nodeToId: '22903bda-eedf-406e-b4c4-e857d289f5d9' });
-links.push({ nodeFromId: 'dc7d4b9b-cec0-48a5-af38-f025d96e088d', nodeToId: 'dc4090ef-6c95-4c24-ac57-ff4126811365' });
+state.links.push({ nodeFromId: 'f6f06d09-986e-43fb-a28c-eb0c1b9d3394', nodeToId: 'dc4090ef-6c95-4c24-ac57-ff4126811365' });
+state.links.push({ nodeFromId: '53b21444-da1e-43a1-a83a-fdf4ba93f0ad', nodeToId: '22903bda-eedf-406e-b4c4-e857d289f5d9' });
+state.links.push({ nodeFromId: 'dc7d4b9b-cec0-48a5-af38-f025d96e088d', nodeToId: '22903bda-eedf-406e-b4c4-e857d289f5d9' });
+state.links.push({ nodeFromId: 'dc7d4b9b-cec0-48a5-af38-f025d96e088d', nodeToId: 'dc4090ef-6c95-4c24-ac57-ff4126811365' });
 
-redraw_lines(nodes, links, linesCached);
+redraw_lines(state);
 
 document.addEventListener('contextmenu', (event) => event.preventDefault());
-window.addEventListener('keydown', (event) => keydownResponse(event, nodes, links, linesCached), false);
-window.addEventListener('keyup', keyupResponse, false);
+window.addEventListener('keydown', (event) => keydownResponse(event, state), false);
+window.addEventListener('keyup', (event) => keyupResponse(event, state), false);
 
 /**
  *
@@ -628,12 +443,12 @@ window.addEventListener('keyup', keyupResponse, false);
  * @param links Array of all the links.
  * @param linesCached Array of HTML elements of lines.
  */
-function keydownResponse(event: KeyboardEvent, nodes: Node[], links: Link[], linesCached: HTMLDivElement[]): void {
+function keydownResponse(event: KeyboardEvent, state: State): void {
   if (event.key === 'Escape') {
-    clear(nodes, links, linesCached);
+    clear(state);
   }
   if (event.key === 'd') {
-    deleting = true;
+    state.deleting = true;
   }
 }
 
@@ -641,9 +456,9 @@ function keydownResponse(event: KeyboardEvent, nodes: Node[], links: Link[], lin
  *
  * @param event
  */
-function keyupResponse(event: KeyboardEvent): void {
+function keyupResponse(event: KeyboardEvent, state: State): void {
   if (event.key === 'd') {
-    deleting = false;
+    state.deleting = false;
   }
 }
 
@@ -652,7 +467,7 @@ const createNodeButton_Character: HTMLButtonElement = document.getElementById(
 ) as HTMLButtonElement;
 createNodeButton_Character.addEventListener('click', (event: Event) => {
   console.log(event);
-  create_node(NodeType.Character, nodes, links, linesCached);
+  create_node(NodeType.Character, state.nodes);
 });
 
 /*
