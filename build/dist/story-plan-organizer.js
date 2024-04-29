@@ -1,8 +1,8 @@
 import { 
 //NodePositionResults,
-NodeStatus, NodeType, } from 'definition.js';
+NodeStatus, NodeType, } from './definition.js';
 import { randomUUID } from './uuid.js';
-import { get_node, get_node_element, calculate_shortest_distance, does_link_exist, } from './helper.js';
+import { get_node, get_node_element, calculate_shortest_distance, does_link_exist } from './helper.js';
 const create_node = (type, nodes) => {
     const id = randomUUID();
     const location = { x: 0, y: 0 };
@@ -355,10 +355,22 @@ state.nodes.push({
 for (const node of state.nodes) {
     create_node_element(node, state);
 }
-state.links.push({ nodeFromId: 'f6f06d09-986e-43fb-a28c-eb0c1b9d3394', nodeToId: 'dc4090ef-6c95-4c24-ac57-ff4126811365' });
-state.links.push({ nodeFromId: '53b21444-da1e-43a1-a83a-fdf4ba93f0ad', nodeToId: '22903bda-eedf-406e-b4c4-e857d289f5d9' });
-state.links.push({ nodeFromId: 'dc7d4b9b-cec0-48a5-af38-f025d96e088d', nodeToId: '22903bda-eedf-406e-b4c4-e857d289f5d9' });
-state.links.push({ nodeFromId: 'dc7d4b9b-cec0-48a5-af38-f025d96e088d', nodeToId: 'dc4090ef-6c95-4c24-ac57-ff4126811365' });
+state.links.push({
+    nodeFromId: 'f6f06d09-986e-43fb-a28c-eb0c1b9d3394',
+    nodeToId: 'dc4090ef-6c95-4c24-ac57-ff4126811365',
+});
+state.links.push({
+    nodeFromId: '53b21444-da1e-43a1-a83a-fdf4ba93f0ad',
+    nodeToId: '22903bda-eedf-406e-b4c4-e857d289f5d9',
+});
+state.links.push({
+    nodeFromId: 'dc7d4b9b-cec0-48a5-af38-f025d96e088d',
+    nodeToId: '22903bda-eedf-406e-b4c4-e857d289f5d9',
+});
+state.links.push({
+    nodeFromId: 'dc7d4b9b-cec0-48a5-af38-f025d96e088d',
+    nodeToId: 'dc4090ef-6c95-4c24-ac57-ff4126811365',
+});
 redraw_lines(state);
 document.addEventListener('contextmenu', (event) => event.preventDefault());
 window.addEventListener('keydown', (event) => keydownResponse(event, state), false);
@@ -369,6 +381,7 @@ window.addEventListener('keyup', (event) => keyupResponse(event, state), false);
  * @param nodes Array of all the nodes.
  * @param links Array of all the links.
  * @param linesCached Array of HTML elements of lines.
+ * @param state
  */
 function keydownResponse(event, state) {
     if (event.key === 'Escape') {
@@ -381,6 +394,7 @@ function keydownResponse(event, state) {
 /**
  *
  * @param event
+ * @param state
  */
 function keyupResponse(event, state) {
     if (event.key === 'd') {

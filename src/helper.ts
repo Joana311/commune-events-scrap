@@ -13,7 +13,7 @@ import {
   //Plot,
   Point,
   //Relation,
-} from 'definition.js';
+} from './definition.js';
 import { UUID } from './uuid.js';
 
 export const get_node = (id: UUID, nodes: Node[]): Node | undefined => {

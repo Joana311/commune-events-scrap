@@ -1,6 +1,6 @@
 import { CALCULATION_INCREMENT,
 //Relation,
- } from 'definition.js';
+ } from './definition.js';
 export const get_node = (id, nodes) => {
     let foundNode;
     for (const node of nodes) {

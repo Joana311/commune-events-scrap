@@ -13,7 +13,7 @@ import {
   Point,
   Relation,
   State,
-} from 'definition.js';
+} from './definition.js';
 import { UUID, randomUUID } from './uuid.js';
 import { get_node, get_node_element, calculate_shortest_distance, does_link_exist } from './helper.js';
 
