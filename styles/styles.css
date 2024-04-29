@@ -117,10 +117,15 @@ button:hover
     left: 0px;
     pointer-events: none;
     z-index: 0;
-    opacity: 1.0;
+}
+
+.line-selected
+{
+    stroke-width: 8px;
 }
 
 .line-unselected
 {
-    opacity: 0.3;
+    stroke-width: 4px;
+    stroke-opacity: 0.3;
 }
