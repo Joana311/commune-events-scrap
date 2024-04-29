@@ -238,29 +238,10 @@ const create_line = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
       </svg>
     `;
 
-    /*
-    const nodeElement1 = get_node_element(nodeId1);
-    const nodeElement2 = get_node_element(nodeId2);
-    if (state.selectedNodeElement) {
-      if (nodeElement1 === state.selectedNodeElement || nodeElement2 === state.selectedNodeElement) {
-        newLine.classList.add('line-highlighted');
-        newLine.classList.remove('line-unhighlighted');
-      } else {
-        newLine.classList.remove('line-highlighted');
-        newLine.classList.add('line-unhighlighted');
-      }
-    } else {
-      newLine.classList.remove('line-highlighted');
-      newLine.classList.remove('line-unhighlighted');
-    }
-    */
-
     state.linesCached.push(newElement);
 
     const lineElement = newLine.getElementsByTagName('line')[0];
     if (lineElement) {
-
-
       const nodeElement1 = get_node_element(nodeId1);
       const nodeElement2 = get_node_element(nodeId2);
       if (state.selectedNodeElement) {
@@ -276,16 +257,6 @@ const create_line = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
         lineElement.classList.remove('line-unhighlighted');
       }
 
-
-
-
-
-
-
-
-
-
-
       lineElement.addEventListener('click', () => {
         if (state.deleting) {
           delete_link(nodeId1, nodeId2, state);
@@ -299,6 +270,7 @@ const redraw_lines = (state: State): void => {
   for (const line of state.linesCached) {
     line.remove();
   }
+  state.linesCached.splice(state.linesCached.length);
 
   for (const link of state.links) {
     create_line(link.nodeFromId, link.nodeToId, state);
@@ -383,6 +355,8 @@ const refresh = (state: State): void => {
   }
 
   redraw_lines(state);
+
+  console.log(state);
 };
 
 const clear = (state: State): void => {

@@ -188,22 +188,6 @@ const create_line = (nodeId1, nodeId2, state) => {
         <line x1='${points.point1.x}' y1='${points.point1.y}' x2='${points.point2.x}' y2='${points.point2.y}' stroke='url(#${gradientId})' style='pointer-events: all;'/>
       </svg>
     `;
-        /*
-        const nodeElement1 = get_node_element(nodeId1);
-        const nodeElement2 = get_node_element(nodeId2);
-        if (state.selectedNodeElement) {
-          if (nodeElement1 === state.selectedNodeElement || nodeElement2 === state.selectedNodeElement) {
-            newLine.classList.add('line-highlighted');
-            newLine.classList.remove('line-unhighlighted');
-          } else {
-            newLine.classList.remove('line-highlighted');
-            newLine.classList.add('line-unhighlighted');
-          }
-        } else {
-          newLine.classList.remove('line-highlighted');
-          newLine.classList.remove('line-unhighlighted');
-        }
-        */
         state.linesCached.push(newElement);
         const lineElement = newLine.getElementsByTagName('line')[0];
         if (lineElement) {
@@ -235,6 +219,7 @@ const redraw_lines = (state) => {
     for (const line of state.linesCached) {
         line.remove();
     }
+    state.linesCached.splice(state.linesCached.length);
     for (const link of state.links) {
         create_line(link.nodeFromId, link.nodeToId, state);
     }
@@ -312,6 +297,7 @@ const refresh = (state) => {
         }
     }
     redraw_lines(state);
+    console.log(state);
 };
 const clear = (state) => {
     state.selectedNodeElement = null;
