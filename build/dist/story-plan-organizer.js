@@ -1,4 +1,4 @@
-import { randomUUID } from './uuid';
+import { randomUUID } from './uuid.js';
 /**
  * Node Type.
  */
