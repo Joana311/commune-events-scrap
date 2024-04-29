@@ -62,3 +62,8 @@ button:hover
     z-index: -9;
     opacity: 1.0;
 }
+
+.opacity
+{
+    opacity: 0.3;
+}

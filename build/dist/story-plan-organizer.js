@@ -296,8 +296,8 @@ let deleting: boolean = false;
 state.nodes.push({
     id: 'dc4090ef-6c95-4c24-ac57-ff4126811365',
     location: {
-        x: 100,
-        y: 200,
+        x: 50,
+        y: 100,
     },
     type: NodeType.Character,
     name: '',
@@ -310,7 +310,7 @@ state.nodes.push({
     id: 'f6f06d09-986e-43fb-a28c-eb0c1b9d3394',
     location: {
         x: 300,
-        y: 800,
+        y: 500,
     },
     type: NodeType.Location,
     name: '',
@@ -322,7 +322,7 @@ state.nodes.push({
     id: 'dc7d4b9b-cec0-48a5-af38-f025d96e088d',
     location: {
         x: 300,
-        y: 900,
+        y: 700,
     },
     type: NodeType.Organization,
     name: '',
@@ -333,7 +333,7 @@ state.nodes.push({
     id: '53b21444-da1e-43a1-a83a-fdf4ba93f0ad',
     location: {
         x: 300,
-        y: 1000,
+        y: 900,
     },
     type: NodeType.Plot,
     name: '',
@@ -351,6 +351,61 @@ state.nodes.push({
     status: NodeStatus.None,
     color: '#FFFFFF',
     description: 'This is a description.',
+}, {
+    id: '018eed2c-431c-4c11-95af-036fe40f4c7a',
+    location: {
+        x: 500,
+        y: 4000,
+    },
+    type: NodeType.Plot,
+    name: '',
+    status: NodeStatus.None,
+    color: '#FFFFFF',
+    text: 'This is a description.',
+}, {
+    id: '8ea99741-5b1e-4885-be6f-4e890d8cf684',
+    location: {
+        x: 500,
+        y: 600,
+    },
+    type: NodeType.Plot,
+    name: '',
+    status: NodeStatus.None,
+    color: '#FFFFFF',
+    text: 'This is a description.',
+}, {
+    id: '25839240-5f8b-43ec-bf2f-9aca680cdd20',
+    location: {
+        x: 500,
+        y: 800,
+    },
+    type: NodeType.Plot,
+    name: '',
+    status: NodeStatus.None,
+    color: '#FFFFFF',
+    text: 'This is a description.',
+}, {
+    id: '4960b134-5e62-4b6b-9e94-84f9d6fa45b1',
+    location: {
+        x: 500,
+        y: 1000,
+    },
+    type: NodeType.Plot,
+    name: '',
+    status: NodeStatus.None,
+    color: '#FFFFFF',
+    text: 'This is a description.',
+}, {
+    id: 'bb6a4fd4-74ea-4013-bcf6-b5c35a68ca19',
+    location: {
+        x: 500,
+        y: 1200,
+    },
+    type: NodeType.Plot,
+    name: '',
+    status: NodeStatus.None,
+    color: '#FFFFFF',
+    text: 'This is a description.',
 });
 for (const node of state.nodes) {
     create_node_element(node, state);
