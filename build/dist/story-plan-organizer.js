@@ -192,28 +192,19 @@ const create_line = (nodeId1, nodeId2, state) => {
         const nodeElement2 = get_node_element(nodeId2);
         if (state.selectedNodeElement) {
             if (nodeElement1 === state.selectedNodeElement || nodeElement2 === state.selectedNodeElement) {
-                newElement.classList.remove('line-unhighlighted');
+                newLine.classList.remove('line-unhighlighted');
             }
             else {
-                newElement.classList.add('line-unhighlighted');
+                newLine.classList.add('line-unhighlighted');
             }
         }
         else {
-            newElement.classList.remove('line-unhighlighted');
+            newLine.classList.remove('line-unhighlighted');
         }
         state.linesCached.push(newElement);
-        console.log('\n\n\n\n\nPOINT_A');
-        console.log(newLine.getElementsByTagName('line'));
-        console.log('\n\n\n\n\n');
-        if (newLine.firstElementChild && newLine.firstElementChild.getElementsByTagName('line')[0]) {
-            newLine.firstElementChild.getElementsByTagName('line')[0].addEventListener('click', () => {
-                console.log('\n\n\n\n\nPOINT_B');
-                console.log(state);
-                console.log('\n\n\n\n\n');
+        if (newLine.getElementsByTagName('line')[0]) {
+            newLine.getElementsByTagName('line')[0].addEventListener('click', () => {
                 if (state.deleting) {
-                    console.log('\n\n\n\n\nPOINT_C');
-                    console.log(state);
-                    console.log('\n\n\n\n\n');
                     delete_link(nodeId1, nodeId2, state);
                 }
             });
