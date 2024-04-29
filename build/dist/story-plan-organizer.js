@@ -15,10 +15,10 @@ const create_node = (type, nodes) => {
     let node;
     switch (type) {
         case NodeType.Character:
-            node = Object.assign(Object.assign({}, baseNode), { age: 0 });
+            node = Object.assign(Object.assign({}, baseNode), { imageSrc: '', description: '', age: 0 });
             break;
         case NodeType.Location:
-            node = Object.assign(Object.assign({}, baseNode), { description: '' });
+            node = Object.assign(Object.assign({}, baseNode), { imageSrc: '', description: '' });
             break;
         case NodeType.Organization:
             node = Object.assign(Object.assign({}, baseNode), { description: '' });

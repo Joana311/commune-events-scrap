@@ -50,6 +50,7 @@ export type Character = Node & {
   age: number;
 };
 
+/*
 export type ManaBorn = Character & {
   manaAmount: number;
   manaRecovery: number;
@@ -57,6 +58,7 @@ export type ManaBorn = Character & {
   manaOutput: number;
   sense: number;
 };
+*/
 
 export type Location = Node & {
   imageSrc: string;
@@ -101,4 +103,4 @@ export type State = {
   deleting: boolean;
 };
 
-export const CALCULATION_INCREMENT: number = 2;
+export const CALCULATION_INCREMENT: number = 1;

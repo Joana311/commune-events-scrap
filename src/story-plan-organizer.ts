@@ -32,12 +32,15 @@ const create_node = (type: NodeType, nodes: Node[]): void => {
     case NodeType.Character:
       node = {
         ...baseNode,
+        imageSrc: '',
+        description: '',
         age: 0,
       } as Character;
       break;
     case NodeType.Location:
       node = {
         ...baseNode,
+        imageSrc: '',
         description: '',
       } as Location;
       break;

@@ -43,13 +43,6 @@ export type Character = Node & {
     description: string;
     age: number;
 };
-export type ManaBorn = Character & {
-    manaAmount: number;
-    manaRecovery: number;
-    manaEfficiency: number;
-    manaOutput: number;
-    sense: number;
-};
 export type Location = Node & {
     imageSrc: string;
     description: string;
