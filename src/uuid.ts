@@ -1,3 +1,5 @@
+// Note: `@types/node/crypto` doesn't seem to work with .ts when bundled, it cannot be imported properly when viewed from the browser
+
 export type UUID = `${string}-${string}-${string}-${string}-${string}`;
 
 /**
