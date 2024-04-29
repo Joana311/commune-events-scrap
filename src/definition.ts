@@ -92,12 +92,12 @@ export type Link = {
 };
 
 export type State = {
-    nodes: Node[],
-    links: Link[],
-    linesCached: HTMLDivElement[],
-    selectedNodeElement: HTMLDivElement | null,
-    createOngoingLinkId: UUID | null,
-    deleting: boolean,
+  nodes: Node[];
+  links: Link[];
+  linesCached: HTMLDivElement[];
+  selectedNodeElement: HTMLDivElement | null;
+  createOngoingLinkId: UUID | null;
+  deleting: boolean;
 };
 
 export const CALCULATION_INCREMENT: number = 10;

@@ -1,20 +1,20 @@
 import {
   CALCULATION_INCREMENT,
-  Character,
-  Color_Hex,
+  //Character,
+  //Color_Hex,
   Link,
-  Location,
-  ManaBorn,
+  //Location,
+  //ManaBorn,
   Node,
   NodePositionResults,
-  NodeStatus,
-  NodeType,
-  Organization,
-  Plot,
+  //NodeStatus,
+  //NodeType,
+  //Organization,
+  //Plot,
   Point,
-  Relation,
+  //Relation,
 } from 'definition.js';
-import { UUID, randomUUID } from './uuid.js';
+import { UUID } from './uuid.js';
 
 export const get_node = (id: UUID, nodes: Node[]): Node | undefined => {
   let foundNode;

@@ -1,11 +1,11 @@
 import {
   Character,
-  Color_Hex,
+  //Color_Hex,
   Link,
   Location,
-  ManaBorn,
+  //ManaBorn,
   Node,
-  NodePositionResults,
+  //NodePositionResults,
   NodeStatus,
   NodeType,
   Organization,
@@ -15,12 +15,7 @@ import {
   State,
 } from 'definition.js';
 import { UUID, randomUUID } from './uuid.js';
-import {
-  get_node,
-  get_node_element,
-  calculate_shortest_distance,
-  does_link_exist,
-} from './helper.js';
+import { get_node, get_node_element, calculate_shortest_distance, does_link_exist } from './helper.js';
 
 const create_node = (type: NodeType, nodes: Node[]): void => {
   const id: UUID = randomUUID();
@@ -139,10 +134,7 @@ const create_node_element = (node: Node, state: State): void => {
   drag_node_element(newElement, state);
 };
 
-const drag_node_element = (
-  element: HTMLDivElement,
-  state: State
-): void => {
+const drag_node_element = (element: HTMLDivElement, state: State): void => {
   let pos1: number = 0;
   let pos2: number = 0;
   let pos3: number = 0;
@@ -228,11 +220,7 @@ const drag_node_element = (
   }
 };
 
-const create_line = (
-  nodeId1: UUID,
-  nodeId2: UUID,
-  state: State,
-): void => {
+const create_line = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
   const node1 = get_node(nodeId1, state.nodes);
   const node2 = get_node(nodeId2, state.nodes);
   if (node1 && node2) {
@@ -259,7 +247,7 @@ const create_line = (
   }
 };
 
-const redraw_lines = (state: State,): void => {
+const redraw_lines = (state: State): void => {
   for (const line of state.linesCached) {
     line.remove();
   }
@@ -269,22 +257,14 @@ const redraw_lines = (state: State,): void => {
   }
 };
 
-const create_link = (
-  nodeId1: UUID,
-  nodeId2: UUID,
-  state: State,
-): void => {
+const create_link = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
   if (nodeId1 && nodeId2 && !does_link_exist(nodeId1, nodeId2, state.links)) {
     state.links.push({ nodeFromId: nodeId1, nodeToId: nodeId2 });
     redraw_lines(state);
   }
 };
 
-const delete_link = (
-  nodeId1: UUID,
-  nodeId2: UUID,
-  state: State,
-): void => {
+const delete_link = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
   for (let i = state.links.length - 1; i >= 0; i--) {
     const link: Link = state.links[i];
     if (
@@ -297,10 +277,7 @@ const delete_link = (
   redraw_lines(state);
 };
 
-const delete_node = (
-  nodeElement: HTMLDivElement,
-  state: State,
-): void => {
+const delete_node = (nodeElement: HTMLDivElement, state: State): void => {
   if (nodeElement) {
     const nodeFound: Node | undefined = get_node(nodeElement.id as UUID, state.nodes);
     if (nodeFound) {
@@ -345,12 +322,6 @@ const clear = (state: State): void => {
   redraw_lines(state);
 };
 
-
-
-
-
-
-
 const state: State = {
   nodes: [],
   links: [],
@@ -359,10 +330,6 @@ const state: State = {
   createOngoingLinkId: null,
   deleting: false,
 };
-
-
-
-
 
 /*
 const nodes: Node[] = [];
@@ -381,6 +348,11 @@ state.nodes.push(
       y: 200,
     },
     type: NodeType.Character,
+    name: '',
+    status: NodeStatus.None,
+    color: '#FFFFFF',
+    imageSrc: '',
+    description: '',
     age: 18,
   } as Character,
   {
@@ -390,6 +362,10 @@ state.nodes.push(
       y: 800,
     },
     type: NodeType.Location,
+    name: '',
+    status: NodeStatus.None,
+    color: '#FFFFFF',
+    imageSrc: '',
     description: 'This is a description.',
   } as Location,
   {
@@ -399,6 +375,9 @@ state.nodes.push(
       y: 900,
     },
     type: NodeType.Organization,
+    name: '',
+    status: NodeStatus.None,
+    color: '#FFFFFF',
     description: 'This is a description.',
   } as Organization,
   {
@@ -408,6 +387,9 @@ state.nodes.push(
       y: 1000,
     },
     type: NodeType.Plot,
+    name: '',
+    status: NodeStatus.None,
+    color: '#FFFFFF',
     text: 'This is a description.',
   } as Plot,
   {
@@ -417,6 +399,9 @@ state.nodes.push(
       y: 1100,
     },
     type: NodeType.Relation,
+    name: '',
+    status: NodeStatus.None,
+    color: '#FFFFFF',
     description: 'This is a description.',
   } as Relation,
 );
@@ -425,10 +410,22 @@ for (const node of state.nodes) {
   create_node_element(node, state);
 }
 
-state.links.push({ nodeFromId: 'f6f06d09-986e-43fb-a28c-eb0c1b9d3394', nodeToId: 'dc4090ef-6c95-4c24-ac57-ff4126811365' });
-state.links.push({ nodeFromId: '53b21444-da1e-43a1-a83a-fdf4ba93f0ad', nodeToId: '22903bda-eedf-406e-b4c4-e857d289f5d9' });
-state.links.push({ nodeFromId: 'dc7d4b9b-cec0-48a5-af38-f025d96e088d', nodeToId: '22903bda-eedf-406e-b4c4-e857d289f5d9' });
-state.links.push({ nodeFromId: 'dc7d4b9b-cec0-48a5-af38-f025d96e088d', nodeToId: 'dc4090ef-6c95-4c24-ac57-ff4126811365' });
+state.links.push({
+  nodeFromId: 'f6f06d09-986e-43fb-a28c-eb0c1b9d3394',
+  nodeToId: 'dc4090ef-6c95-4c24-ac57-ff4126811365',
+});
+state.links.push({
+  nodeFromId: '53b21444-da1e-43a1-a83a-fdf4ba93f0ad',
+  nodeToId: '22903bda-eedf-406e-b4c4-e857d289f5d9',
+});
+state.links.push({
+  nodeFromId: 'dc7d4b9b-cec0-48a5-af38-f025d96e088d',
+  nodeToId: '22903bda-eedf-406e-b4c4-e857d289f5d9',
+});
+state.links.push({
+  nodeFromId: 'dc7d4b9b-cec0-48a5-af38-f025d96e088d',
+  nodeToId: 'dc4090ef-6c95-4c24-ac57-ff4126811365',
+});
 
 redraw_lines(state);
 
@@ -442,6 +439,7 @@ window.addEventListener('keyup', (event) => keyupResponse(event, state), false);
  * @param nodes Array of all the nodes.
  * @param links Array of all the links.
  * @param linesCached Array of HTML elements of lines.
+ * @param state
  */
 function keydownResponse(event: KeyboardEvent, state: State): void {
   if (event.key === 'Escape') {
@@ -455,6 +453,7 @@ function keydownResponse(event: KeyboardEvent, state: State): void {
 /**
  *
  * @param event
+ * @param state
  */
 function keyupResponse(event: KeyboardEvent, state: State): void {
   if (event.key === 'd') {
