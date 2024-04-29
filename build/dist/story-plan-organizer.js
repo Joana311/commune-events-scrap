@@ -192,13 +192,16 @@ const create_line = (nodeId1, nodeId2, state) => {
         const nodeElement2 = get_node_element(nodeId2);
         if (state.selectedNodeElement) {
             if (nodeElement1 === state.selectedNodeElement || nodeElement2 === state.selectedNodeElement) {
+                newLine.classList.add('line-highlighted');
                 newLine.classList.remove('line-unhighlighted');
             }
             else {
+                newLine.classList.remove('line-highlighted');
                 newLine.classList.add('line-unhighlighted');
             }
         }
         else {
+            newLine.classList.remove('line-highlighted');
             newLine.classList.remove('line-unhighlighted');
         }
         state.linesCached.push(newElement);
