@@ -238,6 +238,7 @@ const create_line = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
       </svg>
     `;
 
+    /*
     const nodeElement1 = get_node_element(nodeId1);
     const nodeElement2 = get_node_element(nodeId2);
     if (state.selectedNodeElement) {
@@ -252,11 +253,40 @@ const create_line = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
       newLine.classList.remove('line-highlighted');
       newLine.classList.remove('line-unhighlighted');
     }
+    */
 
     state.linesCached.push(newElement);
 
-    if (newLine.getElementsByTagName('line')[0]) {
-      newLine.getElementsByTagName('line')[0].addEventListener('click', () => {
+    const lineElement = newLine.getElementsByTagName('line')[0];
+    if (lineElement) {
+
+
+      const nodeElement1 = get_node_element(nodeId1);
+      const nodeElement2 = get_node_element(nodeId2);
+      if (state.selectedNodeElement) {
+        if (nodeElement1 === state.selectedNodeElement || nodeElement2 === state.selectedNodeElement) {
+          lineElement.classList.add('line-highlighted');
+          lineElement.classList.remove('line-unhighlighted');
+        } else {
+          lineElement.classList.remove('line-highlighted');
+          lineElement.classList.add('line-unhighlighted');
+        }
+      } else {
+        lineElement.classList.remove('line-highlighted');
+        lineElement.classList.remove('line-unhighlighted');
+      }
+
+
+
+
+
+
+
+
+
+
+
+      lineElement.addEventListener('click', () => {
         if (state.deleting) {
           delete_link(nodeId1, nodeId2, state);
         }
