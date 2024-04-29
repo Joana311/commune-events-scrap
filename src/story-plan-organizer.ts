@@ -1,5 +1,6 @@
 import {
   Character,
+  CharacterImportance,
   //Color_Hex,
   Link,
   Location,
@@ -13,6 +14,7 @@ import {
   Point,
   Relation,
   State,
+  Story,
 } from './definition.js';
 import { UUID, randomUUID } from './uuid.js';
 import { get_node, get_node_element, calculate_shortest_distance, does_link_exist } from './helper.js';
@@ -33,8 +35,16 @@ const create_node = (type: NodeType, nodes: Node[]): void => {
       node = {
         ...baseNode,
         imageSrc: '',
-        description: '',
-        age: 0,
+        importance: CharacterImportance.Other,
+        personality: '',
+        quirk: '',
+        like: '',
+        dislike: '',
+        strength: '',
+        weakness: '',
+        flaw: '',
+        motivation: '',
+        other: '',
       } as Character;
       break;
     case NodeType.Location:
@@ -42,23 +52,35 @@ const create_node = (type: NodeType, nodes: Node[]): void => {
         ...baseNode,
         imageSrc: '',
         description: '',
+        memorable: '',
       } as Location;
       break;
     case NodeType.Organization:
       node = {
         ...baseNode,
+        objective: '',
         description: '',
       } as Organization;
       break;
     case NodeType.Plot:
       node = {
         ...baseNode,
-        text: '',
+        description: '',
+        events: '',
+        aftermath: '',
       } as Plot;
+      break;
+    case NodeType.Story:
+      node = {
+        ...baseNode,
+        description: '',
+      } as Story;
       break;
     case NodeType.Relation:
       node = {
         ...baseNode,
+        history: '',
+        conflict: '',
         description: '',
       } as Relation;
       break;
@@ -345,8 +367,7 @@ const refresh = (state: State): void => {
     for (const link of state.links) {
       if (link.nodeFromId === state.selectedNodeElement.id) {
         connectedNodeIds.push(link.nodeToId);
-      }
-      else if (link.nodeToId === state.selectedNodeElement.id) {
+      } else if (link.nodeToId === state.selectedNodeElement.id) {
         connectedNodeIds.push(link.nodeFromId);
       }
     }
@@ -397,15 +418,6 @@ const state: State = {
   deleting: false,
 };
 
-/*
-const nodes: Node[] = [];
-const links: Link[] = [];
-const linesCached: HTMLDivElement[] = [];
-let selectedNodeElement: HTMLDivElement | null = null;
-let createOngoingLinkId: UUID | null = null;
-let deleting: boolean = false;
-*/
-
 state.nodes.push(
   {
     id: 'dc4090ef-6c95-4c24-ac57-ff4126811365',
@@ -418,8 +430,16 @@ state.nodes.push(
     status: NodeStatus.None,
     color: '#FF0000',
     imageSrc: '',
-    description: '',
-    age: 18,
+    importance: CharacterImportance.Main,
+    personality: '',
+    quirk: '',
+    like: '',
+    dislike: '',
+    strength: '',
+    weakness: '',
+    flaw: '',
+    motivation: '',
+    other: '',
   } as Character,
   {
     id: 'f6f06d09-986e-43fb-a28c-eb0c1b9d3394',
@@ -433,6 +453,7 @@ state.nodes.push(
     color: '#0000FF',
     imageSrc: '',
     description: 'This is a description.',
+    memorable: '',
   } as Location,
   {
     id: 'dc7d4b9b-cec0-48a5-af38-f025d96e088d',
@@ -444,6 +465,7 @@ state.nodes.push(
     name: '',
     status: NodeStatus.None,
     color: '#00FF00',
+    objective: '',
     description: 'This is a description.',
   } as Organization,
   {
@@ -456,7 +478,9 @@ state.nodes.push(
     name: '',
     status: NodeStatus.None,
     color: '#00FFFF',
-    text: 'This is a description.',
+    description: 'This is a description.',
+    events: '',
+    aftermath: '',
   } as Plot,
   {
     id: '22903bda-eedf-406e-b4c4-e857d289f5d9',
@@ -468,7 +492,9 @@ state.nodes.push(
     name: '',
     status: NodeStatus.None,
     color: '#FF00FF',
-    description: 'This is a description.',
+    history: '',
+    conflict: '',
+    description: '',
   } as Relation,
   {
     id: '018eed2c-431c-4c11-95af-036fe40f4c7a',
@@ -480,7 +506,9 @@ state.nodes.push(
     name: '',
     status: NodeStatus.None,
     color: '#FFFF00',
-    text: 'This is a description.',
+    description: 'This is a description.',
+    events: '',
+    aftermath: '',
   } as Plot,
   {
     id: '8ea99741-5b1e-4885-be6f-4e890d8cf684',
@@ -492,7 +520,9 @@ state.nodes.push(
     name: '',
     status: NodeStatus.None,
     color: '#66FF00',
-    text: 'This is a description.',
+    description: 'This is a description.',
+    events: '',
+    aftermath: '',
   } as Plot,
   {
     id: '25839240-5f8b-43ec-bf2f-9aca680cdd20',
@@ -504,7 +534,9 @@ state.nodes.push(
     name: '',
     status: NodeStatus.None,
     color: '#FF6600',
-    text: 'This is a description.',
+    description: 'This is a description.',
+    events: '',
+    aftermath: '',
   } as Plot,
   {
     id: '4960b134-5e62-4b6b-9e94-84f9d6fa45b1',
@@ -516,7 +548,9 @@ state.nodes.push(
     name: '',
     status: NodeStatus.None,
     color: '#FF0066',
-    text: 'This is a description.',
+    description: 'This is a description.',
+    events: '',
+    aftermath: '',
   } as Plot,
   {
     id: 'bb6a4fd4-74ea-4013-bcf6-b5c35a68ca19',
@@ -528,7 +562,9 @@ state.nodes.push(
     name: '',
     status: NodeStatus.None,
     color: '#6600FF',
-    text: 'This is a description.',
+    description: 'This is a description.',
+    events: '',
+    aftermath: '',
   } as Plot,
 );
 
@@ -587,10 +623,7 @@ function keyupResponse(event: KeyboardEvent, state: State): void {
   }
 }
 
-const createNodeButton_Character: HTMLButtonElement = document.getElementById(
-  'create-node-character',
-) as HTMLButtonElement;
-createNodeButton_Character.addEventListener('click', (event: Event) => {
+document.getElementById('create-node-character')?.addEventListener('click', (event: Event) => {
   console.log(event);
   create_node(NodeType.Character, state.nodes);
 });

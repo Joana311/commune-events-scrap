@@ -7,7 +7,8 @@ export declare enum NodeType {
     Location = 1,
     Organization = 2,
     Plot = 3,
-    Relation = 4
+    Story = 4,
+    Relation = 5
 }
 export declare enum NodeStatus {
     None = 0,
@@ -15,6 +16,12 @@ export declare enum NodeStatus {
     Maybe = 2,
     Investigate = 3,
     Rejected = 4
+}
+export declare enum CharacterImportance {
+    Other = 0,
+    Main = 1,
+    Supporting = 2,
+    Minor = 3
 }
 /**
  * Point.
@@ -40,20 +47,37 @@ export type Node = {
 };
 export type Character = Node & {
     imageSrc: string;
-    description: string;
-    age: number;
+    importance: CharacterImportance;
+    personality: string;
+    quirk: string;
+    like: string;
+    dislike: string;
+    strength: string;
+    weakness: string;
+    flaw: string;
+    motivation: string;
+    other: string;
 };
 export type Location = Node & {
     imageSrc: string;
     description: string;
+    memorable: string;
 };
 export type Organization = Node & {
+    objective: string;
     description: string;
 };
 export type Plot = Node & {
-    text: string;
+    description: string;
+    events: string;
+    aftermath: string;
+};
+export type Story = Node & {
+    description: string;
 };
 export type Relation = Node & {
+    history: string;
+    conflict: string;
     description: string;
 };
 export type NodePositionResults = {
