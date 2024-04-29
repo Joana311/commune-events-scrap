@@ -624,8 +624,7 @@ function keyupResponse(event: KeyboardEvent, state: State): void {
 }
 
 document.getElementById('create-node-character')?.addEventListener('click', (event: MouseEvent) => {
-  console.log(event);
-  create_node({x: event.x, y: event.y}, NodeType.Character, state.nodes);
+  create_node({x: event.x - 5, y: event.y - 5}, NodeType.Character, state.nodes);
 });
 
 /*

@@ -522,8 +522,7 @@ function keyupResponse(event, state) {
     }
 }
 (_a = document.getElementById('create-node-character')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', (event) => {
-    console.log(event);
-    create_node({ x: event.x, y: event.y }, NodeType.Character, state.nodes);
+    create_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Character, state.nodes);
 });
 /*
 const inputImportFileElement = document.getElementById('input-import-file');
