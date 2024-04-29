@@ -1,4 +1,4 @@
-import { UUID, randomUUID } from 'uuid';
+import { UUID, randomUUID } from './uuid';
 
 /**
  * Point.
