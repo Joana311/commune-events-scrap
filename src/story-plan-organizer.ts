@@ -243,7 +243,7 @@ const create_line = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
             <stop stop-color="${node2.color}" offset="1"/>
           </linearGradient>
         </defs>
-        <line x1='${points.point1.x}' y1='${points.point1.y}' x2='${points.point2.x}' y2='${points.point2.y}' stroke-width='6' stroke='url(#${gradientId})' style='pointer-events: all;'/>
+        <line x1='${points.point1.x}' y1='${points.point1.y}' x2='${points.point2.x}' y2='${points.point2.y}' stroke='url(#${gradientId})' style='pointer-events: all; stroke-width: '6px';/>
       </svg>
     `;
 
@@ -261,9 +261,25 @@ const create_line = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
 
     state.linesCached.push(newElement);
 
+    console.log('\n\n\n\n\nPOINT_A');
+    console.log(state);
+    console.log('\n\n\n\n\n');
+
     if (newLine.firstElementChild && newLine.firstElementChild.firstElementChild) {
       newLine.firstElementChild.firstElementChild.addEventListener('click', () => {
+        
+    console.log('\n\n\n\n\nPOINT_B');
+    console.log(state);
+    console.log('\n\n\n\n\n');
+    
         if (state.deleting) {
+
+
+          console.log('\n\n\n\n\nPOINT_C');
+          console.log(state);
+          console.log('\n\n\n\n\n');
+          
+
           delete_link(nodeId1, nodeId2, state);
         }
       });
@@ -298,9 +314,6 @@ const delete_link = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
       state.links.splice(i, 1);
     }
   }
-  console.log('\n\n\n\n\nPOINT_A');
-  console.log(state);
-  console.log('\n\n\n\n\n');
   redraw_lines(state);
 };
 
