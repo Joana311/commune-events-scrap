@@ -686,20 +686,22 @@ function importFile(event: Event): void
   // TODO: Cache this as save location
   */
 
-  //const reader = new FileReader();
-  //reader.onload = onReaderLoad;
+  const reader = new FileReader();
+  reader.onload = onReaderLoad;
   if (event.target)
   {
-    console.log(typeof(event.target));
+    console.log(event as InputEvent);
+    console.log(event.target as HTMLInputElement);
     //reader.readAsText(event.target.files[0]);
   }
 
-  /*
   function onReaderLoad(event: ProgressEvent<FileReader>): void
   {
+    console.log(event);
+    /*
     console.log(event.target.result);
     var obj = JSON.parse(event.target.result);
     console.log(obj);
+    */
   }
-  */
 }
