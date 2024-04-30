@@ -246,3 +246,7 @@ if (inputImportFileElement) {
     }
   };
 }
+
+const myFunction = (): void => {
+  console.log('\n\n\n\n\n\nPOINT_B');
+};

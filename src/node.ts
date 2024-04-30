@@ -186,8 +186,8 @@ export const create_node_element = (node: Node, state: State): void => {
             </div>
           </div>
           <p>${node.id}</p>
-          <p>this</p>
-          <p>DIV</p>
+          <p>====================================================</p>
+          <button onclick="myFunction()">Click me</button> 
         `;
       }
       break;
