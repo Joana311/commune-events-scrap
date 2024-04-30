@@ -1,5 +1,6 @@
 import { CALCULATION_INCREMENT } from './definition.js';
 import { get_node, get_node_element } from './node.js';
+import { refresh } from './story-plan-organizer.js';
 const does_link_exist = (nodeId1, nodeId2, links) => {
     for (const link of links) {
         if ((nodeId1 === link.nodeFromId && nodeId2 === link.nodeToId) ||
@@ -176,7 +177,7 @@ const delete_link = (nodeId1, nodeId2, state) => {
             state.links.splice(i, 1);
         }
     }
-    redraw_lines(state);
+    refresh(state);
 };
 export const redraw_lines = (state) => {
     for (const line of state.linesCached) {

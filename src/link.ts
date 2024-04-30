@@ -1,6 +1,7 @@
 import { CALCULATION_INCREMENT, Link, Node, NodePositionResults, Point, State } from './definition.js';
 import { UUID } from './uuid.js';
 import { get_node, get_node_element } from './node.js';
+import { refresh } from './story-plan-organizer.js';
 
 const does_link_exist = (nodeId1: UUID, nodeId2: UUID, links: Link[]): boolean => {
   for (const link of links) {
@@ -195,7 +196,7 @@ const delete_link = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
       state.links.splice(i, 1);
     }
   }
-  redraw_lines(state);
+  refresh(state);
 };
 
 export const redraw_lines = (state: State): void => {
