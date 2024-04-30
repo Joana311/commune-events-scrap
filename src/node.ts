@@ -202,7 +202,7 @@ export const create_node_element = (node: Node, state: State): void => {
           </div>
           <p>${node.id}</p>
           <p>====================================================</p>
-          <button onclick="${(myFunctionTemp())}">Click me 1</button>
+          <button onclick="myFunctionTemp()">Click me 1</button>
           <button onclick="myFunction()">Click me 2</button>
         `;
       }
