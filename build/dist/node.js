@@ -139,13 +139,13 @@ export const create_node_element = (node, state) => {
                         console.log('\n\nPOINT_A');
                         if (panel) {
                             console.log('\n\nPOINT_B');
-                            if (panel.style.maxHeight) {
+                            if (panel.style.maxHeight !== '0px') {
                                 console.log('\n\nPOINT_C');
                                 panel.style.maxHeight = '0px';
                             }
                             else {
                                 console.log('\n\nPOINT_D');
-                                panel.style.maxHeight = '100' + 'px';
+                                panel.style.maxHeight = panel.scrollHeight + 'px';
                             }
                         }
                     });
