@@ -519,6 +519,9 @@ const load = (dto) => {
     console.log(state);
     state.nodes = dto.nodes;
     state.links = dto.links;
+    for (const node of state.nodes) {
+        create_node_element(node, state);
+    }
     refresh(state);
 };
 window.onbeforeunload = function (event) {

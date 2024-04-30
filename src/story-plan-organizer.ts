@@ -612,6 +612,10 @@ const load = (dto: Dto): void => {
   state.nodes = dto.nodes;
   state.links = dto.links;
 
+  for (const node of state.nodes) {
+    create_node_element(node, state);
+  }
+
   refresh(state);
 }
 
