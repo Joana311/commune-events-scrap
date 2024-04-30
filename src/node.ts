@@ -219,13 +219,13 @@ export const create_node_element = (node: Node, state: State): void => {
             accordions[i].classList.toggle('active');
             const panel = accordions[i].nextElementSibling as HTMLDivElement;
 
-            console.log(panel.scrollHeight + 'px');
+            console.log(panel.offsetHeight + 'px');
             const textarea = panel.getElementsByTagName('textarea')[0];
 
             if (panel) {
               if (panel.style.maxHeight === '0px') {
                 panel.style.maxHeight = '100%';
-                textarea.style.height = panel.scrollHeight + 'px';
+                textarea.style.height = panel.offsetHeight + 'px';
               } else {
                 panel.style.maxHeight = '0px';
               }
