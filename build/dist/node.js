@@ -132,6 +132,25 @@ export const create_node_element = (node, state) => {
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </textarea>
           </div>
+          <button class="accordion">Description</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>
+              Lorem ip
+              sum dolor sit amet, conse
+              ctetur adipis
+              icing elit, sed do eius
+              mod tempor incid
+              idunt ut labore et dolore mag
+              na aliqua. Ut enim ad mi
+              nim veniam, quis nos
+              trud exercita
+              tion ullamco lab
+              oris nisi ut ali
+              quip ex ea com
+              modo cons
+              equat.
+            </textarea>
+          </div>
         `;
                 const accordions = newNodeElement.getElementsByClassName('accordion');
                 for (let i = 0; i < accordions.length; i++) {
@@ -139,9 +158,11 @@ export const create_node_element = (node, state) => {
                         accordions[i].classList.toggle('active');
                         const panel = accordions[i].nextElementSibling;
                         console.log(panel.scrollHeight + 'px');
+                        const textarea = panel.getElementsByTagName('textarea')[0];
                         if (panel) {
                             if (panel.style.maxHeight === '0px') {
                                 panel.style.maxHeight = '100%';
+                                textarea.style.height = panel.scrollHeight + 'px';
                             }
                             else {
                                 panel.style.maxHeight = '0px';
