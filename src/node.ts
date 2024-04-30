@@ -189,7 +189,9 @@ export const create_node_element = (node: Node, state: State): void => {
           <p>====================================================</p>
           <button class="accordion">Objective</button>
           <div class="panel" style="max-height: 0px;">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <textarea style="width: 100%;">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </textarea>
           </div>
         `;
         const accordions = newNodeElement.getElementsByClassName('accordion');
@@ -198,9 +200,8 @@ export const create_node_element = (node: Node, state: State): void => {
             accordions[i].classList.toggle('active');
             const panel = accordions[i].nextElementSibling as HTMLDivElement;
             if (panel) {
-              console.log(panel.style.maxHeight);
               if (panel.style.maxHeight === '0px') {
-                panel.style.maxHeight = panel.scrollHeight + 'px';
+                panel.style.maxHeight = '100%';
               } else {
                 panel.style.maxHeight = '0px';
               }
