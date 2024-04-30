@@ -217,8 +217,4 @@ if (inputImportFileElement) {
         }
     };
 }
-export function myFunction() {
-    console.log('\n\n\n\n\n\nPOINT_B');
-}
-;
 //# sourceMappingURL=story-plan-organizer.js.map

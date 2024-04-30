@@ -107,21 +107,6 @@ export const add_node = (location: Point, type: NodeType, state: State): void =>
   }
 };
 
-
-
-
-export const myFunctionTemp = (): void => {
-  console.log('\n\n\n\n\n\nPOINT_C');
-};
-
-
-
-
-
-
-
-
-
 export const create_node_element = (node: Node, state: State): void => {
   const newElement: HTMLDivElement = document.createElement('div');
   const newNodeElement: HTMLDivElement = document.body.appendChild(newElement);
@@ -202,12 +187,25 @@ export const create_node_element = (node: Node, state: State): void => {
           </div>
           <p>${node.id}</p>
           <p>====================================================</p>
-          <button onclick="myFunctionTemp()">Click me 1</button>
-          <button onclick="myFunction()">Click me 2</button>
+          <button class="accordion">Objective</button>
+          <div class="panel">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
         `;
-        newNodeElement.getElementsByTagName('button')[0].addEventListener("click", function() {
-          console.log('ddddddddddddddddddddddddddddd');
-        });
+        const accordions = newNodeElement.getElementsByClassName('accordion');
+        for (let i = 0; i < accordions.length; i++) {
+          accordions[i].addEventListener('click', (): void => {
+            accordions[i].classList.toggle('active');
+            const panel = accordions[i].nextElementSibling as HTMLDivElement;
+            if (panel) {
+              if (panel.style.maxHeight) {
+                panel.style.maxHeight = '0px';
+              } else {
+                panel.style.maxHeight = panel.scrollHeight + 'px';
+              }
+            }
+          });
+        }
       }
       break;
     case NodeType.Plot:
