@@ -128,7 +128,9 @@ export const create_node_element = (node, state) => {
           <p>====================================================</p>
           <button class="accordion">Objective</button>
           <div class="panel" style="max-height: 0px;">
-            <p>aaaa</p>
+            <textarea style="width: 100%;">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </textarea>
           </div>
         `;
                 const accordions = newNodeElement.getElementsByClassName('accordion');
@@ -136,7 +138,7 @@ export const create_node_element = (node, state) => {
                     accordions[i].addEventListener('click', () => {
                         accordions[i].classList.toggle('active');
                         const panel = accordions[i].nextElementSibling;
-                        console.log(panel.style.maxHeight = panel.scrollHeight + "px");
+                        console.log(panel.scrollHeight + "px");
                         if (panel) {
                             if (panel.style.maxHeight === '0px') {
                                 panel.style.maxHeight = '100%';
