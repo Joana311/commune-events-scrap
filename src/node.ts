@@ -200,9 +200,7 @@ export const create_node_element = (node: Node, state: State): void => {
             accordions[i].classList.toggle('active');
             const panel = accordions[i].nextElementSibling as HTMLDivElement;
 
-
-            console.log(panel.scrollHeight + "px");
-
+            console.log(panel.scrollHeight + 'px');
 
             if (panel) {
               if (panel.style.maxHeight === '0px') {
