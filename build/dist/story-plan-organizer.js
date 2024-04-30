@@ -543,6 +543,15 @@ function keyupResponse(event, state) {
 (_f = document.getElementById('create-node-relation')) === null || _f === void 0 ? void 0 : _f.addEventListener('click', (event) => {
     create_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Relation, state.nodes);
 });
+const download = (filename, text) => {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+};
 window.URL = window.URL || window.webkitURL;
 const exportButton = document.getElementById('export');
 if (exportButton) {
@@ -550,9 +559,13 @@ if (exportButton) {
     const fileName = 'exported.json';
     const dto = { nodes: state.nodes, links: state.links };
     const fileContent = JSON.stringify(dto, null, 2);
-    const myFile = new Blob([fileContent], { type: 'application/json' });
+    /*
+    const myFile = new Blob([fileContent], {type: 'application/json'});
+  
     exportButton.setAttribute('href', window.URL.createObjectURL(myFile));
     exportButton.setAttribute('download', fileName);
+    */
+    download(fileName, fileContent);
 }
 /*
 exportButton?.addEventListener('click', () => {
@@ -572,9 +585,9 @@ if (inputImportFileElement) {
         function onReaderLoad(event) {
             console.log(event);
             if (event.target && event.target.result) {
-                console.log(event.target.result);
-                //var obj = JSON.parse(event.target.result);
-                //console.log(obj);
+                //console.log(event.target.result);
+                var obj = JSON.parse(event.target.result);
+                console.log(obj);
             }
         }
     };
