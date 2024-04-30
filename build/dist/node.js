@@ -64,8 +64,18 @@ export const create_node_element = (node, state) => {
     switch (node.type) {
         case NodeType.Character:
             newNodeElement.innerHTML = `
-          <div class='move'></div>
-          <input class='name'></input>
+          <div style="display: flex;">
+            <div class='move'>
+              <i class="material-icons" style="user-select: none; font-size: 50px;">download</i>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+              <div style="display: flex; flex-direction: row; height: 20px;">
+                <button id="node-status">sssssssssssssss</button>
+                <input id="node-color" type="color" value="#FF0000">
+              </div>
+              <input class='name'></input>
+            </div>
+          </div>
           <p>${node.id}</p>
           <p>this</p>
           <p>DIV</p>
@@ -73,47 +83,97 @@ export const create_node_element = (node, state) => {
             break;
         case NodeType.Location:
             newNodeElement.innerHTML = `
-          <div class='move'></div>
-          <input class='name'></input>
-          <p>${node.id}</p>
-          <p>this</p>
-          <p>DIV</p>
+<div style="display: flex;">
+<div class='move'>
+<i class="material-icons" style="user-select: none; font-size: 50px;">download</i>
+</div>
+<div style="display: flex; flex-direction: column;">
+<div style="display: flex; flex-direction: row; height: 20px;">
+<button id="node-status">sssssssssssssss</button>
+<input id="node-color" type="color" value="#FF0000">
+</div>
+<input class='name'></input>
+</div>
+</div>
+<p>${node.id}</p>
+<p>this</p>
+<p>DIV</p>
         `;
             break;
         case NodeType.Organization:
             newNodeElement.innerHTML = `
-          <div class='move'></div>
-          <input class='name'></input>
-          <p>${node.id}</p>
-          <p>this</p>
-          <p>DIV</p>
+<div style="display: flex;">
+<div class='move'>
+<i class="material-icons" style="user-select: none; font-size: 50px;">download</i>
+</div>
+<div style="display: flex; flex-direction: column;">
+<div style="display: flex; flex-direction: row; height: 20px;">
+<button id="node-status">sssssssssssssss</button>
+<input id="node-color" type="color" value="#FF0000">
+</div>
+<input class='name'></input>
+</div>
+</div>
+<p>${node.id}</p>
+<p>this</p>
+<p>DIV</p>
         `;
             break;
         case NodeType.Plot:
             newNodeElement.innerHTML = `
-          <div class='move'></div>
-          <input class='name'></input>
-          <p>${node.id}</p>
-          <p>this</p>
-          <p>DIV</p>
-        `;
+<div style="display: flex;">
+<div class='move'>
+<i class="material-icons" style="user-select: none; font-size: 50px;">download</i>
+</div>
+<div style="display: flex; flex-direction: column;">
+<div style="display: flex; flex-direction: row; height: 20px;">
+<button id="node-status">sssssssssssssss</button>
+<input id="node-color" type="color" value="#FF0000">
+</div>
+<input class='name'></input>
+</div>
+</div>
+<p>${node.id}</p>
+<p>this</p>
+<p>DIV</p>
+`;
             break;
         case NodeType.Story:
             newNodeElement.innerHTML = `
-          <div class='move'></div>
-          <input class='name'></input>
-          <p>${node.id}</p>
-          <p>this</p>
-          <p>DIV</p>
+<div style="display: flex;">
+<div class='move'>
+<i class="material-icons" style="user-select: none; font-size: 50px;">download</i>
+</div>
+<div style="display: flex; flex-direction: column;">
+<div style="display: flex; flex-direction: row; height: 20px;">
+<button id="node-status">sssssssssssssss</button>
+<input id="node-color" type="color" value="#FF0000">
+</div>
+<input class='name'></input>
+</div>
+</div>
+<p>${node.id}</p>
+<p>this</p>
+<p>DIV</p>
         `;
             break;
         case NodeType.Relation:
             newNodeElement.innerHTML = `
-          <div class='move'></div>
-          <input class='name'></input>
-          <p>${node.id}</p>
-          <p>this</p>
-          <p>DIV</p>
+<div style="display: flex;">
+<div class='move'>
+<i class="material-icons" style="user-select: none; font-size: 50px;">download</i>
+</div>
+<div style="display: flex; flex-direction: column;">
+<div style="display: flex; flex-direction: row; height: 20px;">
+<button id="node-status">sssssssssssssss</button>
+<input id="node-color" type="color" value="#FF0000">
+</div>
+<input class='name'></input>
+</div>
+</div>
+<p>${node.id}</p>
+<p>this</p>
+<p>DIV</p>
         `;
             break;
         default:

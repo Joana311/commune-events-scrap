@@ -5,7 +5,7 @@ body
     margin: 0px;
 }
 
-button
+.toolbar-button
 {
     background-color: white;
     font-size: 18px;
@@ -18,7 +18,7 @@ button
     padding: 5px;
 }
 
-button:hover
+.toolbar-button:hover
 {
     background-color: #89CFF0;
     opacity: 1;
@@ -102,10 +102,29 @@ button:hover
     cursor: move;
     color: white;
     background-color: #2196F3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#node-status
+{
+    flex: 1;
+    border: 0px;
+}
+
+#node-color
+{
+    width: 20px;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
 }
 
 .name
 {
+    flex: 1;
+    font-size: 26px;
     color: white;
     background-color: green;
 }
