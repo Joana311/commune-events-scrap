@@ -197,10 +197,14 @@ export const create_node_element = (node: Node, state: State): void => {
           accordions[i].addEventListener('click', (): void => {
             accordions[i].classList.toggle('active');
             const panel = accordions[i].nextElementSibling as HTMLDivElement;
+            console.log('\n\nPOINT_A');
             if (panel) {
+              console.log('\n\nPOINT_B');
               if (panel.style.maxHeight) {
+                console.log('\n\nPOINT_C');
                 panel.style.maxHeight = '0px';
               } else {
+                console.log('\n\nPOINT_D');
                 panel.style.maxHeight = '100' + 'px';
               }
             }

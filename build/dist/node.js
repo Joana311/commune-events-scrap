@@ -136,11 +136,15 @@ export const create_node_element = (node, state) => {
                     accordions[i].addEventListener('click', () => {
                         accordions[i].classList.toggle('active');
                         const panel = accordions[i].nextElementSibling;
+                        console.log('\n\nPOINT_A');
                         if (panel) {
+                            console.log('\n\nPOINT_B');
                             if (panel.style.maxHeight) {
+                                console.log('\n\nPOINT_C');
                                 panel.style.maxHeight = '0px';
                             }
                             else {
+                                console.log('\n\nPOINT_D');
                                 panel.style.maxHeight = '100' + 'px';
                             }
                         }
