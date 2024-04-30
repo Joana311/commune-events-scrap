@@ -128,6 +128,7 @@ body
     text-align: center;
     color: white;
     background-color: green;
+    border: 0px;
 }
 
 .line
@@ -186,6 +187,7 @@ body
 
 .panel
 {
+    width: 500px;
     padding: 0 18px;
     background-color: white;
     overflow: hidden;

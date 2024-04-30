@@ -116,7 +116,7 @@ export const create_node_element = (node, state) => {
             <div class='move'>
               <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
             </div>
-            <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: column; width: 100%;">
               <div style="display: flex; flex-direction: row; height: 20px;">
                 <button id="node-status">${NodeStatus[node.status]}</button>
                 <input id="node-color" type="color" value="${node.color}">
