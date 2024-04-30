@@ -652,10 +652,10 @@ const exportButton = document.getElementById('export');
 if (exportButton) {
   console.log(state);
 
-  const fileName: string = 'myfile.txt';
+  const fileName: string = 'exported.json';
   const dto: Dto = {nodes: state.nodes, links: state.links};
-  const fileContent: string = JSON.stringify(dto);
-  const myFile = new Blob([fileContent], { type: 'application/json' });
+  const fileContent: string = JSON.stringify(dto, null, 2);
+  const myFile = new Blob([fileContent], {type: 'application/json'});
 
   exportButton.setAttribute('href', window.URL.createObjectURL(myFile));
   exportButton.setAttribute('download', fileName);
@@ -672,7 +672,6 @@ exportButton?.addEventListener('click', () => {
 
 
 
-/*
 const inputImportFileElement = document.getElementById('input-import-file');
 if (inputImportFileElement)
 {
@@ -681,22 +680,26 @@ if (inputImportFileElement)
 
 function importFile(event: Event): void
 {
+  /*
   const files = this.files;
   console.log(files);
   // TODO: Cache this as save location
+  */
 
-  const reader = new FileReader();
-  reader.onload = onReaderLoad;
+  //const reader = new FileReader();
+  //reader.onload = onReaderLoad;
   if (event.target)
   {
-    reader.readAsText(event.target.files[0]);
+    console.log(typeof(event.target));
+    //reader.readAsText(event.target.files[0]);
   }
 
+  /*
   function onReaderLoad(event: ProgressEvent<FileReader>): void
   {
     console.log(event.target.result);
     var obj = JSON.parse(event.target.result);
     console.log(obj);
   }
+  */
 }
-*/

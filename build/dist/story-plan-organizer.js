@@ -547,9 +547,9 @@ window.URL = window.URL || window.webkitURL;
 const exportButton = document.getElementById('export');
 if (exportButton) {
     console.log(state);
-    const fileName = 'myfile.txt';
+    const fileName = 'exported.json';
     const dto = { nodes: state.nodes, links: state.links };
-    const fileContent = JSON.stringify(dto);
+    const fileContent = JSON.stringify(dto, null, 2);
     const myFile = new Blob([fileContent], { type: 'application/json' });
     exportButton.setAttribute('href', window.URL.createObjectURL(myFile));
     exportButton.setAttribute('download', fileName);
@@ -558,32 +558,29 @@ if (exportButton) {
 exportButton?.addEventListener('click', () => {
 });
 */
-/*
 const inputImportFileElement = document.getElementById('input-import-file');
-if (inputImportFileElement)
-{
-  inputImportFileElement.onchange = importFile;
+if (inputImportFileElement) {
+    inputImportFileElement.onchange = importFile;
 }
-
-function importFile(event: Event): void
-{
-  const files = this.files;
-  console.log(files);
-  // TODO: Cache this as save location
-
-  const reader = new FileReader();
-  reader.onload = onReaderLoad;
-  if (event.target)
-  {
-    reader.readAsText(event.target.files[0]);
-  }
-
-  function onReaderLoad(event: ProgressEvent<FileReader>): void
-  {
-    console.log(event.target.result);
-    var obj = JSON.parse(event.target.result);
-    console.log(obj);
-  }
+function importFile(event) {
+    /*
+    const files = this.files;
+    console.log(files);
+    // TODO: Cache this as save location
+    */
+    //const reader = new FileReader();
+    //reader.onload = onReaderLoad;
+    if (event.target) {
+        console.log(typeof (event.target));
+        //reader.readAsText(event.target.files[0]);
+    }
+    /*
+    function onReaderLoad(event: ProgressEvent<FileReader>): void
+    {
+      console.log(event.target.result);
+      var obj = JSON.parse(event.target.result);
+      console.log(obj);
+    }
+    */
 }
-*/
 //# sourceMappingURL=story-plan-organizer.js.map
