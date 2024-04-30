@@ -190,7 +190,6 @@ const download = (filename, text) => {
     const dto = { nodes: state.nodes, links: state.links };
     const fileContent = JSON.stringify(dto, null, 2);
     download(fileName, fileContent);
-    reset(state);
 });
 const inputImportFileElement = document.getElementById('input-import-file');
 if (inputImportFileElement) {

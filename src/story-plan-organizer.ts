@@ -216,8 +216,6 @@ document.getElementById('export')?.addEventListener('click', () => {
   const fileContent: string = JSON.stringify(dto, null, 2);
 
   download(fileName, fileContent);
-
-  reset(state);
 });
 
 const inputImportFileElement = document.getElementById('input-import-file');
