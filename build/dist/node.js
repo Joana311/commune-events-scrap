@@ -53,6 +53,9 @@ export const add_node = (location, type, state) => {
         validate(state);
     }
 };
+export const myFunctionTemp = () => {
+    console.log('\n\n\n\n\n\nPOINT_C');
+};
 export const create_node_element = (node, state) => {
     var _a, _b, _c, _d, _e, _f;
     const newElement = document.createElement('div');
@@ -126,7 +129,8 @@ export const create_node_element = (node, state) => {
           </div>
           <p>${node.id}</p>
           <p>====================================================</p>
-          <button onclick="myFunction()">Click me</button> 
+          <button onclick="${myFunctionTemp}">Click me 1</button>
+          <button onclick="myFunction()">Click me 2</button>
         `;
             }
             break;

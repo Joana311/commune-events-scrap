@@ -107,6 +107,21 @@ export const add_node = (location: Point, type: NodeType, state: State): void =>
   }
 };
 
+
+
+
+export const myFunctionTemp = (): void => {
+  console.log('\n\n\n\n\n\nPOINT_C');
+};
+
+
+
+
+
+
+
+
+
 export const create_node_element = (node: Node, state: State): void => {
   const newElement: HTMLDivElement = document.createElement('div');
   const newNodeElement: HTMLDivElement = document.body.appendChild(newElement);
@@ -187,7 +202,8 @@ export const create_node_element = (node: Node, state: State): void => {
           </div>
           <p>${node.id}</p>
           <p>====================================================</p>
-          <button onclick="myFunction()">Click me</button> 
+          <button onclick="${myFunctionTemp}">Click me 1</button>
+          <button onclick="myFunction()">Click me 2</button>
         `;
       }
       break;

@@ -217,7 +217,7 @@ if (inputImportFileElement) {
         }
     };
 }
-function myFunction() {
+export function myFunction() {
     console.log('\n\n\n\n\n\nPOINT_B');
 }
 ;
