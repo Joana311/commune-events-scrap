@@ -75,6 +75,7 @@ const reset = (state) => {
     for (const lineElement of state.linesCached) {
         lineElement.remove();
     }
+    validate(state);
     state.selectedNodeElement = null;
     state.createOngoingLinkId = null;
     state.deleting = false;

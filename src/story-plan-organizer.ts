@@ -83,6 +83,7 @@ const reset = (state: State): void => {
   for (const lineElement of state.linesCached) {
     lineElement.remove();
   }
+  validate(state);
   state.selectedNodeElement = null;
   state.createOngoingLinkId = null;
   state.deleting = false;
