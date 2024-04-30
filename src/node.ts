@@ -264,35 +264,15 @@ const drag_node_element = (element: HTMLDivElement, state: State): void => {
 };
 
 const delete_node = (nodeElement: HTMLDivElement, state: State): void => {
+  if (nodeElement === state.selectedNodeElement) {
+    state.selectedNodeElement = null;
+  }
   const nodeFound: Node | undefined = get_node(nodeElement.id as UUID, state.nodes);
   if (nodeFound) {
     const index = state.nodes.indexOf(nodeFound);
     if (index !== -1) {
       state.nodes.splice(index, 1);
     }
-    validate(state);
   }
-  /*
-  if (nodeElement) {
-    const indexElement = state.nodesCached.indexOf(nodeElement);
-    if (indexElement !== -1) {
-      state.nodesCached.splice(indexElement, 1);
-    }
-    const nodeFound: Node | undefined = get_node(nodeElement.id as UUID, state.nodes);
-    if (nodeFound) {
-      const index = state.nodes.indexOf(nodeFound);
-      if (index !== -1) {
-        state.nodes.splice(index, 1);
-        for (let i = state.links.length - 1; i >= 0; i--) {
-          const link: Link = state.links[i];
-          if (nodeElement.id === link.nodeFromId || nodeElement.id === link.nodeToId) {
-            state.links.splice(i, 1);
-          }
-        }
-        nodeElement.remove();
-      }
-    }
-  }
-  clear(state);
-  */
+  validate(state);
 };
