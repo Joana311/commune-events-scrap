@@ -132,6 +132,9 @@ export const create_node_element = (node, state) => {
           <button onclick="myFunctionTemp()">Click me 1</button>
           <button onclick="myFunction()">Click me 2</button>
         `;
+                newNodeElement.addEventListener("click", function () {
+                    console.log('ddddddddddddddddddddddddddddd');
+                });
             }
             break;
         case NodeType.Plot:
