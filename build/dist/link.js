@@ -183,7 +183,7 @@ export const redraw_lines = (state) => {
     for (const line of state.linesCached) {
         line.remove();
     }
-    state.linesCached.splice(state.linesCached.length);
+    state.linesCached = [];
     for (const link of state.links) {
         create_line(link.nodeFromId, link.nodeToId, state);
     }
