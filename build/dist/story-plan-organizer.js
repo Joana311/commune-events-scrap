@@ -1,4 +1,4 @@
-var _a, _b, _c, _d, _e, _f;
+var _a, _b, _c, _d, _e, _f, _g;
 import { CharacterImportance, 
 //NodePositionResults,
 NodeStatus, NodeType, } from './definition.js';
@@ -544,7 +544,7 @@ function keyupResponse(event, state) {
     create_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Relation, state.nodes);
 });
 const download = (filename, text) => {
-    var element = document.createElement('a');
+    const element = document.createElement('a');
     element.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(text));
     element.setAttribute('download', filename);
     element.style.display = 'none';
@@ -552,25 +552,13 @@ const download = (filename, text) => {
     element.click();
     document.body.removeChild(element);
 };
-window.URL = window.URL || window.webkitURL;
-const exportButton = document.getElementById('export');
-if (exportButton) {
+(_g = document.getElementById('export')) === null || _g === void 0 ? void 0 : _g.addEventListener('click', () => {
     console.log(state);
     const fileName = 'exported.json';
     const dto = { nodes: state.nodes, links: state.links };
     const fileContent = JSON.stringify(dto, null, 2);
-    /*
-    const myFile = new Blob([fileContent], {type: 'application/json'});
-  
-    exportButton.setAttribute('href', window.URL.createObjectURL(myFile));
-    exportButton.setAttribute('download', fileName);
-    */
     download(fileName, fileContent);
-}
-/*
-exportButton?.addEventListener('click', () => {
 });
-*/
 const inputImportFileElement = document.getElementById('input-import-file');
 if (inputImportFileElement) {
     inputImportFileElement.onchange = (event) => {
@@ -582,11 +570,15 @@ if (inputImportFileElement) {
             //console.log(event.target as HTMLInputElement);
             reader.readAsText(temp.files[0]);
         }
+        /**
+         *
+         * @param event
+         */
         function onReaderLoad(event) {
             console.log(event);
             if (event.target && event.target.result) {
                 //console.log(event.target.result);
-                var obj = JSON.parse(event.target.result);
+                const obj = JSON.parse(event.target.result);
                 console.log(obj);
             }
         }

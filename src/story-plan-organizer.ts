@@ -647,10 +647,8 @@ document.getElementById('create-node-relation')?.addEventListener('click', (even
   create_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Relation, state.nodes);
 });
 
-
-
 const download = (filename: string, text: string): void => {
-  var element = document.createElement('a');
+  const element = document.createElement('a');
   element.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(text));
   element.setAttribute('download', filename);
 
@@ -660,59 +658,40 @@ const download = (filename: string, text: string): void => {
   element.click();
 
   document.body.removeChild(element);
-}
+};
 
-
-
-window.URL = window.URL || window.webkitURL;
-const exportButton = document.getElementById('export');
-if (exportButton) {
+document.getElementById('export')?.addEventListener('click', () => {
   console.log(state);
 
   const fileName: string = 'exported.json';
-  const dto: Dto = {nodes: state.nodes, links: state.links};
+  const dto: Dto = { nodes: state.nodes, links: state.links };
   const fileContent: string = JSON.stringify(dto, null, 2);
-  /*
-  const myFile = new Blob([fileContent], {type: 'application/json'});
 
-  exportButton.setAttribute('href', window.URL.createObjectURL(myFile));
-  exportButton.setAttribute('download', fileName);
-  */
   download(fileName, fileContent);
-}
-
-/*
-exportButton?.addEventListener('click', () => {
 });
-*/
-
-
-
-
-
-
 
 const inputImportFileElement = document.getElementById('input-import-file');
-if (inputImportFileElement)
-{
+if (inputImportFileElement) {
   inputImportFileElement.onchange = (event: Event) => {
     const reader = new FileReader();
     reader.onload = onReaderLoad;
-    
+
     const temp = event.target as HTMLInputElement;
-    if (temp && temp.files)
-    {
+    if (temp && temp.files) {
       //console.log(event as InputEvent);
       //console.log(event.target as HTMLInputElement);
       reader.readAsText(temp.files[0]);
     }
 
-    function onReaderLoad(event: ProgressEvent<FileReader>): void
-    {
+    /**
+     *
+     * @param event
+     */
+    function onReaderLoad(event: ProgressEvent<FileReader>): void {
       console.log(event);
       if (event.target && event.target.result) {
         //console.log(event.target.result);
-        var obj = JSON.parse(event.target.result as string);
+        const obj = JSON.parse(event.target.result as string);
         console.log(obj);
       }
     }
