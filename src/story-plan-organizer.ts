@@ -591,6 +591,10 @@ state.links.push({
 
 redraw_lines(state);
 
+window.onbeforeunload = function (event: BeforeUnloadEvent) {
+  console.log(event);
+  //event.preventDefault();
+};
 document.addEventListener('contextmenu', (event) => event.preventDefault());
 window.addEventListener('keydown', (event) => keydownResponse(event, state), false);
 window.addEventListener('keyup', (event) => keyupResponse(event, state), false);
@@ -642,13 +646,18 @@ document.getElementById('create-node-relation')?.addEventListener('click', (even
   create_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Relation, state.nodes);
 });
 
-document.getElementById('export')?.addEventListener('click', () => {
+window.URL = window.URL || window.webkitURL;
+const exportButton = document.getElementById('export');
+if (exportButton) {
   console.log(state);
-});
 
-window.onbeforeunload = function (event) {
-  event.preventDefault();
-};
+  const fileName: string = 'myfile.txt';
+  const fileContent: string = JSON.stringify(state.nodes[0]);
+  const myFile = new Blob([fileContent], { type: 'application/json' });
+
+  exportButton.setAttribute('href', window.URL.createObjectURL(myFile));
+  exportButton.setAttribute('download', fileName);
+}
 
 /*
 const inputImportFileElement = document.getElementById('input-import-file');

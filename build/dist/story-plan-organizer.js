@@ -1,4 +1,4 @@
-var _a, _b, _c, _d, _e, _f, _g;
+var _a, _b, _c, _d, _e, _f;
 import { CharacterImportance, 
 //NodePositionResults,
 NodeStatus, NodeType, } from './definition.js';
@@ -492,6 +492,10 @@ state.links.push({
     nodeToId: 'dc4090ef-6c95-4c24-ac57-ff4126811365',
 });
 redraw_lines(state);
+window.onbeforeunload = function (event) {
+    console.log(event);
+    //event.preventDefault();
+};
 document.addEventListener('contextmenu', (event) => event.preventDefault());
 window.addEventListener('keydown', (event) => keydownResponse(event, state), false);
 window.addEventListener('keyup', (event) => keyupResponse(event, state), false);
@@ -539,12 +543,16 @@ function keyupResponse(event, state) {
 (_f = document.getElementById('create-node-relation')) === null || _f === void 0 ? void 0 : _f.addEventListener('click', (event) => {
     create_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Relation, state.nodes);
 });
-(_g = document.getElementById('export')) === null || _g === void 0 ? void 0 : _g.addEventListener('click', () => {
+window.URL = window.URL || window.webkitURL;
+const exportButton = document.getElementById('export');
+if (exportButton) {
     console.log(state);
-});
-window.onbeforeunload = function (event) {
-    event.preventDefault();
-};
+    const fileName = 'myfile.txt';
+    const fileContent = JSON.stringify(state.nodes[0]);
+    const myFile = new Blob([fileContent], { type: 'application/json' });
+    exportButton.setAttribute('href', window.URL.createObjectURL(myFile));
+    exportButton.setAttribute('download', fileName);
+}
 /*
 const inputImportFileElement = document.getElementById('input-import-file');
 if (inputImportFileElement)
