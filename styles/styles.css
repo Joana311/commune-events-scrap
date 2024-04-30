@@ -185,9 +185,10 @@ body
 
 .panel
 {
-    width: 100%;
+    width: 97%;
     background-color: white;
     overflow: hidden;
+    padding-right: 3%;
 }
 
 textarea
