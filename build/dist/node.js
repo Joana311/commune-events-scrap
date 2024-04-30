@@ -141,7 +141,7 @@ export const create_node_element = (node, state) => {
                                 panel.style.maxHeight = '0px';
                             }
                             else {
-                                panel.style.maxHeight = panel.scrollHeight + 'px';
+                                panel.style.maxHeight = '100' + 'px';
                             }
                         }
                     });

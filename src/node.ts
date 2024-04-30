@@ -201,7 +201,7 @@ export const create_node_element = (node: Node, state: State): void => {
               if (panel.style.maxHeight) {
                 panel.style.maxHeight = '0px';
               } else {
-                panel.style.maxHeight = panel.scrollHeight + 'px';
+                panel.style.maxHeight = '100' + 'px';
               }
             }
           });
