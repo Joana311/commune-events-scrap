@@ -675,33 +675,26 @@ exportButton?.addEventListener('click', () => {
 const inputImportFileElement = document.getElementById('input-import-file');
 if (inputImportFileElement)
 {
-  inputImportFileElement.onchange = importFile;
-}
+  inputImportFileElement.onchange = (event: Event) => {
+    const reader = new FileReader();
+    reader.onload = onReaderLoad;
+    
+    const temp = event.target as HTMLInputElement;
+    if (temp && temp.files)
+    {
+      //console.log(event as InputEvent);
+      //console.log(event.target as HTMLInputElement);
+      reader.readAsText(temp.files[0]);
+    }
 
-function importFile(event: Event): void
-{
-  /*
-  const files = this.files;
-  console.log(files);
-  // TODO: Cache this as save location
-  */
-
-  const reader = new FileReader();
-  reader.onload = onReaderLoad;
-  if (event.target)
-  {
-    console.log(event as InputEvent);
-    console.log(event.target as HTMLInputElement);
-    //reader.readAsText(event.target.files[0]);
-  }
-
-  function onReaderLoad(event: ProgressEvent<FileReader>): void
-  {
-    console.log(event);
-    /*
-    console.log(event.target.result);
-    var obj = JSON.parse(event.target.result);
-    console.log(obj);
-    */
-  }
+    function onReaderLoad(event: ProgressEvent<FileReader>): void
+    {
+      console.log(event);
+      if (event.target && event.target.result) {
+        console.log(event.target.result);
+        //var obj = JSON.parse(event.target.result);
+        //console.log(obj);
+      }
+    }
+  };
 }

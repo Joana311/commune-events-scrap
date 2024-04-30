@@ -560,28 +560,23 @@ exportButton?.addEventListener('click', () => {
 */
 const inputImportFileElement = document.getElementById('input-import-file');
 if (inputImportFileElement) {
-    inputImportFileElement.onchange = importFile;
-}
-function importFile(event) {
-    /*
-    const files = this.files;
-    console.log(files);
-    // TODO: Cache this as save location
-    */
-    const reader = new FileReader();
-    reader.onload = onReaderLoad;
-    if (event.target) {
-        console.log(event);
-        console.log(event.target);
-        //reader.readAsText(event.target.files[0]);
-    }
-    function onReaderLoad(event) {
-        console.log(event);
-        /*
-        console.log(event.target.result);
-        var obj = JSON.parse(event.target.result);
-        console.log(obj);
-        */
-    }
+    inputImportFileElement.onchange = (event) => {
+        const reader = new FileReader();
+        reader.onload = onReaderLoad;
+        const temp = event.target;
+        if (temp && temp.files) {
+            //console.log(event as InputEvent);
+            //console.log(event.target as HTMLInputElement);
+            reader.readAsText(temp.files[0]);
+        }
+        function onReaderLoad(event) {
+            console.log(event);
+            if (event.target && event.target.result) {
+                console.log(event.target.result);
+                //var obj = JSON.parse(event.target.result);
+                //console.log(obj);
+            }
+        }
+    };
 }
 //# sourceMappingURL=story-plan-organizer.js.map
