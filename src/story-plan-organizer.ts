@@ -2,6 +2,7 @@ import {
   Character,
   CharacterImportance,
   //Color_Hex,
+  Dto,
   Link,
   Location,
   //ManaBorn,
@@ -652,7 +653,8 @@ if (exportButton) {
   console.log(state);
 
   const fileName: string = 'myfile.txt';
-  const fileContent: string = JSON.stringify(state.nodes[0]);
+  const dto: Dto = {nodes: state.nodes, links: state.links};
+  const fileContent: string = JSON.stringify(dto);
   const myFile = new Blob([fileContent], { type: 'application/json' });
 
   exportButton.setAttribute('href', window.URL.createObjectURL(myFile));

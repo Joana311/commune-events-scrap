@@ -109,6 +109,11 @@ export type Link = {
   nodeToId: UUID;
 };
 
+export type Dto = {
+  nodes: Node[];
+  links: Link[];
+};
+
 export type State = {
   nodes: Node[];
   nodesCached: HTMLDivElement[];

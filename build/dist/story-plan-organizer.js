@@ -548,7 +548,8 @@ const exportButton = document.getElementById('export');
 if (exportButton) {
     console.log(state);
     const fileName = 'myfile.txt';
-    const fileContent = JSON.stringify(state.nodes[0]);
+    const dto = { nodes: state.nodes, links: state.links };
+    const fileContent = JSON.stringify(dto);
     const myFile = new Blob([fileContent], { type: 'application/json' });
     exportButton.setAttribute('href', window.URL.createObjectURL(myFile));
     exportButton.setAttribute('download', fileName);
