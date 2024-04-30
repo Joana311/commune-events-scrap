@@ -118,118 +118,150 @@ export const create_node_element = (node: Node, state: State): void => {
 
   switch (node.type) {
     case NodeType.Character:
-      newNodeElement.innerHTML = `
+      {
+        const iconText = (
+          document.getElementById('create-node-character')?.getElementsByClassName('material-icons')[0] as HTMLElement
+        ).innerText;
+        newNodeElement.innerHTML = `
           <div style="display: flex;">
             <div class='move'>
-              <i class="material-icons" style="user-select: none; font-size: 50px;">download</i>
+              <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
             </div>
             <div style="display: flex; flex-direction: column;">
               <div style="display: flex; flex-direction: row; height: 20px;">
-                <button id="node-status">sssssssssssssss</button>
-                <input id="node-color" type="color" value="#FF0000">
+                <button id="node-status">${node.status}</button>
+                <input id="node-color" type="color" value="${node.color}">
               </div>
-              <input class='name'></input>
+              <input class='name' value='${node.name}'></input>
             </div>
           </div>
           <p>${node.id}</p>
           <p>this</p>
           <p>DIV</p>
         `;
+      }
       break;
     case NodeType.Location:
-      newNodeElement.innerHTML = `
-<div style="display: flex;">
-<div class='move'>
-<i class="material-icons" style="user-select: none; font-size: 50px;">download</i>
-</div>
-<div style="display: flex; flex-direction: column;">
-<div style="display: flex; flex-direction: row; height: 20px;">
-<button id="node-status">sssssssssssssss</button>
-<input id="node-color" type="color" value="#FF0000">
-</div>
-<input class='name'></input>
-</div>
-</div>
-<p>${node.id}</p>
-<p>this</p>
-<p>DIV</p>
+      {
+        const iconText = (
+          document.getElementById('create-node-location')?.getElementsByClassName('material-icons')[0] as HTMLElement
+        ).innerText;
+        newNodeElement.innerHTML = `
+          <div style="display: flex;">
+            <div class='move'>
+              <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+              <div style="display: flex; flex-direction: row; height: 20px;">
+                <button id="node-status">${node.status}</button>
+                <input id="node-color" type="color" value="${node.color}">
+              </div>
+              <input class='name' value='${node.name}'></input>
+            </div>
+          </div>
+          <p>${node.id}</p>
+          <p>this</p>
+          <p>DIV</p>
         `;
+      }
       break;
     case NodeType.Organization:
-      newNodeElement.innerHTML = `
-<div style="display: flex;">
-<div class='move'>
-<i class="material-icons" style="user-select: none; font-size: 50px;">download</i>
-</div>
-<div style="display: flex; flex-direction: column;">
-<div style="display: flex; flex-direction: row; height: 20px;">
-<button id="node-status">sssssssssssssss</button>
-<input id="node-color" type="color" value="#FF0000">
-</div>
-<input class='name'></input>
-</div>
-</div>
-<p>${node.id}</p>
-<p>this</p>
-<p>DIV</p>
+      {
+        const iconText = (
+          document
+            .getElementById('create-node-organization')
+            ?.getElementsByClassName('material-icons')[0] as HTMLElement
+        ).innerText;
+        newNodeElement.innerHTML = `
+          <div style="display: flex;">
+            <div class='move'>
+              <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+              <div style="display: flex; flex-direction: row; height: 20px;">
+                <button id="node-status">${node.status}</button>
+                <input id="node-color" type="color" value="${node.color}">
+              </div>
+              <input class='name' value='${node.name}'></input>
+            </div>
+          </div>
+          <p>${node.id}</p>
+          <p>this</p>
+          <p>DIV</p>
         `;
+      }
       break;
     case NodeType.Plot:
-      newNodeElement.innerHTML = `
-<div style="display: flex;">
-<div class='move'>
-<i class="material-icons" style="user-select: none; font-size: 50px;">download</i>
-</div>
-<div style="display: flex; flex-direction: column;">
-<div style="display: flex; flex-direction: row; height: 20px;">
-<button id="node-status">sssssssssssssss</button>
-<input id="node-color" type="color" value="#FF0000">
-</div>
-<input class='name'></input>
-</div>
-</div>
-<p>${node.id}</p>
-<p>this</p>
-<p>DIV</p>
-`;
+      {
+        const iconText = (
+          document.getElementById('create-node-plot')?.getElementsByClassName('material-icons')[0] as HTMLElement
+        ).innerText;
+        newNodeElement.innerHTML = `
+          <div style="display: flex;">
+            <div class='move'>
+              <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+              <div style="display: flex; flex-direction: row; height: 20px;">
+                <button id="node-status">${node.status}</button>
+                <input id="node-color" type="color" value="${node.color}">
+              </div>
+              <input class='name' value='${node.name}'></input>
+            </div>
+          </div>
+          <p>${node.id}</p>
+          <p>this</p>
+          <p>DIV</p>
+        `;
+      }
       break;
     case NodeType.Story:
-      newNodeElement.innerHTML = `
-<div style="display: flex;">
-<div class='move'>
-<i class="material-icons" style="user-select: none; font-size: 50px;">download</i>
-</div>
-<div style="display: flex; flex-direction: column;">
-<div style="display: flex; flex-direction: row; height: 20px;">
-<button id="node-status">sssssssssssssss</button>
-<input id="node-color" type="color" value="#FF0000">
-</div>
-<input class='name'></input>
-</div>
-</div>
-<p>${node.id}</p>
-<p>this</p>
-<p>DIV</p>
+      {
+        const iconText = (
+          document.getElementById('create-node-story')?.getElementsByClassName('material-icons')[0] as HTMLElement
+        ).innerText;
+        newNodeElement.innerHTML = `
+          <div style="display: flex;">
+            <div class='move'>
+              <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+              <div style="display: flex; flex-direction: row; height: 20px;">
+                <button id="node-status">${node.status}</button>
+                <input id="node-color" type="color" value="${node.color}">
+              </div>
+              <input class='name' value='${node.name}'></input>
+            </div>
+          </div>
+          <p>${node.id}</p>
+          <p>this</p>
+          <p>DIV</p>
         `;
+      }
       break;
     case NodeType.Relation:
-      newNodeElement.innerHTML = `
-<div style="display: flex;">
-<div class='move'>
-<i class="material-icons" style="user-select: none; font-size: 50px;">download</i>
-</div>
-<div style="display: flex; flex-direction: column;">
-<div style="display: flex; flex-direction: row; height: 20px;">
-<button id="node-status">sssssssssssssss</button>
-<input id="node-color" type="color" value="#FF0000">
-</div>
-<input class='name'></input>
-</div>
-</div>
-<p>${node.id}</p>
-<p>this</p>
-<p>DIV</p>
+      {
+        const iconText = (
+          document.getElementById('create-node-relation')?.getElementsByClassName('material-icons')[0] as HTMLElement
+        ).innerText;
+        newNodeElement.innerHTML = `
+          <div style="display: flex;">
+            <div class='move'>
+              <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+              <div style="display: flex; flex-direction: row; height: 20px;">
+                <button id="node-status">${node.status}</button>
+                <input id="node-color" type="color" value="${node.color}">
+              </div>
+              <input class='name' value='${node.name}'></input>
+            </div>
+          </div>
+          <p>${node.id}</p>
+          <p>this</p>
+          <p>DIV</p>
         `;
+      }
       break;
     default:
       break;
