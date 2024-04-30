@@ -624,8 +624,31 @@ function keyupResponse(event: KeyboardEvent, state: State): void {
 }
 
 document.getElementById('create-node-character')?.addEventListener('click', (event: MouseEvent) => {
-  create_node({x: event.x - 5, y: event.y - 5}, NodeType.Character, state.nodes);
+  create_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Character, state.nodes);
 });
+document.getElementById('create-node-location')?.addEventListener('click', (event: MouseEvent) => {
+  create_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Location, state.nodes);
+});
+document.getElementById('create-node-organization')?.addEventListener('click', (event: MouseEvent) => {
+  create_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Organization, state.nodes);
+});
+document.getElementById('create-node-plot')?.addEventListener('click', (event: MouseEvent) => {
+  create_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Plot, state.nodes);
+});
+document.getElementById('create-node-story')?.addEventListener('click', (event: MouseEvent) => {
+  create_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Story, state.nodes);
+});
+document.getElementById('create-node-relation')?.addEventListener('click', (event: MouseEvent) => {
+  create_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Relation, state.nodes);
+});
+
+document.getElementById('export')?.addEventListener('click', () => {
+  console.log(state);
+});
+
+window.onbeforeunload = function (event) {
+  event.preventDefault();
+};
 
 /*
 const inputImportFileElement = document.getElementById('input-import-file');

@@ -1,4 +1,4 @@
-var _a;
+var _a, _b, _c, _d, _e, _f, _g;
 import { CharacterImportance, 
 //NodePositionResults,
 NodeStatus, NodeType, } from './definition.js';
@@ -524,6 +524,27 @@ function keyupResponse(event, state) {
 (_a = document.getElementById('create-node-character')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', (event) => {
     create_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Character, state.nodes);
 });
+(_b = document.getElementById('create-node-location')) === null || _b === void 0 ? void 0 : _b.addEventListener('click', (event) => {
+    create_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Location, state.nodes);
+});
+(_c = document.getElementById('create-node-organization')) === null || _c === void 0 ? void 0 : _c.addEventListener('click', (event) => {
+    create_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Organization, state.nodes);
+});
+(_d = document.getElementById('create-node-plot')) === null || _d === void 0 ? void 0 : _d.addEventListener('click', (event) => {
+    create_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Plot, state.nodes);
+});
+(_e = document.getElementById('create-node-story')) === null || _e === void 0 ? void 0 : _e.addEventListener('click', (event) => {
+    create_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Story, state.nodes);
+});
+(_f = document.getElementById('create-node-relation')) === null || _f === void 0 ? void 0 : _f.addEventListener('click', (event) => {
+    create_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Relation, state.nodes);
+});
+(_g = document.getElementById('export')) === null || _g === void 0 ? void 0 : _g.addEventListener('click', () => {
+    console.log(state);
+});
+window.onbeforeunload = function (event) {
+    event.preventDefault();
+};
 /*
 const inputImportFileElement = document.getElementById('input-import-file');
 if (inputImportFileElement)

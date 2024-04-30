@@ -30,7 +30,7 @@ button:hover
     display: inline-block;
 }
 
-.tooltip .tooltiptext
+.tooltip .tooltip-text
 {
     visibility: hidden;
     background-color: #555;
@@ -47,7 +47,7 @@ button:hover
     transition: opacity 0.3s;
 }
 
-.tooltip .tooltiptext::after
+.tooltip .tooltip-text::after
 {
     content: "";
     position: absolute;
@@ -59,7 +59,7 @@ button:hover
     border-color: #555 transparent transparent transparent;
 }
 
-.tooltip:hover .tooltiptext
+.tooltip:hover .tooltip-text
 {
     visibility: visible;
     opacity: 1.0;
