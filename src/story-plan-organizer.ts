@@ -419,6 +419,7 @@ const state: State = {
   deleting: false,
 };
 
+/*
 state.nodes.push(
   {
     id: 'dc4090ef-6c95-4c24-ac57-ff4126811365',
@@ -592,6 +593,29 @@ state.links.push({
 
 redraw_lines(state);
 
+*/
+
+
+
+
+const load = (dto: Dto): void => {
+  for (const node of state.nodesCached) {
+    delete_node(node, state);
+  }
+
+  state.selectedNodeElement = null;
+  state.createOngoingLinkId = null;
+  state.deleting = false;
+
+  console.log(state);
+
+  state.nodes = dto.nodes;
+  state.links = dto.links;
+
+  refresh(state);
+}
+
+
 window.onbeforeunload = function (event: BeforeUnloadEvent) {
   console.log(event);
   //event.preventDefault();
@@ -693,6 +717,7 @@ if (inputImportFileElement) {
         //console.log(event.target.result);
         const obj = JSON.parse(event.target.result as string);
         console.log(obj);
+        load(obj as Dto);
       }
     }
   };

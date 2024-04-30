@@ -334,11 +334,13 @@ const state = {
     createOngoingLinkId: null,
     deleting: false,
 };
-state.nodes.push({
+/*
+state.nodes.push(
+  {
     id: 'dc4090ef-6c95-4c24-ac57-ff4126811365',
     location: {
-        x: 50,
-        y: 100,
+      x: 50,
+      y: 100,
     },
     type: NodeType.Character,
     name: '',
@@ -355,11 +357,12 @@ state.nodes.push({
     flaw: '',
     motivation: '',
     other: '',
-}, {
+  } as Character,
+  {
     id: 'f6f06d09-986e-43fb-a28c-eb0c1b9d3394',
     location: {
-        x: 100,
-        y: 300,
+      x: 100,
+      y: 300,
     },
     type: NodeType.Location,
     name: '',
@@ -368,11 +371,12 @@ state.nodes.push({
     imageSrc: '',
     description: 'This is a description.',
     memorable: '',
-}, {
+  } as Location,
+  {
     id: 'dc7d4b9b-cec0-48a5-af38-f025d96e088d',
     location: {
-        x: 100,
-        y: 550,
+      x: 100,
+      y: 550,
     },
     type: NodeType.Organization,
     name: '',
@@ -380,11 +384,12 @@ state.nodes.push({
     color: '#00FF00',
     objective: '',
     description: 'This is a description.',
-}, {
+  } as Organization,
+  {
     id: '53b21444-da1e-43a1-a83a-fdf4ba93f0ad',
     location: {
-        x: 100,
-        y: 800,
+      x: 100,
+      y: 800,
     },
     type: NodeType.Plot,
     name: '',
@@ -393,11 +398,12 @@ state.nodes.push({
     description: 'This is a description.',
     events: '',
     aftermath: '',
-}, {
+  } as Plot,
+  {
     id: '22903bda-eedf-406e-b4c4-e857d289f5d9',
     location: {
-        x: 100,
-        y: 1050,
+      x: 100,
+      y: 1050,
     },
     type: NodeType.Relation,
     name: '',
@@ -406,11 +412,12 @@ state.nodes.push({
     history: '',
     conflict: '',
     description: '',
-}, {
+  } as Relation,
+  {
     id: '018eed2c-431c-4c11-95af-036fe40f4c7a',
     location: {
-        x: 500,
-        y: 150,
+      x: 500,
+      y: 150,
     },
     type: NodeType.Plot,
     name: '',
@@ -419,11 +426,12 @@ state.nodes.push({
     description: 'This is a description.',
     events: '',
     aftermath: '',
-}, {
+  } as Plot,
+  {
     id: '8ea99741-5b1e-4885-be6f-4e890d8cf684',
     location: {
-        x: 500,
-        y: 400,
+      x: 500,
+      y: 400,
     },
     type: NodeType.Plot,
     name: '',
@@ -432,11 +440,12 @@ state.nodes.push({
     description: 'This is a description.',
     events: '',
     aftermath: '',
-}, {
+  } as Plot,
+  {
     id: '25839240-5f8b-43ec-bf2f-9aca680cdd20',
     location: {
-        x: 500,
-        y: 650,
+      x: 500,
+      y: 650,
     },
     type: NodeType.Plot,
     name: '',
@@ -445,11 +454,12 @@ state.nodes.push({
     description: 'This is a description.',
     events: '',
     aftermath: '',
-}, {
+  } as Plot,
+  {
     id: '4960b134-5e62-4b6b-9e94-84f9d6fa45b1',
     location: {
-        x: 500,
-        y: 950,
+      x: 500,
+      y: 950,
     },
     type: NodeType.Plot,
     name: '',
@@ -458,11 +468,12 @@ state.nodes.push({
     description: 'This is a description.',
     events: '',
     aftermath: '',
-}, {
+  } as Plot,
+  {
     id: 'bb6a4fd4-74ea-4013-bcf6-b5c35a68ca19',
     location: {
-        x: 500,
-        y: 1200,
+      x: 500,
+      y: 1200,
     },
     type: NodeType.Plot,
     name: '',
@@ -471,27 +482,45 @@ state.nodes.push({
     description: 'This is a description.',
     events: '',
     aftermath: '',
-});
+  } as Plot,
+);
+
 for (const node of state.nodes) {
-    create_node_element(node, state);
+  create_node_element(node, state);
 }
+
 state.links.push({
-    nodeFromId: 'f6f06d09-986e-43fb-a28c-eb0c1b9d3394',
-    nodeToId: 'dc4090ef-6c95-4c24-ac57-ff4126811365',
+  nodeFromId: 'f6f06d09-986e-43fb-a28c-eb0c1b9d3394',
+  nodeToId: 'dc4090ef-6c95-4c24-ac57-ff4126811365',
 });
 state.links.push({
-    nodeFromId: '53b21444-da1e-43a1-a83a-fdf4ba93f0ad',
-    nodeToId: '22903bda-eedf-406e-b4c4-e857d289f5d9',
+  nodeFromId: '53b21444-da1e-43a1-a83a-fdf4ba93f0ad',
+  nodeToId: '22903bda-eedf-406e-b4c4-e857d289f5d9',
 });
 state.links.push({
-    nodeFromId: 'dc7d4b9b-cec0-48a5-af38-f025d96e088d',
-    nodeToId: '22903bda-eedf-406e-b4c4-e857d289f5d9',
+  nodeFromId: 'dc7d4b9b-cec0-48a5-af38-f025d96e088d',
+  nodeToId: '22903bda-eedf-406e-b4c4-e857d289f5d9',
 });
 state.links.push({
-    nodeFromId: 'dc7d4b9b-cec0-48a5-af38-f025d96e088d',
-    nodeToId: 'dc4090ef-6c95-4c24-ac57-ff4126811365',
+  nodeFromId: 'dc7d4b9b-cec0-48a5-af38-f025d96e088d',
+  nodeToId: 'dc4090ef-6c95-4c24-ac57-ff4126811365',
 });
+
 redraw_lines(state);
+
+*/
+const load = (dto) => {
+    for (const node of state.nodesCached) {
+        delete_node(node, state);
+    }
+    state.selectedNodeElement = null;
+    state.createOngoingLinkId = null;
+    state.deleting = false;
+    console.log(state);
+    state.nodes = dto.nodes;
+    state.links = dto.links;
+    refresh(state);
+};
 window.onbeforeunload = function (event) {
     console.log(event);
     //event.preventDefault();
@@ -580,6 +609,7 @@ if (inputImportFileElement) {
                 //console.log(event.target.result);
                 const obj = JSON.parse(event.target.result);
                 console.log(obj);
+                load(obj);
             }
         }
     };
