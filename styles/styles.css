@@ -188,7 +188,6 @@ body
 .panel
 {
     width: 500px;
-    padding: 0 18px;
     background-color: white;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
@@ -196,6 +195,7 @@ body
 
 textarea
 {
+    width: 100%;
     min-width: 100%;
     max-width: 100%;
     max-height: 100%;

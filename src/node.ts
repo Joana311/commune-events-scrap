@@ -189,7 +189,7 @@ export const create_node_element = (node: Node, state: State): void => {
           <p>====================================================</p>
           <button class="accordion">Objective</button>
           <div class="panel" style="max-height: 0px;">
-            <textarea style="width: 100%;">
+            <textarea>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </textarea>
           </div>
