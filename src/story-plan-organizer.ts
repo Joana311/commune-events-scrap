@@ -92,16 +92,22 @@ const reset = (state: State): void => {
 
 // Does not handle refreshing, just validating
 export const validate = (state: State): void => {
-  // loop through all the nodes: confirm no duplicate ids?
-  // loop through all the node_elements: confirm it has existing node in nodes, or create if missing
-  // loop through all the links: confirm it has valid nodes
-  // wipe lines, redraw
-
   // Validate node elements
   for (const node of state.nodes) {
     const nodeElement = get_node_element(node.id);
     if (!nodeElement) {
       create_node_element(node, state);
+    }
+  }
+  for (let i = state.nodesCached.length - 1; i >= 0; i--) {
+    const nodeElement = state.nodesCached[i];
+    const node = get_node(nodeElement.id as UUID, state.nodes);
+    if (!node) {
+      const index = state.nodesCached.indexOf(nodeElement);
+      if (index !== -1) {
+        state.nodesCached.splice(index, 1);
+      }
+      nodeElement.remove();
     }
   }
 
@@ -168,22 +174,22 @@ function keyupResponse(event: KeyboardEvent, state: State): void {
 }
 
 document.getElementById('create-node-character')?.addEventListener('click', (event: MouseEvent) => {
-  add_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Character, state);
+  add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Character, state);
 });
 document.getElementById('create-node-location')?.addEventListener('click', (event: MouseEvent) => {
-  add_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Location, state);
+  add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Location, state);
 });
 document.getElementById('create-node-organization')?.addEventListener('click', (event: MouseEvent) => {
-  add_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Organization, state);
+  add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Organization, state);
 });
 document.getElementById('create-node-plot')?.addEventListener('click', (event: MouseEvent) => {
-  add_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Plot, state);
+  add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Plot, state);
 });
 document.getElementById('create-node-story')?.addEventListener('click', (event: MouseEvent) => {
-  add_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Story, state);
+  add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Story, state);
 });
 document.getElementById('create-node-relation')?.addEventListener('click', (event: MouseEvent) => {
-  add_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Relation, state);
+  add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Relation, state);
 });
 
 const download = (filename: string, text: string): void => {

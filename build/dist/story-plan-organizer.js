@@ -82,15 +82,22 @@ const reset = (state) => {
 };
 // Does not handle refreshing, just validating
 export const validate = (state) => {
-    // loop through all the nodes: confirm no duplicate ids?
-    // loop through all the node_elements: confirm it has existing node in nodes, or create if missing
-    // loop through all the links: confirm it has valid nodes
-    // wipe lines, redraw
     // Validate node elements
     for (const node of state.nodes) {
         const nodeElement = get_node_element(node.id);
         if (!nodeElement) {
             create_node_element(node, state);
+        }
+    }
+    for (let i = state.nodesCached.length - 1; i >= 0; i--) {
+        const nodeElement = state.nodesCached[i];
+        const node = get_node(nodeElement.id, state.nodes);
+        if (!node) {
+            const index = state.nodesCached.indexOf(nodeElement);
+            if (index !== -1) {
+                state.nodesCached.splice(index, 1);
+            }
+            nodeElement.remove();
         }
     }
     // Validate links
@@ -148,22 +155,22 @@ function keyupResponse(event, state) {
     }
 }
 (_a = document.getElementById('create-node-character')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', (event) => {
-    add_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Character, state);
+    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Character, state);
 });
 (_b = document.getElementById('create-node-location')) === null || _b === void 0 ? void 0 : _b.addEventListener('click', (event) => {
-    add_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Location, state);
+    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Location, state);
 });
 (_c = document.getElementById('create-node-organization')) === null || _c === void 0 ? void 0 : _c.addEventListener('click', (event) => {
-    add_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Organization, state);
+    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Organization, state);
 });
 (_d = document.getElementById('create-node-plot')) === null || _d === void 0 ? void 0 : _d.addEventListener('click', (event) => {
-    add_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Plot, state);
+    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Plot, state);
 });
 (_e = document.getElementById('create-node-story')) === null || _e === void 0 ? void 0 : _e.addEventListener('click', (event) => {
-    add_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Story, state);
+    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Story, state);
 });
 (_f = document.getElementById('create-node-relation')) === null || _f === void 0 ? void 0 : _f.addEventListener('click', (event) => {
-    add_node({ x: event.x - 5, y: event.y - 5 }, NodeType.Relation, state);
+    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Relation, state);
 });
 const download = (filename, text) => {
     const element = document.createElement('a');
