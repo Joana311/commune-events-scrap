@@ -125,6 +125,7 @@ body
 {
     flex: 1;
     font-size: 26px;
+    text-align: center;
     color: white;
     background-color: green;
 }
