@@ -73,7 +73,7 @@ export const create_node_element = (node, state) => {
             </div>
             <div style="display: flex; flex-direction: column;">
               <div style="display: flex; flex-direction: row; height: 20px;">
-                <button id="node-status">${node.status}</button>
+                <button id="node-status">${NodeStatus[node.status]}</button>
                 <input id="node-color" type="color" value="${node.color}">
               </div>
               <input class='name' value='${node.name}'></input>
@@ -95,7 +95,7 @@ export const create_node_element = (node, state) => {
             </div>
             <div style="display: flex; flex-direction: column;">
               <div style="display: flex; flex-direction: row; height: 20px;">
-                <button id="node-status">${node.status}</button>
+                <button id="node-status">${NodeStatus[node.status]}</button>
                 <input id="node-color" type="color" value="${node.color}">
               </div>
               <input class='name' value='${node.name}'></input>
@@ -118,7 +118,7 @@ export const create_node_element = (node, state) => {
             </div>
             <div style="display: flex; flex-direction: column;">
               <div style="display: flex; flex-direction: row; height: 20px;">
-                <button id="node-status">${node.status}</button>
+                <button id="node-status">${NodeStatus[node.status]}</button>
                 <input id="node-color" type="color" value="${node.color}">
               </div>
               <input class='name' value='${node.name}'></input>
@@ -140,7 +140,7 @@ export const create_node_element = (node, state) => {
             </div>
             <div style="display: flex; flex-direction: column;">
               <div style="display: flex; flex-direction: row; height: 20px;">
-                <button id="node-status">${node.status}</button>
+                <button id="node-status">${NodeStatus[node.status]}</button>
                 <input id="node-color" type="color" value="${node.color}">
               </div>
               <input class='name' value='${node.name}'></input>
@@ -162,7 +162,7 @@ export const create_node_element = (node, state) => {
             </div>
             <div style="display: flex; flex-direction: column;">
               <div style="display: flex; flex-direction: row; height: 20px;">
-                <button id="node-status">${node.status}</button>
+                <button id="node-status">${NodeStatus[node.status]}</button>
                 <input id="node-color" type="color" value="${node.color}">
               </div>
               <input class='name' value='${node.name}'></input>
@@ -184,7 +184,7 @@ export const create_node_element = (node, state) => {
             </div>
             <div style="display: flex; flex-direction: column;">
               <div style="display: flex; flex-direction: row; height: 20px;">
-                <button id="node-status">${node.status}</button>
+                <button id="node-status">${NodeStatus[node.status]}</button>
                 <input id="node-color" type="color" value="${node.color}">
               </div>
               <input class='name' value='${node.name}'></input>
