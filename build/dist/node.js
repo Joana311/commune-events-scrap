@@ -131,7 +131,7 @@ export const create_node_element = (node, state) => {
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </textarea>
           </div>
-          <button class="accordion">Description</button>
+          <button class="accordion active">Description</button>
           <div class="panel" style="max-height: 0px;">
             <textarea>
               Lorem ip
@@ -156,13 +156,6 @@ export const create_node_element = (node, state) => {
                     accordions[i].addEventListener('click', () => {
                         accordions[i].classList.toggle('active');
                         const panel = accordions[i].nextElementSibling;
-                        console.log(panel.offsetHeight + 'px');
-                        const textarea = panel.getElementsByTagName('textarea')[0];
-                        textarea.setAttribute('style', 'height:' + textarea.scrollHeight + 'px;overflow-y:hidden;');
-                        textarea.addEventListener('input', () => {
-                            textarea.style.height = 'auto';
-                            textarea.style.height = textarea.scrollHeight + 'px';
-                        }, false);
                         if (panel) {
                             if (panel.style.maxHeight === '0px') {
                                 panel.style.maxHeight = '100%';
@@ -171,6 +164,12 @@ export const create_node_element = (node, state) => {
                                 panel.style.maxHeight = '0px';
                             }
                         }
+                        const textarea = panel.getElementsByTagName('textarea')[0];
+                        textarea.setAttribute('style', 'height:' + textarea.scrollHeight + 'px;overflow-y:hidden;');
+                        textarea.addEventListener('input', () => {
+                            textarea.style.height = 'auto';
+                            textarea.style.height = textarea.scrollHeight + 'px';
+                        }, false);
                     });
                 }
             }

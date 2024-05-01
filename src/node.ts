@@ -192,7 +192,7 @@ export const create_node_element = (node: Node, state: State): void => {
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </textarea>
           </div>
-          <button class="accordion">Description</button>
+          <button class="accordion active">Description</button>
           <div class="panel" style="max-height: 0px;">
             <textarea>
               Lorem ip
@@ -217,10 +217,15 @@ export const create_node_element = (node: Node, state: State): void => {
           accordions[i].addEventListener('click', (): void => {
             accordions[i].classList.toggle('active');
             const panel = accordions[i].nextElementSibling as HTMLDivElement;
+            if (panel) {
+              if (panel.style.maxHeight === '0px') {
+                panel.style.maxHeight = '100%';
+              } else {
+                panel.style.maxHeight = '0px';
+              }
+            }
 
-            console.log(panel.offsetHeight + 'px');
             const textarea = panel.getElementsByTagName('textarea')[0];
-
             textarea.setAttribute('style', 'height:' + textarea.scrollHeight + 'px;overflow-y:hidden;');
             textarea.addEventListener(
               'input',
@@ -230,14 +235,6 @@ export const create_node_element = (node: Node, state: State): void => {
               },
               false,
             );
-
-            if (panel) {
-              if (panel.style.maxHeight === '0px') {
-                panel.style.maxHeight = '100%';
-              } else {
-                panel.style.maxHeight = '0px';
-              }
-            }
           });
         }
       }
