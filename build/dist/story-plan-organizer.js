@@ -176,6 +176,15 @@ const download = (filename, text) => {
     const fileContent = JSON.stringify(dto, null, 2);
     download(fileName, fileContent);
 });
+const validJson = (json) => {
+    try {
+        JSON.parse(json);
+    }
+    catch (e) {
+        return false;
+    }
+    return true;
+};
 const inputImportFileElement = document.getElementById('inputImportFile');
 if (inputImportFileElement) {
     inputImportFileElement.onchange = (event) => {
@@ -195,20 +204,11 @@ if (inputImportFileElement) {
             console.log(event);
             if (event.target && event.target.result) {
                 //console.log(event.target.result);
-                try {
-                    const obj = JSON.parse(event.target.result);
+                const jsonString = event.target.result;
+                if (validJson(jsonString)) {
+                    const obj = JSON.parse(jsonString);
                     console.log(obj);
-                    if (obj) {
-                        console.log('POINT_BBB');
-                        load(obj, state);
-                    }
-                    else {
-                        console.log('POINT_AAA');
-                        throw new Error();
-                    }
-                }
-                catch (e) {
-                    console.error(e, 'Error: Invalid JSON file.');
+                    load(obj, state);
                 }
             }
         }

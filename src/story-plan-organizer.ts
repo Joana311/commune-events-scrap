@@ -201,6 +201,17 @@ document.getElementById('export')?.addEventListener('click', () => {
   download(fileName, fileContent);
 });
 
+
+const validJson = (json: string): boolean => {
+  try {
+    JSON.parse(json);
+  } catch (e) {
+    return false;
+  }
+  return true;
+}
+
+
 const inputImportFileElement = document.getElementById('inputImportFile');
 if (inputImportFileElement) {
   inputImportFileElement.onchange = (event: Event) => {
@@ -222,19 +233,11 @@ if (inputImportFileElement) {
       console.log(event);
       if (event.target && event.target.result) {
         //console.log(event.target.result);
-        try {
-          const obj = JSON.parse(event.target.result as string);
+        const jsonString = event.target.result as string;
+        if (validJson(jsonString)) {
+          const obj = JSON.parse(jsonString);
           console.log(obj);
-          if (obj as Dto) {
-            console.log('POINT_BBB');
-            load(obj as Dto, state);
-          }
-          else {
-            console.log('POINT_AAA');
-            throw new Error();
-          }
-        } catch (e) {
-          console.error(e, 'Error: Invalid JSON file.');
+          load(obj as Dto, state);
         }
       }
     }
