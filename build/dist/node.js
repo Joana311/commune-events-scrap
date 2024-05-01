@@ -65,7 +65,7 @@ export const add_node = (location, type, state) => {
     }
 };
 const get_icon = (type) => {
-    var _a;
+    var _a, _b;
     let color;
     let backgroundColor = '#DEF4FF';
     switch (type) {
@@ -106,6 +106,8 @@ const get_icon = (type) => {
             break;
     }
     const text = ((_a = document.getElementById('create-node-' + NodeType[type])) === null || _a === void 0 ? void 0 : _a.getElementsByClassName('material-icons')[0]).innerText;
+    console.log('\n\n\n\n\nPOINT_A');
+    console.log((_b = document.getElementById('create-node-' + NodeType[type])) === null || _b === void 0 ? void 0 : _b.classList);
     return { color, backgroundColor, text };
 };
 export const create_node_element = (node, state) => {

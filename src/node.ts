@@ -158,6 +158,9 @@ const get_icon = (type: NodeType): { color: Color_Hex; backgroundColor: Color_He
     document.getElementById('create-node-' + NodeType[type])?.getElementsByClassName('material-icons')[0] as HTMLElement
   ).innerText;
 
+  console.log('\n\n\n\n\nPOINT_A');
+  console.log(document.getElementById('create-node-' + NodeType[type])?.classList);
+
   return { color, backgroundColor, text };
 };
 
