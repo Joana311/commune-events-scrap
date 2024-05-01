@@ -1,6 +1,7 @@
 import {
   Character,
   CharacterImportance,
+  Color_Hex,
   Location,
   Node,
   NodeStatus,
@@ -129,13 +130,32 @@ export const create_node_element = (node: Node, state: State): void => {
       </div>
       <div style="display: flex; flex-direction: column; width: 100%;">
         <div style="display: flex; flex-direction: row;">
-          <button id="node-status">${NodeStatus[node.status]}</button>
-          <input id="node-color" type="color" value="${node.color}">
+          <button class="node-status">${NodeStatus[node.status]}</button>
+          <input class="node-color" type="color" value="${node.color}">
         </div>
-        <input class='name' value='${node.name}'></input>
+        <input class='node-name' value='${node.name}'></input>
       </div>
     </div>
   `;
+  
+  const input_name = newNodeElement.getElementsByClassName('node-name')[0] as HTMLInputElement;
+  // prettier-ignore
+  input_name.addEventListener('input', () => {
+    node.name = input_name.value;
+  }, false);
+
+  const button_status = newNodeElement.getElementsByClassName('node-status')[0] as HTMLButtonElement;
+  // prettier-ignore
+  button_status.addEventListener('click', () => {
+    //node.status = NodeStatus[button_status.value];
+    node.status = NodeStatus.Investigate;
+  }, false);
+
+  const input_color = newNodeElement.getElementsByClassName('node-color')[0] as HTMLInputElement;
+  // prettier-ignore
+  input_color.addEventListener('input', () => {
+    node.color = input_color.value as Color_Hex;
+  }, false);
 
   switch (node.type) {
     case NodeType.Character:
@@ -154,6 +174,16 @@ export const create_node_element = (node: Node, state: State): void => {
             <textarea>${(node as Location).memorable}</textarea>
           </div>
         `;
+        const textarea_description = newNodeElement.getElementsByTagName('textarea')[0];
+        // prettier-ignore
+        textarea_description.addEventListener('input', () => {
+          (node as Location).description = textarea_description.value;
+        }, false);
+        const textarea_memorable = newNodeElement.getElementsByTagName('textarea')[1];
+        // prettier-ignore
+        textarea_memorable.addEventListener('input', () => {
+          (node as Location).memorable = textarea_memorable.value;
+        }, false);
       }
       break;
     case NodeType.Organization:
@@ -168,6 +198,16 @@ export const create_node_element = (node: Node, state: State): void => {
             <textarea>${(node as Organization).description}</textarea>
           </div>
         `;
+        const textarea_objective = newNodeElement.getElementsByTagName('textarea')[0];
+        // prettier-ignore
+        textarea_objective.addEventListener('input', () => {
+          (node as Organization).objective = textarea_objective.value;
+        }, false);
+        const textarea_description = newNodeElement.getElementsByTagName('textarea')[1];
+        // prettier-ignore
+        textarea_description.addEventListener('input', () => {
+          (node as Organization).description = textarea_description.value;
+        }, false);
       }
       break;
     case NodeType.Plot:
@@ -186,6 +226,21 @@ export const create_node_element = (node: Node, state: State): void => {
             <textarea>${(node as Plot).aftermath}</textarea>
           </div>
         `;
+        const textarea_description = newNodeElement.getElementsByTagName('textarea')[0];
+        // prettier-ignore
+        textarea_description.addEventListener('input', () => {
+          (node as Plot).description = textarea_description.value;
+        }, false);
+        const textarea_events = newNodeElement.getElementsByTagName('textarea')[1];
+        // prettier-ignore
+        textarea_events.addEventListener('input', () => {
+          (node as Plot).events = textarea_events.value;
+        }, false);
+        const textarea_aftermath = newNodeElement.getElementsByTagName('textarea')[2];
+        // prettier-ignore
+        textarea_aftermath.addEventListener('input', () => {
+          (node as Plot).aftermath = textarea_aftermath.value;
+        }, false);
       }
       break;
     case NodeType.Story:
@@ -196,6 +251,11 @@ export const create_node_element = (node: Node, state: State): void => {
             <textarea>${(node as Story).description}</textarea>
           </div>
         `;
+        const textarea_description = newNodeElement.getElementsByTagName('textarea')[0];
+        // prettier-ignore
+        textarea_description.addEventListener('input', () => {
+          (node as Story).description = textarea_description.value;
+        }, false);
       }
       break;
     case NodeType.Relation:
