@@ -117,6 +117,64 @@ export const add_node = (location: Point, type: NodeType, state: State): void =>
   }
 };
 
+const get_icon = (type: NodeType): {color: Color_Hex, backgroundColor: Color_Hex, text: string} => {
+  let color: Color_Hex;
+  let backgroundColor: Color_Hex;
+  switch (type) {
+    case NodeType.Character:
+      {
+        color = '#FFFFFF';
+        backgroundColor = '#000000';
+      }
+      break;
+    case NodeType.Location:
+      {
+        color = '#FFFFFF';
+        backgroundColor = '#000000';
+      }
+      break;
+    case NodeType.Organization:
+      {
+        color = '#FFFFFF';
+        backgroundColor = '#000000';
+      }
+      break;
+    case NodeType.Plot:
+      {
+        color = '#FFFFFF';
+        backgroundColor = '#000000';
+      }
+      break;
+    case NodeType.Story:
+      {
+        color = '#FFFFFF';
+        backgroundColor = '#000000';
+      }
+      break;
+    case NodeType.Relation:
+      {
+        color = '#FFFFFF';
+        backgroundColor = '#000000';
+      }
+      break;
+    default:
+      {
+        color = '#FFFFFF';
+        backgroundColor = '#000000';
+      }
+      break;
+  }
+
+  const text: string = (
+    document
+      .getElementById('create-node-' + NodeType[type])
+      ?.getElementsByClassName('material-icons')[0] as HTMLElement
+  ).innerText;
+
+  return {color, backgroundColor, text};
+}
+
+
 export const create_node_element = (node: Node, state: State): void => {
   const newElement: HTMLDivElement = document.createElement('div');
   const newNodeElement: HTMLDivElement = document.body.appendChild(newElement);
@@ -126,15 +184,11 @@ export const create_node_element = (node: Node, state: State): void => {
   newNodeElement.style.left = node.location.x + 'px';
   newNodeElement.style.borderColor = node.color;
 
-  const iconText: string = (
-    document
-      .getElementById('create-node-' + NodeType[node.type])
-      ?.getElementsByClassName('material-icons')[0] as HTMLElement
-  ).innerText;
+  const icon = get_icon(node.type);
   newNodeElement.innerHTML = `
     <div style="display: flex;">
       <div class='move tooltip'>
-        <i class="material-icons" style="user-select: none; font-size: 40px;">${iconText}</i>
+        <i class="material-icons" style="user-select: none; font-size: 40px; color: ${icon.color}; background-color: ${icon.backgroundColor};">${icon.text}</i>
         <span class="tooltip-text">${NodeType[node.type]}</span>
       </div>
       <input class='node-name' value='${node.name}'></input>
