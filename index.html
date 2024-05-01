@@ -44,13 +44,15 @@
         <span class="tooltip-text">Undo Delete</span>
       </button>
 
-      <button onclick="inputImportFile.click()">Import</button>
-      <input id="inputImportFile" type="file" accept=".json">
-      
-      <button id="export" class="toolbar-button tooltip">
-        <i class="material-icons icon" style="font-size: 50px;">download</i>
-        <span class="tooltip-text">Export</span>
-      </button>
+      <div style="display: flex; gap: 2px;">
+        <button onclick="inputImportFile.click()">Import</button>
+        <input id="inputImportFile" type="file" accept=".json">
+
+        <button id="export" class="toolbar-button tooltip">
+          <i class="material-icons icon" style="font-size: 50px;">download</i>
+          <span class="tooltip-text">Export</span>
+        </button>
+      </div>
     </div>
   </body>
 

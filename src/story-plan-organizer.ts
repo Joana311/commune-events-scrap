@@ -218,7 +218,7 @@ document.getElementById('export')?.addEventListener('click', () => {
   download(fileName, fileContent);
 });
 
-const inputImportFileElement = document.getElementById('input-import-file');
+const inputImportFileElement = document.getElementById('inputImportFile');
 if (inputImportFileElement) {
   inputImportFileElement.onchange = (event: Event) => {
     const reader = new FileReader();

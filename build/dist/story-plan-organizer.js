@@ -190,7 +190,7 @@ const download = (filename, text) => {
     const fileContent = JSON.stringify(dto, null, 2);
     download(fileName, fileContent);
 });
-const inputImportFileElement = document.getElementById('input-import-file');
+const inputImportFileElement = document.getElementById('inputImportFile');
 if (inputImportFileElement) {
     inputImportFileElement.onchange = (event) => {
         const reader = new FileReader();
