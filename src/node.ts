@@ -144,6 +144,16 @@ export const create_node_element = (node: Node, state: State): void => {
       break;
     case NodeType.Location:
       {
+        newNodeElement.innerHTML += `
+          <button class="accordion">Description</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${(node as Location).description}</textarea>
+          </div>
+          <button class="accordion">Memorable</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${(node as Location).memorable}</textarea>
+          </div>
+        `;
       }
       break;
     case NodeType.Organization:
@@ -162,14 +172,48 @@ export const create_node_element = (node: Node, state: State): void => {
       break;
     case NodeType.Plot:
       {
+        newNodeElement.innerHTML += `
+          <button class="accordion">Description</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${(node as Plot).description}</textarea>
+          </div>
+          <button class="accordion">Events</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${(node as Plot).events}</textarea>
+          </div>
+          <button class="accordion">Aftermath</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${(node as Plot).aftermath}</textarea>
+          </div>
+        `;
       }
       break;
     case NodeType.Story:
       {
+        newNodeElement.innerHTML += `
+          <button class="accordion">Description</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${(node as Story).description}</textarea>
+          </div>
+        `;
       }
       break;
     case NodeType.Relation:
       {
+        newNodeElement.innerHTML += `
+          <button class="accordion">History</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${(node as Relation).history}</textarea>
+          </div>
+          <button class="accordion">Conflict</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${(node as Relation).conflict}</textarea>
+          </div>
+          <button class="accordion">Description</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${(node as Relation).description}</textarea>
+          </div>
+        `;
       }
       break;
     default:

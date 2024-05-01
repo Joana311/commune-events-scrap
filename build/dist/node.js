@@ -86,6 +86,16 @@ export const create_node_element = (node, state) => {
             break;
         case NodeType.Location:
             {
+                newNodeElement.innerHTML += `
+          <button class="accordion">Description</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${node.description}</textarea>
+          </div>
+          <button class="accordion">Memorable</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${node.memorable}</textarea>
+          </div>
+        `;
             }
             break;
         case NodeType.Organization:
@@ -104,14 +114,48 @@ export const create_node_element = (node, state) => {
             break;
         case NodeType.Plot:
             {
+                newNodeElement.innerHTML += `
+          <button class="accordion">Description</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${node.description}</textarea>
+          </div>
+          <button class="accordion">Events</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${node.events}</textarea>
+          </div>
+          <button class="accordion">Aftermath</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${node.aftermath}</textarea>
+          </div>
+        `;
             }
             break;
         case NodeType.Story:
             {
+                newNodeElement.innerHTML += `
+          <button class="accordion">Description</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${node.description}</textarea>
+          </div>
+        `;
             }
             break;
         case NodeType.Relation:
             {
+                newNodeElement.innerHTML += `
+          <button class="accordion">History</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${node.history}</textarea>
+          </div>
+          <button class="accordion">Conflict</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${node.conflict}</textarea>
+          </div>
+          <button class="accordion">Description</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${node.description}</textarea>
+          </div>
+        `;
             }
             break;
         default:
