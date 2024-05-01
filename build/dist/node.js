@@ -76,7 +76,7 @@ const get_icon = (type) => {
             break;
         case NodeType.Location:
             {
-                color = '#C700C7';
+                color = '#58D900';
             }
             break;
         case NodeType.Organization:
@@ -86,7 +86,7 @@ const get_icon = (type) => {
             break;
         case NodeType.Event:
             {
-                color = '#00FF00';
+                color = '#C700C7';
             }
             break;
         case NodeType.Story:
