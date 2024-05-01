@@ -230,7 +230,7 @@ if (inputImportFileElement) {
           }
           load(obj as Dto, state);
         } catch (e) {
-          console.error('Error: Invalid JSON file.');
+          console.error(e, 'Error: Invalid JSON file.');
         }
       }
     }

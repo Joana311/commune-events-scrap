@@ -204,7 +204,7 @@ if (inputImportFileElement) {
                     load(obj, state);
                 }
                 catch (e) {
-                    console.error('Error: Invalid JSON file.');
+                    console.error(e, 'Error: Invalid JSON file.');
                 }
             }
         }
