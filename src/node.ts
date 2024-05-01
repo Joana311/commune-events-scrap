@@ -124,7 +124,7 @@ const get_icon = (type: NodeType): { color: Color_Hex; backgroundColor: Color_He
       break;
     case NodeType.Location:
       {
-        color = '#58D900';
+        color = '#1BD900';
       }
       break;
     case NodeType.Organization:

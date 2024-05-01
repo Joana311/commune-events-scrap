@@ -67,12 +67,17 @@ body
 
 .icon
 {
-  color: grey;
+    color: grey;
 }
 
 .icon:hover
 {
-  color: black;
+    color: black;
+}
+
+input[type="file"]
+{
+    display: none;
 }
 
 .node
