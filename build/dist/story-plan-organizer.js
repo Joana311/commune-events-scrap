@@ -1,4 +1,4 @@
-var _a, _b, _c, _d, _e, _f, _g;
+var _a, _b, _c, _d, _e, _f, _g, _h;
 import { NodeType } from './definition.js';
 import { add_node, create_node_element, get_node, get_node_element } from './node.js';
 import { redraw_lines } from './link.js';
@@ -157,21 +157,23 @@ function keyupResponse(event, state) {
     .getElementById('create-node-' + NodeType[NodeType.Character])) === null || _a === void 0 ? void 0 : _a.addEventListener('click', (event) => {
     add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Character, state);
 });
-(_b = document
-    .getElementById('create-node-' + NodeType[NodeType.Location])) === null || _b === void 0 ? void 0 : _b.addEventListener('click', (event) => {
+//document.getElementById('create-node-' + NodeType[NodeType.Character])?.firstElementChild?.style.color = '#FF0000';
+console.log((_b = document.getElementById('create-node-' + NodeType[NodeType.Character])) === null || _b === void 0 ? void 0 : _b.firstElementChild);
+(_c = document
+    .getElementById('create-node-' + NodeType[NodeType.Location])) === null || _c === void 0 ? void 0 : _c.addEventListener('click', (event) => {
     add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Location, state);
 });
-(_c = document
-    .getElementById('create-node-' + NodeType[NodeType.Organization])) === null || _c === void 0 ? void 0 : _c.addEventListener('click', (event) => {
+(_d = document
+    .getElementById('create-node-' + NodeType[NodeType.Organization])) === null || _d === void 0 ? void 0 : _d.addEventListener('click', (event) => {
     add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Organization, state);
 });
-(_d = document.getElementById('create-node-' + NodeType[NodeType.Event])) === null || _d === void 0 ? void 0 : _d.addEventListener('click', (event) => {
+(_e = document.getElementById('create-node-' + NodeType[NodeType.Event])) === null || _e === void 0 ? void 0 : _e.addEventListener('click', (event) => {
     add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Event, state);
 });
-(_e = document.getElementById('create-node-' + NodeType[NodeType.Story])) === null || _e === void 0 ? void 0 : _e.addEventListener('click', (event) => {
+(_f = document.getElementById('create-node-' + NodeType[NodeType.Story])) === null || _f === void 0 ? void 0 : _f.addEventListener('click', (event) => {
     add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Story, state);
 });
-(_f = document.getElementById('create-node-' + NodeType[NodeType.Lore])) === null || _f === void 0 ? void 0 : _f.addEventListener('click', (event) => {
+(_g = document.getElementById('create-node-' + NodeType[NodeType.Lore])) === null || _g === void 0 ? void 0 : _g.addEventListener('click', (event) => {
     add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Lore, state);
 });
 const download = (filename, text) => {
@@ -183,7 +185,7 @@ const download = (filename, text) => {
     element.click();
     document.body.removeChild(element);
 };
-(_g = document.getElementById('export')) === null || _g === void 0 ? void 0 : _g.addEventListener('click', () => {
+(_h = document.getElementById('export')) === null || _h === void 0 ? void 0 : _h.addEventListener('click', () => {
     console.log(state);
     const fileName = 'exported.json';
     const dto = { nodes: state.nodes, links: state.links };

@@ -175,6 +175,11 @@ document
   ?.addEventListener('click', (event: MouseEvent) => {
     add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Character, state);
   });
+//document.getElementById('create-node-' + NodeType[NodeType.Character])?.firstElementChild?.style.color = '#FF0000';
+console.log(document.getElementById('create-node-' + NodeType[NodeType.Character])?.firstElementChild);
+
+
+
 document
   .getElementById('create-node-' + NodeType[NodeType.Location])
   ?.addEventListener('click', (event: MouseEvent) => {
