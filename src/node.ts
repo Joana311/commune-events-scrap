@@ -179,7 +179,7 @@ export const create_node_element = (node: Node, state: State): void => {
               <span class="tooltip-text">${NodeType[node.type]}</span>
             </div>
             <div style="display: flex; flex-direction: column; width: 100%;">
-              <div style="display: flex; flex-direction: row; height: 20px;">
+              <div style="display: flex; flex-direction: row;">
                 <button id="node-status">${NodeStatus[node.status]}</button>
                 <input id="node-color" type="color" value="${node.color}">
               </div>
