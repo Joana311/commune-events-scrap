@@ -4,7 +4,6 @@ import {
   Color_Hex,
   Location,
   Node,
-  NodeStatus,
   NodeType,
   Organization,
   Plot,
@@ -39,7 +38,6 @@ export const add_node = (location: Point, type: NodeType, state: State): void =>
     location,
     type,
     name: '',
-    status: NodeStatus.None,
     color: '#FFFFFF',
   };
 
@@ -69,7 +67,6 @@ export const add_node = (location: Point, type: NodeType, state: State): void =>
           ...base,
           imageSrc: '',
           description: '',
-          memorable: '',
         } as Location;
       }
       break;
@@ -137,16 +134,14 @@ export const create_node_element = (node: Node, state: State): void => {
   newNodeElement.innerHTML = `
     <div style="display: flex;">
       <div class='move tooltip'>
-        <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
+        <i class="material-icons" style="user-select: none; font-size: 40px;">${iconText}</i>
         <span class="tooltip-text">${NodeType[node.type]}</span>
       </div>
-      <div style="display: flex; flex-direction: column; width: 100%;">
-        <div style="display: flex; flex-direction: row;">
-          <button class="node-status">${NodeStatus[node.status]}</button>
-          <input class="node-color" type="color" value="${node.color}">
-        </div>
+      <div class='tooltip'>
         <input class='node-name' value='${node.name}'></input>
+        <span class="tooltip-text">${node.name}</span>
       </div>
+      <input class="node-color" type="color" value="${node.color}">
     </div>
   `;
 
@@ -162,20 +157,11 @@ export const create_node_element = (node: Node, state: State): void => {
           <div class="panel" style="max-height: 0px;">
             <textarea>${(node as Location).description}</textarea>
           </div>
-          <button class="accordion">Memorable</button>
-          <div class="panel" style="max-height: 0px;">
-            <textarea>${(node as Location).memorable}</textarea>
-          </div>
         `;
         const textarea_description = newNodeElement.getElementsByTagName('textarea')[0];
         // prettier-ignore
         textarea_description.addEventListener('input', (): void => {
           (node as Location).description = textarea_description.value;
-        }, false);
-        const textarea_memorable = newNodeElement.getElementsByTagName('textarea')[1];
-        // prettier-ignore
-        textarea_memorable.addEventListener('input', (): void => {
-          (node as Location).memorable = textarea_memorable.value;
         }, false);
       }
       break;
@@ -293,41 +279,6 @@ export const create_node_element = (node: Node, state: State): void => {
   // prettier-ignore
   input_name.addEventListener('input', (): void => {
     node.name = input_name.value;
-  }, false);
-
-  const button_status = newNodeElement.getElementsByClassName('node-status')[0] as HTMLButtonElement;
-  // prettier-ignore
-  button_status.addEventListener('click', (): void => {
-    switch (node.status) {
-      case NodeStatus.None:
-        {
-          node.status = NodeStatus.Maybe;
-        }
-        break;
-      case NodeStatus.Maybe:
-        {
-          node.status = NodeStatus.Good;
-        }
-        break;
-      case NodeStatus.Good:
-        {
-          node.status = NodeStatus.Investigate;
-        }
-        break;
-      case NodeStatus.Investigate:
-        {
-          node.status = NodeStatus.Rejected;
-        }
-        break;
-      case NodeStatus.Rejected:
-        {
-          node.status = NodeStatus.None;
-        }
-        break;
-      default:
-        break;
-    }
-    refresh(state);
   }, false);
 
   const input_color = newNodeElement.getElementsByClassName('node-color')[0] as HTMLInputElement;

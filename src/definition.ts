@@ -9,14 +9,6 @@ export enum NodeType {
   Relation = 'Relation',
 }
 
-export enum NodeStatus {
-  None = 'None',
-  Maybe = 'Maybe',
-  Good = 'Good',
-  Investigate = 'Investigate',
-  Rejected = 'Rejected',
-}
-
 export enum CharacterImportance {
   Other = 'Other',
   Main = 'Main',
@@ -45,7 +37,6 @@ export type Node = {
   location: Point;
   type: NodeType;
   name: string;
-  status: NodeStatus;
   color: Color_Hex;
 };
 
@@ -66,7 +57,6 @@ export type Character = Node & {
 export type Location = Node & {
   imageSrc: string;
   description: string;
-  memorable: string;
 };
 
 export type Organization = Node & {

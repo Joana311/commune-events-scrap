@@ -54,14 +54,6 @@ export const refresh = (state: State): void => {
     }
   }
 
-  for (const node of state.nodes) {
-    const nodeElement: HTMLDivElement | null = get_node_element(node.id);
-    if (nodeElement) {
-      const button_status = nodeElement.getElementsByClassName('node-status')[0] as HTMLButtonElement;
-      button_status.innerHTML = node.status;
-    }
-  }
-
   redraw_lines(state);
 };
 
