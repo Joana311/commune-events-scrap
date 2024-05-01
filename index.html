@@ -44,7 +44,15 @@
         <span class="tooltip-text">Undo Delete</span>
       </button>
 
-      <div style="color: white;">Import:</div><input id="input-import-file" type="file" accept=".json">
+      <div style="color: white;">Import:</div>
+      <input id="input-import-file" type="file" accept=".json">
+
+      <label for="input-import-file" class="custom-file-upload">
+        Custom Upload
+    </label>
+<input id="input-import-file" type="file" />
+
+
       <button id="export" class="toolbar-button tooltip">
         <i class="material-icons icon" style="font-size: 50px;">download</i>
         <span class="tooltip-text">Export</span>
@@ -66,5 +74,6 @@
       - Confirm valid Dto before importing, too much work, but at least verify it is valid json and catch any errors
     - Don't make line near the corners
     - Wrap toolbar in flex
+    - get icons from toolbar icon colors
   -->
 </html>
