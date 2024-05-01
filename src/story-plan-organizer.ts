@@ -170,6 +170,24 @@ function keyupResponse(event: KeyboardEvent, state: State): void {
   }
 }
 
+
+const nodeTypes: NodeType[] = [
+  NodeType.Character,
+  NodeType.Location,
+  NodeType.Organization,
+  NodeType.Event,
+  NodeType.Story,
+  NodeType.Lore,
+];
+for (const nodeType of nodeTypes) {
+  const button_create_character = document.getElementById('create-node-' + NodeType[nodeType]);
+  button_create_character?.addEventListener('click', (event: MouseEvent) => {
+      add_node({ x: event.x - 20, y: event.y - 20 }, nodeType, state);
+    });
+  (button_create_character?.firstElementChild as HTMLElement).style.color = get_icon(nodeType).color;
+}
+
+/*
 const button_create_character = document.getElementById('create-node-' + NodeType[NodeType.Character]);
 button_create_character?.addEventListener('click', (event: MouseEvent) => {
     add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Character, state);
@@ -195,6 +213,7 @@ document.getElementById('create-node-' + NodeType[NodeType.Story])?.addEventList
 document.getElementById('create-node-' + NodeType[NodeType.Lore])?.addEventListener('click', (event: MouseEvent) => {
   add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Lore, state);
 });
+*/
 
 const download = (filename: string, text: string): void => {
   const element = document.createElement('a');
