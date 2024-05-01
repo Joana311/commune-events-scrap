@@ -64,6 +64,7 @@ export const create_node_element = (node, state) => {
     newNodeElement.style.borderColor = node.color;
     const iconText = ((_a = document
         .getElementById('create-node-' + NodeType[node.type])) === null || _a === void 0 ? void 0 : _a.getElementsByClassName('material-icons')[0]).innerText;
+    // addEventListener doesn't work when innerHTML is set. It works when it is appended.
     newNodeElement.innerHTML = '';
     newNodeElement.innerHTML += `
     <div style="display: flex;">
