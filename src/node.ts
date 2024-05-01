@@ -195,9 +195,9 @@ export const create_node_element = (node: Node, state: State): void => {
             <textarea>${(node as Character).quirk}</textarea>
           </div>
           <button class="accordion">Likes and Dislikes</button>
-          <div class="panel" style="max-height: 0px; display: flex; gap: 20px;">
-            <textarea>${(node as Character).like}</textarea>
-            <textarea>${(node as Character).dislike}</textarea>
+          <div class="panel" style="max-height: 0px; display: flex; gap: 0px;">
+            <textarea style="min-width: 50%; max-width: 50%;">${(node as Character).like}</textarea>
+            <textarea style="min-width: 50%; max-width: 50%;">${(node as Character).dislike}</textarea>
           </div>
         `;
       }
