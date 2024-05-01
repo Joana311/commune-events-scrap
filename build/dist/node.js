@@ -54,6 +54,7 @@ export const add_node = (location, type, state) => {
     }
 };
 export const create_node_element = (node, state) => {
+    var _a;
     const newElement = document.createElement('div');
     const newNodeElement = document.body.appendChild(newElement);
     newNodeElement.id = node.id;
@@ -61,50 +62,41 @@ export const create_node_element = (node, state) => {
     newNodeElement.style.top = node.location.y + 'px';
     newNodeElement.style.left = node.location.x + 'px';
     newNodeElement.style.borderColor = node.color;
-    newNodeElement.innerHTML = '';
-    /*
-    const iconText: string = (
-      document
-        .getElementById('create-node-' + NodeType[node.type])
-        ?.getElementsByClassName('material-icons')[0] as HTMLElement
-    ).innerText;
+    const iconText = ((_a = document
+        .getElementById('create-node-' + NodeType[node.type])) === null || _a === void 0 ? void 0 : _a.getElementsByClassName('material-icons')[0]).innerText;
     newNodeElement.innerHTML = `
-      <div style="display: flex;">
-        <div class='move tooltip'>
-          <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
-          <span class="tooltip-text">${NodeType[node.type]}</span>
-        </div>
-        <div style="display: flex; flex-direction: column; width: 100%;">
-          <div style="display: flex; flex-direction: row;">
-            <button class="node-status">${NodeStatus[node.status]}</button>
-            <input class="node-color" type="color" value="${node.color}">
-          </div>
-          <input class='node-name' value='${node.name}'></input>
-        </div>
+    <div style="display: flex;">
+      <div class='move tooltip'>
+        <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
+        <span class="tooltip-text">${NodeType[node.type]}</span>
       </div>
-    `;
-    
-    const input_name = newNodeElement.getElementsByClassName('node-name')[0] as HTMLInputElement;
+      <div style="display: flex; flex-direction: column; width: 100%;">
+        <div style="display: flex; flex-direction: row;">
+          <button class="node-status">${NodeStatus[node.status]}</button>
+          <input class="node-color" type="color" value="${node.color}">
+        </div>
+        <input class='node-name' value='${node.name}'></input>
+      </div>
+    </div>
+  `;
+    const input_name = newNodeElement.getElementsByClassName('node-name')[0];
     // prettier-ignore
-    input_name.addEventListener('input', (): void => {
-      console.log('\n\n\n\nPOINT_B\n\n\n\n');
-      node.name = input_name.value;
+    input_name.addEventListener('input', () => {
+        console.log('\n\n\n\nPOINT_B\n\n\n\n');
+        node.name = input_name.value;
     }, false);
-  
-    const button_status = newNodeElement.getElementsByClassName('node-status')[0] as HTMLButtonElement;
+    const button_status = newNodeElement.getElementsByClassName('node-status')[0];
     // prettier-ignore
-    button_status.addEventListener('click', (): void => {
-      //node.status = NodeStatus[button_status.value];
-      node.status = NodeStatus.Investigate;
+    button_status.addEventListener('click', () => {
+        //node.status = NodeStatus[button_status.value];
+        node.status = NodeStatus.Investigate;
     }, false);
-  
-    const input_color = newNodeElement.getElementsByClassName('node-color')[0] as HTMLInputElement;
+    const input_color = newNodeElement.getElementsByClassName('node-color')[0];
     // prettier-ignore
-    input_color.addEventListener('input', (): void => {
-      console.log(input_color.value);
-      node.color = input_color.value as Color_Hex;
+    input_color.addEventListener('input', () => {
+        console.log(input_color.value);
+        node.color = input_color.value;
     }, false);
-  */
     /*
     console.log('\n\n\n\nPOINT_C');
     const temp = newNodeElement.getElementsByTagName('input');
@@ -116,20 +108,20 @@ export const create_node_element = (node, state) => {
     }
     console.log('\n\n\n\n');
     */
+    newNodeElement.innerHTML += `
+  <div class="panel" style="max-height: 0px;">
+    <input class='node-name1' value='${node.name}'></input>
+  </div>
+`;
+    const temp1 = newNodeElement.getElementsByClassName('node-name1')[0];
+    // prettier-ignore
+    temp1.addEventListener('input', () => {
+        console.log('\n\n\n\nPOINT_F');
+        console.log('\n\n\n\n');
+    }, false);
     switch (node.type) {
         case NodeType.Character:
             {
-                newNodeElement.innerHTML += `
-          <div class="panel" style="max-height: 0px;">
-            <input class='node-name' value='${node.name}'></input>
-          </div>
-        `;
-                const temp1 = newNodeElement.getElementsByClassName('node-name')[0];
-                // prettier-ignore
-                temp1.addEventListener('input', () => {
-                    console.log('\n\n\n\nPOINT_E');
-                    console.log('\n\n\n\n');
-                }, false);
             }
             break;
         case NodeType.Location:

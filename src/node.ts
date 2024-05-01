@@ -117,10 +117,6 @@ export const create_node_element = (node: Node, state: State): void => {
   newNodeElement.style.left = node.location.x + 'px';
   newNodeElement.style.borderColor = node.color;
 
-
-
-  newNodeElement.innerHTML = '';
-  /*
   const iconText: string = (
     document
       .getElementById('create-node-' + NodeType[node.type])
@@ -162,7 +158,6 @@ export const create_node_element = (node: Node, state: State): void => {
     console.log(input_color.value);
     node.color = input_color.value as Color_Hex;
   }, false);
-*/
 
 
   /*
@@ -182,23 +177,23 @@ export const create_node_element = (node: Node, state: State): void => {
 
 
 
+  newNodeElement.innerHTML += `
+  <div class="panel" style="max-height: 0px;">
+    <input class='node-name1' value='${node.name}'></input>
+  </div>
+`;
+const temp1 = newNodeElement.getElementsByClassName('node-name1')[0];
+// prettier-ignore
+temp1.addEventListener('input', (): void => {
+  console.log('\n\n\n\nPOINT_F');
+  console.log('\n\n\n\n');
+}, false);
 
 
 
   switch (node.type) {
     case NodeType.Character:
       {
-        newNodeElement.innerHTML += `
-          <div class="panel" style="max-height: 0px;">
-            <input class='node-name' value='${node.name}'></input>
-          </div>
-        `;
-        const temp1 = newNodeElement.getElementsByClassName('node-name')[0];
-        // prettier-ignore
-        temp1.addEventListener('input', (): void => {
-          console.log('\n\n\n\nPOINT_E');
-          console.log('\n\n\n\n');
-        }, false);
       }
       break;
     case NodeType.Location:
