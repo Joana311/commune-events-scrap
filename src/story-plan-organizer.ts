@@ -235,7 +235,6 @@ if (inputImportFileElement) {
         //console.log(event.target.result);
         const jsonString = event.target.result as string;
         if (validJson(jsonString)) {
-          console.log('\n\n\n\nPOINT_C');
           const obj = JSON.parse(jsonString);
           console.log(obj);
           load(obj as Dto, state);
