@@ -71,38 +71,38 @@ const get_icon = (type) => {
     switch (type) {
         case NodeType.Character:
             {
-                color = '#FFFFFF';
-                backgroundColor = '#000000';
+                color = '#FF495E';
+                backgroundColor = '#292929';
             }
             break;
         case NodeType.Location:
             {
-                color = '#FFFFFF';
-                backgroundColor = '#000000';
+                color = '#5DADE2';
+                backgroundColor = '#EAEAEA';
             }
             break;
         case NodeType.Organization:
             {
-                color = '#FFFFFF';
-                backgroundColor = '#000000';
+                color = '#F7CA18';
+                backgroundColor = '#292929';
             }
             break;
         case NodeType.Event:
             {
-                color = '#FFFFFF';
-                backgroundColor = '#000000';
+                color = '#29ABCA';
+                backgroundColor = '#EAEAEA';
             }
             break;
         case NodeType.Story:
             {
-                color = '#FFFFFF';
-                backgroundColor = '#000000';
+                color = '#C02942';
+                backgroundColor = '#333333';
             }
             break;
         case NodeType.Lore:
             {
-                color = '#FFFFFF';
-                backgroundColor = '#000000';
+                color = '#D3A029';
+                backgroundColor = '#C0C0B1';
             }
             break;
         default:
