@@ -126,7 +126,7 @@ body
     flex: 1;
     font-size: 26px;
     text-align: center;
-    color: white;
+    color: black;
     background-color: lightblue;
     border: 0px;
 }
@@ -198,6 +198,6 @@ textarea
     max-width: 100%;
     max-height: 100%;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 26px;
+    font-size: 18px;
     padding: 5px;
 }
