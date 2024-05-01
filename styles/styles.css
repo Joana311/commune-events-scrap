@@ -97,8 +97,8 @@ body
 
 .move
 {
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     cursor: move;
     color: white;
     background-color: #2196F3;
@@ -107,19 +107,10 @@ body
     justify-content: center;
 }
 
-.node-color
-{
-    width: 10px;
-    height: 60px;
-    border: 0px;
-    padding: 0px;
-    margin: 0px;
-}
-
 .node-name
 {
     flex: 1;
-    height: 58px;
+    width: 300px;
     font-size: 26px;
     font-weight: bold;
     letter-spacing: 2px;
@@ -127,6 +118,15 @@ body
     color: black;
     background-color: lightblue;
     border: 0px;
+}
+
+.node-color
+{
+    width: 10px;
+    height: 45px;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
 }
 
 .line
