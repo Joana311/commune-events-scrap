@@ -196,8 +196,11 @@ export const create_node_element = (node: Node, state: State): void => {
   const input_color = newNodeElement.getElementsByClassName('node-color')[0] as HTMLInputElement;
   // prettier-ignore
   input_color.addEventListener('input', (): void => {
+    console.log('\n\n\nPOINT_A');
+    console.log(input_color.value);
     node.color = input_color.value as Color_Hex;
     newNodeElement.style.borderColor = node.color;
+    redraw_lines(state);
   }, false);
 
   switch (node.type) {
