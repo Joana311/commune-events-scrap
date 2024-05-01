@@ -4,9 +4,9 @@ export enum NodeType {
   Character = 'Character',
   Location = 'Location',
   Organization = 'Organization',
-  Plot = 'Plot',
+  Event = 'Event',
   Story = 'Story',
-  Relation = 'Relation',
+  Lore = 'Lore',
 }
 
 export enum CharacterImportance {
@@ -64,20 +64,16 @@ export type Organization = Node & {
   detail: string;
 };
 
-export type Plot = Node & {
-  description: string;
-  events: string;
-  aftermath: string;
+export type Event = Node & {
+  detail: string;
 };
 
 export type Story = Node & {
   description: string;
 };
 
-export type Relation = Node & {
-  history: string;
-  conflict: string;
-  description: string;
+export type Lore = Node & {
+  detail: string;
 };
 
 export type NodePositionResults = {

@@ -185,17 +185,15 @@ document
   ?.addEventListener('click', (event: MouseEvent) => {
     add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Organization, state);
   });
-document.getElementById('create-node-' + NodeType[NodeType.Plot])?.addEventListener('click', (event: MouseEvent) => {
-  add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Plot, state);
+document.getElementById('create-node-' + NodeType[NodeType.Event])?.addEventListener('click', (event: MouseEvent) => {
+  add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Event, state);
 });
 document.getElementById('create-node-' + NodeType[NodeType.Story])?.addEventListener('click', (event: MouseEvent) => {
   add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Story, state);
 });
-document
-  .getElementById('create-node-' + NodeType[NodeType.Relation])
-  ?.addEventListener('click', (event: MouseEvent) => {
-    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Relation, state);
-  });
+document.getElementById('create-node-' + NodeType[NodeType.Lore])?.addEventListener('click', (event: MouseEvent) => {
+  add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Lore, state);
+});
 
 const download = (filename: string, text: string): void => {
   const element = document.createElement('a');

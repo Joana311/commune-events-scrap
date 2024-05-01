@@ -41,9 +41,9 @@ export const add_node = (location, type, state) => {
                 node = Object.assign(Object.assign({}, base), { objective: '', detail: '' });
             }
             break;
-        case NodeType.Plot:
+        case NodeType.Event:
             {
-                node = Object.assign(Object.assign({}, base), { description: '', events: '', aftermath: '' });
+                node = Object.assign(Object.assign({}, base), { detail: '' });
             }
             break;
         case NodeType.Story:
@@ -51,9 +51,9 @@ export const add_node = (location, type, state) => {
                 node = Object.assign(Object.assign({}, base), { description: '' });
             }
             break;
-        case NodeType.Relation:
+        case NodeType.Lore:
             {
-                node = Object.assign(Object.assign({}, base), { history: '', conflict: '', description: '' });
+                node = Object.assign(Object.assign({}, base), { detail: '' });
             }
             break;
         default:
@@ -87,7 +87,7 @@ const get_icon = (type) => {
                 backgroundColor = '#000000';
             }
             break;
-        case NodeType.Plot:
+        case NodeType.Event:
             {
                 color = '#FFFFFF';
                 backgroundColor = '#000000';
@@ -99,7 +99,7 @@ const get_icon = (type) => {
                 backgroundColor = '#000000';
             }
             break;
-        case NodeType.Relation:
+        case NodeType.Lore:
             {
                 color = '#FFFFFF';
                 backgroundColor = '#000000';
@@ -112,8 +112,7 @@ const get_icon = (type) => {
             }
             break;
     }
-    const text = ((_a = document
-        .getElementById('create-node-' + NodeType[type])) === null || _a === void 0 ? void 0 : _a.getElementsByClassName('material-icons')[0]).innerText;
+    const text = ((_a = document.getElementById('create-node-' + NodeType[type])) === null || _a === void 0 ? void 0 : _a.getElementsByClassName('material-icons')[0]).innerText;
     return { color, backgroundColor, text };
 };
 export const create_node_element = (node, state) => {
@@ -179,36 +178,18 @@ export const create_node_element = (node, state) => {
                 }, false);
             }
             break;
-        case NodeType.Plot:
+        case NodeType.Event:
             {
                 newNodeElement.innerHTML += `
-          <button class="accordion">Description</button>
+          <button class="accordion">Details</button>
           <div class="panel" style="max-height: 0px;">
-            <textarea>${node.description}</textarea>
-          </div>
-          <button class="accordion">Events</button>
-          <div class="panel" style="max-height: 0px;">
-            <textarea>${node.events}</textarea>
-          </div>
-          <button class="accordion">Aftermath</button>
-          <div class="panel" style="max-height: 0px;">
-            <textarea>${node.aftermath}</textarea>
+            <textarea>${node.detail}</textarea>
           </div>
         `;
-                const textarea_description = newNodeElement.getElementsByTagName('textarea')[0];
+                const textarea_detail = newNodeElement.getElementsByTagName('textarea')[0];
                 // prettier-ignore
-                textarea_description.addEventListener('input', () => {
-                    node.description = textarea_description.value;
-                }, false);
-                const textarea_events = newNodeElement.getElementsByTagName('textarea')[1];
-                // prettier-ignore
-                textarea_events.addEventListener('input', () => {
-                    node.events = textarea_events.value;
-                }, false);
-                const textarea_aftermath = newNodeElement.getElementsByTagName('textarea')[2];
-                // prettier-ignore
-                textarea_aftermath.addEventListener('input', () => {
-                    node.aftermath = textarea_aftermath.value;
+                textarea_detail.addEventListener('input', () => {
+                    node.detail = textarea_detail.value;
                 }, false);
             }
             break;
@@ -227,36 +208,18 @@ export const create_node_element = (node, state) => {
                 }, false);
             }
             break;
-        case NodeType.Relation:
+        case NodeType.Lore:
             {
                 newNodeElement.innerHTML += `
-          <button class="accordion">History</button>
+          <button class="accordion">Details</button>
           <div class="panel" style="max-height: 0px;">
-            <textarea>${node.history}</textarea>
-          </div>
-          <button class="accordion">Conflict</button>
-          <div class="panel" style="max-height: 0px;">
-            <textarea>${node.conflict}</textarea>
-          </div>
-          <button class="accordion">Description</button>
-          <div class="panel" style="max-height: 0px;">
-            <textarea>${node.description}</textarea>
+            <textarea>${node.detail}</textarea>
           </div>
         `;
-                const textarea_history = newNodeElement.getElementsByTagName('textarea')[0];
+                const textarea_detail = newNodeElement.getElementsByTagName('textarea')[0];
                 // prettier-ignore
-                textarea_history.addEventListener('input', () => {
-                    node.history = textarea_history.value;
-                }, false);
-                const textarea_conflict = newNodeElement.getElementsByTagName('textarea')[1];
-                // prettier-ignore
-                textarea_conflict.addEventListener('input', () => {
-                    node.conflict = textarea_conflict.value;
-                }, false);
-                const textarea_description = newNodeElement.getElementsByTagName('textarea')[2];
-                // prettier-ignore
-                textarea_description.addEventListener('input', () => {
-                    node.description = textarea_description.value;
+                textarea_detail.addEventListener('input', () => {
+                    node.detail = textarea_detail.value;
                 }, false);
             }
             break;

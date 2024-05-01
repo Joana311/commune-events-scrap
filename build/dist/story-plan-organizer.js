@@ -165,15 +165,14 @@ function keyupResponse(event, state) {
     .getElementById('create-node-' + NodeType[NodeType.Organization])) === null || _c === void 0 ? void 0 : _c.addEventListener('click', (event) => {
     add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Organization, state);
 });
-(_d = document.getElementById('create-node-' + NodeType[NodeType.Plot])) === null || _d === void 0 ? void 0 : _d.addEventListener('click', (event) => {
-    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Plot, state);
+(_d = document.getElementById('create-node-' + NodeType[NodeType.Event])) === null || _d === void 0 ? void 0 : _d.addEventListener('click', (event) => {
+    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Event, state);
 });
 (_e = document.getElementById('create-node-' + NodeType[NodeType.Story])) === null || _e === void 0 ? void 0 : _e.addEventListener('click', (event) => {
     add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Story, state);
 });
-(_f = document
-    .getElementById('create-node-' + NodeType[NodeType.Relation])) === null || _f === void 0 ? void 0 : _f.addEventListener('click', (event) => {
-    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Relation, state);
+(_f = document.getElementById('create-node-' + NodeType[NodeType.Lore])) === null || _f === void 0 ? void 0 : _f.addEventListener('click', (event) => {
+    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Lore, state);
 });
 const download = (filename, text) => {
     const element = document.createElement('a');

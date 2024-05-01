@@ -3,9 +3,9 @@ export var NodeType;
     NodeType["Character"] = "Character";
     NodeType["Location"] = "Location";
     NodeType["Organization"] = "Organization";
-    NodeType["Plot"] = "Plot";
+    NodeType["Event"] = "Event";
     NodeType["Story"] = "Story";
-    NodeType["Relation"] = "Relation";
+    NodeType["Lore"] = "Lore";
 })(NodeType || (NodeType = {}));
 export var CharacterImportance;
 (function (CharacterImportance) {
