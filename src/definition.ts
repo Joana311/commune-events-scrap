@@ -1,30 +1,27 @@
 import { UUID } from './uuid.js';
 
-/**
- * Node Type.
- */
 export enum NodeType {
-  Character,
-  Location,
-  Organization,
-  Plot,
-  Story,
-  Relation,
+  Character = 'Character',
+  Location = 'Location',
+  Organization = 'Organization',
+  Plot = 'Plot',
+  Story = 'Story',
+  Relation = 'Relation',
 }
 
 export enum NodeStatus {
-  None,
-  Good,
-  Maybe,
-  Investigate,
-  Rejected,
+  None = 'None',
+  Good = 'Good',
+  Maybe = 'Maybe',
+  Investigate = 'Investigate',
+  Rejected = 'Rejected',
 }
 
 export enum CharacterImportance {
-  Other,
-  Main,
-  Supporting,
-  Minor,
+  Other = 'Other',
+  Main = 'Main',
+  Supporting = 'Supporting',
+  Minor = 'Minor',
 }
 
 /**
