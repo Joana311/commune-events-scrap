@@ -167,7 +167,7 @@ export const create_node_element = (node: Node, state: State): void => {
       break;
     case NodeType.Organization:
       {
-        const iconText = (
+        const iconText: string = (
           document
             .getElementById('create-node-organization')
             ?.getElementsByClassName('material-icons')[0] as HTMLElement
@@ -186,11 +186,11 @@ export const create_node_element = (node: Node, state: State): void => {
               <input class='name' value='${node.name}'></input>
             </div>
           </div>
+        `;
+        newNodeElement.innerHTML += `
           <button class="accordion">Objective</button>
           <div class="panel" style="max-height: 0px;">
-            <textarea>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </textarea>
+            <textarea>${(node as Organization).objective}</textarea>
           </div>
           <button class="accordion">Description</button>
           <div class="panel" style="max-height: 0px;">
