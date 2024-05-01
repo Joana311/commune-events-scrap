@@ -143,7 +143,6 @@ export const create_node_element = (node: Node, state: State): void => {
   const input_name = newNodeElement.getElementsByClassName('node-name')[0] as HTMLInputElement;
   // prettier-ignore
   input_name.addEventListener('input', (): void => {
-    console.log('\n\n\n\nPOINT_B\n\n\n\n');
     node.name = input_name.value;
   }, false);
 
@@ -152,48 +151,14 @@ export const create_node_element = (node: Node, state: State): void => {
   button_status.addEventListener('click', (): void => {
     //node.status = NodeStatus[button_status.value];
     node.status = NodeStatus.Investigate;
+    refresh(state);
   }, false);
 
   const input_color = newNodeElement.getElementsByClassName('node-color')[0] as HTMLInputElement;
   // prettier-ignore
   input_color.addEventListener('input', (): void => {
-    console.log(input_color.value);
     node.color = input_color.value as Color_Hex;
   }, false);
-
-
-  /*
-  console.log('\n\n\n\nPOINT_C');
-  const temp = newNodeElement.getElementsByTagName('input');
-  for (let i = 0; i < temp.length; i++) {
-    console.log(temp[i]);
-    temp[i].addEventListener('input', (): void => {
-      console.log('aaaaaaaaaaaaaaa');
-    })
-  }
-  console.log('\n\n\n\n');
-  */
-
-
-
-
-/*
-
-  newNodeElement.innerHTML += `
-  <div>
-    <input class='node-name' value='${node.name}'></input>
-    </div>
-`;
-const temp1 = newNodeElement.getElementsByClassName('node-name')[0];
-
-console.log(temp1);
-// prettier-ignore
-temp1.addEventListener('input', (): void => {
-  console.log('\n\n\n\nPOINT_G');
-  console.log('\n\n\n\n');
-}, false);
-*/
-
 
   switch (node.type) {
     case NodeType.Character:

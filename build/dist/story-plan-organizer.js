@@ -53,6 +53,13 @@ export const refresh = (state) => {
             }
         }
     }
+    for (const node of state.nodes) {
+        const nodeElement = get_node_element(node.id);
+        if (nodeElement) {
+            const button_status = nodeElement.getElementsByClassName('node-status')[0];
+            button_status.innerHTML = node.status;
+        }
+    }
     redraw_lines(state);
 };
 const clear = (state) => {
