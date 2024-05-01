@@ -1,6 +1,6 @@
 import { Dto, NodeType, State } from './definition.js';
 import { UUID } from './uuid.js';
-import { add_node, create_node_element, get_node, get_node_element } from './node.js';
+import { add_node, create_node_element, get_icon, get_node, get_node_element } from './node.js';
 import { redraw_lines } from './link.js';
 
 export const refresh = (state: State): void => {
@@ -170,16 +170,11 @@ function keyupResponse(event: KeyboardEvent, state: State): void {
   }
 }
 
-document
-  .getElementById('create-node-' + NodeType[NodeType.Character])
-  ?.addEventListener('click', (event: MouseEvent) => {
+const button_create_character = document.getElementById('create-node-' + NodeType[NodeType.Character]);
+button_create_character?.addEventListener('click', (event: MouseEvent) => {
     add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Character, state);
   });
-//document.getElementById('create-node-' + NodeType[NodeType.Character])?.firstElementChild?.style.color = '#FF0000';
-console.log(document.getElementById('create-node-' + NodeType[NodeType.Character])?.firstElementChild);
-console.log(document.getElementById('create-node-' + NodeType[NodeType.Character])?.firstElementChild as HTMLElement);
-(document.getElementById('create-node-' + NodeType[NodeType.Character])?.firstElementChild as HTMLElement).style.color = '#FF0000';
-
+(button_create_character?.firstElementChild as HTMLElement).style.color = get_icon(NodeType.Character).color;
 
 document
   .getElementById('create-node-' + NodeType[NodeType.Location])

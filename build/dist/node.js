@@ -64,7 +64,7 @@ export const add_node = (location, type, state) => {
         validate(state);
     }
 };
-const get_icon = (type) => {
+export const get_icon = (type) => {
     var _a;
     let color;
     let backgroundColor = '#DEF4FF';

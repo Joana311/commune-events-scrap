@@ -113,7 +113,7 @@ export const add_node = (location: Point, type: NodeType, state: State): void =>
   }
 };
 
-const get_icon = (type: NodeType): { color: Color_Hex; backgroundColor: Color_Hex; text: string } => {
+export const get_icon = (type: NodeType): { color: Color_Hex; backgroundColor: Color_Hex; text: string } => {
   let color: Color_Hex;
   let backgroundColor: Color_Hex = '#DEF4FF';
   switch (type) {
