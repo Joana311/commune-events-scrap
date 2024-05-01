@@ -137,10 +137,7 @@ export const create_node_element = (node: Node, state: State): void => {
         <i class="material-icons" style="user-select: none; font-size: 40px;">${iconText}</i>
         <span class="tooltip-text">${NodeType[node.type]}</span>
       </div>
-      <div class='tooltip'>
-        <input class='node-name' value='${node.name}'></input>
-        <span class="tooltip-text">${node.name}</span>
-      </div>
+      <input class='node-name' value='${node.name}'></input>
       <input class="node-color" type="color" value="${node.color}">
     </div>
   `;
