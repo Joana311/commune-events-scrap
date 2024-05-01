@@ -111,6 +111,7 @@ body
 {
     flex: 1;
     border: 0px;
+    text-align: end;
 }
 
 .node-color

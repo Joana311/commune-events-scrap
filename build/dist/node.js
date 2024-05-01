@@ -136,6 +136,7 @@ export const create_node_element = (node, state) => {
     // prettier-ignore
     input_color.addEventListener('input', () => {
         node.color = input_color.value;
+        newNodeElement.style.borderColor = node.color;
     }, false);
     switch (node.type) {
         case NodeType.Character:
