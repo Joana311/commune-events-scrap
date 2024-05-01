@@ -153,48 +153,13 @@ function keyupResponse(event, state) {
         state.deleting = false;
     }
 }
-const nodeTypes = [
-    NodeType.Character,
-    NodeType.Location,
-    NodeType.Organization,
-    NodeType.Event,
-    NodeType.Story,
-    NodeType.Lore,
-];
-for (const nodeType of nodeTypes) {
+for (const nodeType of [NodeType.Character, NodeType.Location, NodeType.Organization, NodeType.Event, NodeType.Story, NodeType.Lore]) {
     const button_create_character = document.getElementById('create-node-' + NodeType[nodeType]);
     button_create_character === null || button_create_character === void 0 ? void 0 : button_create_character.addEventListener('click', (event) => {
         add_node({ x: event.x - 20, y: event.y - 20 }, nodeType, state);
     });
     (button_create_character === null || button_create_character === void 0 ? void 0 : button_create_character.firstElementChild).style.color = get_icon(nodeType).color;
 }
-/*
-const button_create_character = document.getElementById('create-node-' + NodeType[NodeType.Character]);
-button_create_character?.addEventListener('click', (event: MouseEvent) => {
-    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Character, state);
-  });
-(button_create_character?.firstElementChild as HTMLElement).style.color = get_icon(NodeType.Character).color;
-
-document
-  .getElementById('create-node-' + NodeType[NodeType.Location])
-  ?.addEventListener('click', (event: MouseEvent) => {
-    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Location, state);
-  });
-document
-  .getElementById('create-node-' + NodeType[NodeType.Organization])
-  ?.addEventListener('click', (event: MouseEvent) => {
-    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Organization, state);
-  });
-document.getElementById('create-node-' + NodeType[NodeType.Event])?.addEventListener('click', (event: MouseEvent) => {
-  add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Event, state);
-});
-document.getElementById('create-node-' + NodeType[NodeType.Story])?.addEventListener('click', (event: MouseEvent) => {
-  add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Story, state);
-});
-document.getElementById('create-node-' + NodeType[NodeType.Lore])?.addEventListener('click', (event: MouseEvent) => {
-  add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Lore, state);
-});
-*/
 const download = (filename, text) => {
     const element = document.createElement('a');
     element.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(text));
@@ -230,9 +195,17 @@ if (inputImportFileElement) {
             console.log(event);
             if (event.target && event.target.result) {
                 //console.log(event.target.result);
-                const obj = JSON.parse(event.target.result);
-                console.log(obj);
-                load(obj, state);
+                try {
+                    const obj = JSON.parse(event.target.result);
+                    console.log(obj);
+                    if (!obj) {
+                        throw new Error('aaaaaaaa');
+                    }
+                    load(obj, state);
+                }
+                catch (e) {
+                    console.error('Error: Invalid JSON file.');
+                }
             }
         }
     };

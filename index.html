@@ -47,11 +47,11 @@
       </div>
 
       <div style="display: flex; gap: 2px; border: 1px solid gray; padding: 10px;">
+        <input id="inputImportFile" type="file" accept=".json">
         <button class="toolbar-button tooltip" onclick="inputImportFile.click()">
           <i class="material-icons icon" style="font-size: 50px;">publish</i>
           <span class="tooltip-text">Import</span>
         </button>
-        <input id="inputImportFile" type="file" accept=".json">
 
         <button id="export" class="toolbar-button tooltip">
           <i class="material-icons icon" style="font-size: 50px;">download</i>
@@ -73,8 +73,5 @@
       - Have Undo button: Undo Delete Node/Link
     - Import
       - Confirm valid Dto before importing, too much work, but at least verify it is valid json and catch any errors
-    - Don't make line near the corners
-    - Wrap toolbar in flex
-    - get icons from toolbar icon colors
   -->
 </html>
