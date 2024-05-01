@@ -122,7 +122,8 @@ export const create_node_element = (node: Node, state: State): void => {
       .getElementById('create-node-' + NodeType[node.type])
       ?.getElementsByClassName('material-icons')[0] as HTMLElement
   ).innerText;
-  newNodeElement.innerHTML = `
+  newNodeElement.innerHTML = '';
+  newNodeElement.innerHTML += `
     <div style="display: flex;">
       <div class='move tooltip'>
         <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
@@ -140,14 +141,12 @@ export const create_node_element = (node: Node, state: State): void => {
     </div>
   `;
   
-  /*
   const input_name = newNodeElement.getElementsByClassName('node-name')[0] as HTMLInputElement;
   // prettier-ignore
   input_name.addEventListener('input', (): void => {
     console.log('\n\n\n\nPOINT_B\n\n\n\n');
     node.name = input_name.value;
   }, false);
-  */
 
   const button_status = newNodeElement.getElementsByClassName('node-status')[0] as HTMLButtonElement;
   // prettier-ignore
@@ -179,7 +178,7 @@ export const create_node_element = (node: Node, state: State): void => {
 
 
 
-
+/*
 
   newNodeElement.innerHTML += `
   <div>
@@ -194,7 +193,7 @@ temp1.addEventListener('input', (): void => {
   console.log('\n\n\n\nPOINT_G');
   console.log('\n\n\n\n');
 }, false);
-
+*/
 
 
   switch (node.type) {

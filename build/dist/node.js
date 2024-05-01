@@ -64,7 +64,8 @@ export const create_node_element = (node, state) => {
     newNodeElement.style.borderColor = node.color;
     const iconText = ((_a = document
         .getElementById('create-node-' + NodeType[node.type])) === null || _a === void 0 ? void 0 : _a.getElementsByClassName('material-icons')[0]).innerText;
-    newNodeElement.innerHTML = `
+    newNodeElement.innerHTML = '';
+    newNodeElement.innerHTML += `
     <div style="display: flex;">
       <div class='move tooltip'>
         <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
@@ -81,14 +82,12 @@ export const create_node_element = (node, state) => {
       </div>
     </div>
   `;
-    /*
-    const input_name = newNodeElement.getElementsByClassName('node-name')[0] as HTMLInputElement;
+    const input_name = newNodeElement.getElementsByClassName('node-name')[0];
     // prettier-ignore
-    input_name.addEventListener('input', (): void => {
-      console.log('\n\n\n\nPOINT_B\n\n\n\n');
-      node.name = input_name.value;
+    input_name.addEventListener('input', () => {
+        console.log('\n\n\n\nPOINT_B\n\n\n\n');
+        node.name = input_name.value;
     }, false);
-    */
     const button_status = newNodeElement.getElementsByClassName('node-status')[0];
     // prettier-ignore
     button_status.addEventListener('click', () => {
@@ -112,18 +111,22 @@ export const create_node_element = (node, state) => {
     }
     console.log('\n\n\n\n');
     */
-    newNodeElement.innerHTML += `
-  <div>
-    <input class='node-name' value='${node.name}'></input>
-    </div>
-`;
+    /*
+    
+      newNodeElement.innerHTML += `
+      <div>
+        <input class='node-name' value='${node.name}'></input>
+        </div>
+    `;
     const temp1 = newNodeElement.getElementsByClassName('node-name')[0];
+    
     console.log(temp1);
     // prettier-ignore
-    temp1.addEventListener('input', () => {
-        console.log('\n\n\n\nPOINT_G');
-        console.log('\n\n\n\n');
+    temp1.addEventListener('input', (): void => {
+      console.log('\n\n\n\nPOINT_G');
+      console.log('\n\n\n\n');
     }, false);
+    */
     switch (node.type) {
         case NodeType.Character:
             {
