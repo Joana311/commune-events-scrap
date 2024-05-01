@@ -158,39 +158,6 @@ export const create_node_element = (node: Node, state: State): void => {
             <textarea>${(node as Organization).description}</textarea>
           </div>
         `;
-        const accordions = newNodeElement.getElementsByClassName('accordion');
-        for (let i = 0; i < accordions.length; i++) {
-          accordions[i].addEventListener('click', (): void => {
-            accordions[i].classList.toggle('active');
-            const panel = accordions[i].nextElementSibling as HTMLDivElement;
-            if (panel) {
-              if (panel.style.maxHeight === '0px') {
-                panel.style.maxHeight = '100%';
-              } else {
-                panel.style.maxHeight = '0px';
-              }
-            }
-
-            const textarea = panel.getElementsByTagName('textarea')[0];
-            textarea.setAttribute('style', 'height:' + textarea.scrollHeight + 'px; overflow-y:hidden;');
-            textarea.addEventListener(
-              'input',
-              () => {
-                textarea.style.height = 'auto';
-                textarea.style.height = textarea.scrollHeight + 'px';
-              },
-              false,
-            );
-
-            redraw_lines(state);
-          });
-
-          const panel = accordions[i].nextElementSibling as HTMLDivElement;
-          const textarea = panel.getElementsByTagName('textarea')[0];
-          if (textarea.value !== '') {
-            (accordions[i] as HTMLElement).click();
-          }
-        }
       }
       break;
     case NodeType.Plot:
@@ -209,9 +176,47 @@ export const create_node_element = (node: Node, state: State): void => {
       break;
   }
 
+  setup_accordions(newNodeElement, state);
+
   drag_node_element(newElement, state);
 
   state.nodesCached.push(newElement);
+};
+
+const setup_accordions = (nodeElement: HTMLDivElement, state: State): void => {
+  const accordions = nodeElement.getElementsByClassName('accordion');
+  for (let i = 0; i < accordions.length; i++) {
+    accordions[i].addEventListener('click', (): void => {
+      accordions[i].classList.toggle('active');
+      const panel = accordions[i].nextElementSibling as HTMLDivElement;
+      if (panel) {
+        if (panel.style.maxHeight === '0px') {
+          panel.style.maxHeight = '100%';
+        } else {
+          panel.style.maxHeight = '0px';
+        }
+      }
+
+      const textarea = panel.getElementsByTagName('textarea')[0];
+      textarea.setAttribute('style', 'height:' + textarea.scrollHeight + 'px; overflow-y:hidden;');
+      textarea.addEventListener(
+        'input',
+        () => {
+          textarea.style.height = 'auto';
+          textarea.style.height = textarea.scrollHeight + 'px';
+        },
+        false,
+      );
+
+      redraw_lines(state);
+    });
+
+    const panel = accordions[i].nextElementSibling as HTMLDivElement;
+    const textarea = panel.getElementsByTagName('textarea')[0];
+    if (textarea.value !== '') {
+      (accordions[i] as HTMLElement).click();
+    }
+  }
 };
 
 const drag_node_element = (element: HTMLDivElement, state: State): void => {

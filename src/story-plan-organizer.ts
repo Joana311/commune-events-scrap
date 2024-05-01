@@ -55,8 +55,6 @@ export const refresh = (state: State): void => {
   }
 
   redraw_lines(state);
-
-  console.log(state);
 };
 
 const clear = (state: State): void => {
@@ -87,10 +85,6 @@ const reset = (state: State): void => {
   state.selectedNodeElement = null;
   state.createOngoingLinkId = null;
   state.deleting = false;
-
-  console.log('\n\n\nPOINT_A');
-  console.log(state);
-  console.log('\n\n\n');
 };
 
 // Does not handle refreshing, just validating

@@ -100,33 +100,6 @@ export const create_node_element = (node, state) => {
             <textarea>${node.description}</textarea>
           </div>
         `;
-                const accordions = newNodeElement.getElementsByClassName('accordion');
-                for (let i = 0; i < accordions.length; i++) {
-                    accordions[i].addEventListener('click', () => {
-                        accordions[i].classList.toggle('active');
-                        const panel = accordions[i].nextElementSibling;
-                        if (panel) {
-                            if (panel.style.maxHeight === '0px') {
-                                panel.style.maxHeight = '100%';
-                            }
-                            else {
-                                panel.style.maxHeight = '0px';
-                            }
-                        }
-                        const textarea = panel.getElementsByTagName('textarea')[0];
-                        textarea.setAttribute('style', 'height:' + textarea.scrollHeight + 'px; overflow-y:hidden;');
-                        textarea.addEventListener('input', () => {
-                            textarea.style.height = 'auto';
-                            textarea.style.height = textarea.scrollHeight + 'px';
-                        }, false);
-                        redraw_lines(state);
-                    });
-                    const panel = accordions[i].nextElementSibling;
-                    const textarea = panel.getElementsByTagName('textarea')[0];
-                    if (textarea.value !== '') {
-                        accordions[i].click();
-                    }
-                }
             }
             break;
         case NodeType.Plot:
@@ -144,8 +117,38 @@ export const create_node_element = (node, state) => {
         default:
             break;
     }
+    setup_accordions(newNodeElement, state);
     drag_node_element(newElement, state);
     state.nodesCached.push(newElement);
+};
+const setup_accordions = (nodeElement, state) => {
+    const accordions = nodeElement.getElementsByClassName('accordion');
+    for (let i = 0; i < accordions.length; i++) {
+        accordions[i].addEventListener('click', () => {
+            accordions[i].classList.toggle('active');
+            const panel = accordions[i].nextElementSibling;
+            if (panel) {
+                if (panel.style.maxHeight === '0px') {
+                    panel.style.maxHeight = '100%';
+                }
+                else {
+                    panel.style.maxHeight = '0px';
+                }
+            }
+            const textarea = panel.getElementsByTagName('textarea')[0];
+            textarea.setAttribute('style', 'height:' + textarea.scrollHeight + 'px; overflow-y:hidden;');
+            textarea.addEventListener('input', () => {
+                textarea.style.height = 'auto';
+                textarea.style.height = textarea.scrollHeight + 'px';
+            }, false);
+            redraw_lines(state);
+        });
+        const panel = accordions[i].nextElementSibling;
+        const textarea = panel.getElementsByTagName('textarea')[0];
+        if (textarea.value !== '') {
+            accordions[i].click();
+        }
+    }
 };
 const drag_node_element = (element, state) => {
     let pos1 = 0;
