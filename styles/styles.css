@@ -109,8 +109,8 @@ body
 
 .node-color
 {
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 60px;
     border: 0px;
     padding: 0px;
     margin: 0px;
@@ -119,6 +119,7 @@ body
 .node-name
 {
     flex: 1;
+    height: 58px;
     font-size: 26px;
     font-weight: bold;
     letter-spacing: 2px;
