@@ -176,24 +176,35 @@ function keyupResponse(event: KeyboardEvent, state: State): void {
   }
 }
 
-document.getElementById('create-node-character')?.addEventListener('click', (event: MouseEvent) => {
+
+for (const type in NodeType) {
+  document.getElementById('create-node-' + NodeType[type])?.addEventListener('click', (event: MouseEvent) => {
+    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Character, state);
+  });
+  console.log(type);
+  console.log(NodeType[type]);
+  console.log('\n\n\n');
+}
+/*
+document.getElementById('create-node-' + NodeType[NodeType.Character])?.addEventListener('click', (event: MouseEvent) => {
   add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Character, state);
 });
-document.getElementById('create-node-location')?.addEventListener('click', (event: MouseEvent) => {
+document.getElementById('create-node-' + NodeType[NodeType.Location])?.addEventListener('click', (event: MouseEvent) => {
   add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Location, state);
 });
-document.getElementById('create-node-organization')?.addEventListener('click', (event: MouseEvent) => {
+document.getElementById('create-node-' + NodeType[NodeType.Organization])?.addEventListener('click', (event: MouseEvent) => {
   add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Organization, state);
 });
-document.getElementById('create-node-plot')?.addEventListener('click', (event: MouseEvent) => {
+document.getElementById('create-node-' + NodeType[NodeType.Plot])?.addEventListener('click', (event: MouseEvent) => {
   add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Plot, state);
 });
-document.getElementById('create-node-story')?.addEventListener('click', (event: MouseEvent) => {
+document.getElementById('create-node-' + NodeType[NodeType.Story])?.addEventListener('click', (event: MouseEvent) => {
   add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Story, state);
 });
-document.getElementById('create-node-relation')?.addEventListener('click', (event: MouseEvent) => {
+document.getElementById('create-node-' + NodeType[NodeType.Relation])?.addEventListener('click', (event: MouseEvent) => {
   add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Relation, state);
 });
+*/
 
 const download = (filename: string, text: string): void => {
   const element = document.createElement('a');

@@ -1,4 +1,4 @@
-var _a, _b, _c, _d, _e, _f, _g;
+var _a, _b;
 import { NodeType } from './definition.js';
 import { add_node, create_node_element, get_node, get_node_element } from './node.js';
 import { redraw_lines } from './link.js';
@@ -157,24 +157,34 @@ function keyupResponse(event, state) {
         state.deleting = false;
     }
 }
-(_a = document.getElementById('create-node-character')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', (event) => {
-    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Character, state);
+for (const type in NodeType) {
+    (_a = document.getElementById('create-node-' + NodeType[type])) === null || _a === void 0 ? void 0 : _a.addEventListener('click', (event) => {
+        add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Character, state);
+    });
+    console.log(type);
+    console.log(NodeType[type]);
+    console.log('\n\n\n');
+}
+/*
+document.getElementById('create-node-' + NodeType[NodeType.Character])?.addEventListener('click', (event: MouseEvent) => {
+  add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Character, state);
 });
-(_b = document.getElementById('create-node-location')) === null || _b === void 0 ? void 0 : _b.addEventListener('click', (event) => {
-    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Location, state);
+document.getElementById('create-node-' + NodeType[NodeType.Location])?.addEventListener('click', (event: MouseEvent) => {
+  add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Location, state);
 });
-(_c = document.getElementById('create-node-organization')) === null || _c === void 0 ? void 0 : _c.addEventListener('click', (event) => {
-    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Organization, state);
+document.getElementById('create-node-' + NodeType[NodeType.Organization])?.addEventListener('click', (event: MouseEvent) => {
+  add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Organization, state);
 });
-(_d = document.getElementById('create-node-plot')) === null || _d === void 0 ? void 0 : _d.addEventListener('click', (event) => {
-    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Plot, state);
+document.getElementById('create-node-' + NodeType[NodeType.Plot])?.addEventListener('click', (event: MouseEvent) => {
+  add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Plot, state);
 });
-(_e = document.getElementById('create-node-story')) === null || _e === void 0 ? void 0 : _e.addEventListener('click', (event) => {
-    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Story, state);
+document.getElementById('create-node-' + NodeType[NodeType.Story])?.addEventListener('click', (event: MouseEvent) => {
+  add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Story, state);
 });
-(_f = document.getElementById('create-node-relation')) === null || _f === void 0 ? void 0 : _f.addEventListener('click', (event) => {
-    add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Relation, state);
+document.getElementById('create-node-' + NodeType[NodeType.Relation])?.addEventListener('click', (event: MouseEvent) => {
+  add_node({ x: event.x - 20, y: event.y - 20 }, NodeType.Relation, state);
 });
+*/
 const download = (filename, text) => {
     const element = document.createElement('a');
     element.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(text));
@@ -184,7 +194,7 @@ const download = (filename, text) => {
     element.click();
     document.body.removeChild(element);
 };
-(_g = document.getElementById('export')) === null || _g === void 0 ? void 0 : _g.addEventListener('click', () => {
+(_b = document.getElementById('export')) === null || _b === void 0 ? void 0 : _b.addEventListener('click', () => {
     console.log(state);
     const fileName = 'exported.json';
     const dto = { nodes: state.nodes, links: state.links };
