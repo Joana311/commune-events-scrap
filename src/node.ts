@@ -134,9 +134,7 @@ export const create_node_element = (node: Node, state: State): void => {
           <button class="node-status">${NodeStatus[node.status]}</button>
           <input class="node-color" type="color" value="${node.color}">
         </div>
-        <!--
         <input class='node-name' value='${node.name}'></input>
-        -->
       </div>
     </div>
   `;
