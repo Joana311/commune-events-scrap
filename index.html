@@ -39,13 +39,18 @@
         </div>
       </div>
       
-      <button id="undo-delete" class="toolbar-button tooltip">
-        <i class="material-icons icon" style="font-size: 50px;">undo</i>
-        <span class="tooltip-text">Undo Delete</span>
-      </button>
+      <div style="display: flex; gap: 2px; border: 1px solid gray; padding: 10px;">
+        <button id="undo-delete" class="toolbar-button tooltip">
+          <i class="material-icons icon" style="font-size: 50px;">undo</i>
+          <span class="tooltip-text">Undo Delete</span>
+        </button>
+      </div>
 
-      <div style="display: flex; gap: 2px;">
-        <button onclick="inputImportFile.click()">Import</button>
+      <div style="display: flex; gap: 2px; border: 1px solid gray; padding: 10px;">
+        <button class="toolbar-button tooltip" onclick="inputImportFile.click()">
+          <i class="material-icons icon" style="font-size: 50px;">publish</i>
+          <span class="tooltip-text">Import</span>
+        </button>
         <input id="inputImportFile" type="file" accept=".json">
 
         <button id="export" class="toolbar-button tooltip">
