@@ -152,7 +152,10 @@ export const create_node_element = (node: Node, state: State): void => {
   }, false);
 
 
-  console.log('POINT_A\n\n\n\n');
+  console.log('\n\n\n\nPOINT_A');
+  console.log(newNodeElement.getElementsByClassName('node-color')[0]);
+  console.log(newNodeElement.getElementsByClassName('node-color')[0] as HTMLInputElement);
+  console.log('\n\n\n\n');
 
 
   const input_color = newNodeElement.getElementsByClassName('node-color')[0] as HTMLInputElement;

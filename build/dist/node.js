@@ -90,7 +90,10 @@ export const create_node_element = (node, state) => {
         //node.status = NodeStatus[button_status.value];
         node.status = NodeStatus.Investigate;
     }, false);
-    console.log('POINT_A\n\n\n\n');
+    console.log('\n\n\n\nPOINT_A');
+    console.log(newNodeElement.getElementsByClassName('node-color')[0]);
+    console.log(newNodeElement.getElementsByClassName('node-color')[0]);
+    console.log('\n\n\n\n');
     const input_color = newNodeElement.getElementsByClassName('node-color')[0];
     // prettier-ignore
     input_color.addEventListener('input', () => {
