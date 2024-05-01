@@ -92,12 +92,19 @@ export const create_node_element = (node, state) => {
     }, false);
     const input_color = newNodeElement.getElementsByClassName('node-color')[0];
     // prettier-ignore
-    input_color.addEventListener('change', () => {
+    input_color.addEventListener('input', () => {
         console.log(input_color.value);
         node.color = input_color.value;
     }, false);
+    const input_color_temp = newNodeElement.getElementsByTagName('input')[0];
+    // prettier-ignore
+    input_color_temp.addEventListener('input', () => {
+        console.log(input_color_temp.value);
+        node.color = input_color_temp.value;
+    }, false);
     console.log('\n\n\n\nPOINT_A');
     console.log(input_color);
+    console.log(input_color_temp);
     console.log('\n\n\n\n');
     switch (node.type) {
         case NodeType.Character:
