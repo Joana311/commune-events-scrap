@@ -75,7 +75,7 @@ export const add_node = (location: Point, type: NodeType, state: State): void =>
         node = {
           ...base,
           objective: '',
-          description: '',
+          detail: '',
         } as Organization;
       }
       break;
@@ -223,9 +223,9 @@ export const create_node_element = (node: Node, state: State): void => {
           <div class="panel" style="max-height: 0px;">
             <textarea>${(node as Organization).objective}</textarea>
           </div>
-          <button class="accordion">Description</button>
+          <button class="accordion">Details</button>
           <div class="panel" style="max-height: 0px;">
-            <textarea>${(node as Organization).description}</textarea>
+            <textarea>${(node as Organization).detail}</textarea>
           </div>
         `;
         const textarea_objective = newNodeElement.getElementsByTagName('textarea')[0];
@@ -233,10 +233,10 @@ export const create_node_element = (node: Node, state: State): void => {
         textarea_objective.addEventListener('input', (): void => {
           (node as Organization).objective = textarea_objective.value;
         }, false);
-        const textarea_description = newNodeElement.getElementsByTagName('textarea')[1];
+        const textarea_detail = newNodeElement.getElementsByTagName('textarea')[1];
         // prettier-ignore
-        textarea_description.addEventListener('input', (): void => {
-          (node as Organization).description = textarea_description.value;
+        textarea_detail.addEventListener('input', (): void => {
+          (node as Organization).detail = textarea_detail.value;
         }, false);
       }
       break;

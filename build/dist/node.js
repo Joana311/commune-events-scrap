@@ -38,7 +38,7 @@ export const add_node = (location, type, state) => {
             break;
         case NodeType.Organization:
             {
-                node = Object.assign(Object.assign({}, base), { objective: '', description: '' });
+                node = Object.assign(Object.assign({}, base), { objective: '', detail: '' });
             }
             break;
         case NodeType.Plot:
@@ -162,9 +162,9 @@ export const create_node_element = (node, state) => {
           <div class="panel" style="max-height: 0px;">
             <textarea>${node.objective}</textarea>
           </div>
-          <button class="accordion">Description</button>
+          <button class="accordion">Details</button>
           <div class="panel" style="max-height: 0px;">
-            <textarea>${node.description}</textarea>
+            <textarea>${node.detail}</textarea>
           </div>
         `;
                 const textarea_objective = newNodeElement.getElementsByTagName('textarea')[0];
@@ -172,10 +172,10 @@ export const create_node_element = (node, state) => {
                 textarea_objective.addEventListener('input', () => {
                     node.objective = textarea_objective.value;
                 }, false);
-                const textarea_description = newNodeElement.getElementsByTagName('textarea')[1];
+                const textarea_detail = newNodeElement.getElementsByTagName('textarea')[1];
                 // prettier-ignore
-                textarea_description.addEventListener('input', () => {
-                    node.description = textarea_description.value;
+                textarea_detail.addEventListener('input', () => {
+                    node.detail = textarea_detail.value;
                 }, false);
             }
             break;

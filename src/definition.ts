@@ -61,7 +61,7 @@ export type Location = Node & {
 
 export type Organization = Node & {
   objective: string;
-  description: string;
+  detail: string;
 };
 
 export type Plot = Node & {
