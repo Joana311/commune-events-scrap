@@ -185,14 +185,13 @@ export const create_node_element = (node: Node, state: State): void => {
               <input class='name' value='${node.name}'></input>
             </div>
           </div>
-          <div>aaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
           <button class="accordion">Objective</button>
           <div class="panel" style="max-height: 0px;">
             <textarea>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </textarea>
           </div>
-          <button class="accordion active">Description</button>
+          <button class="accordion">Description</button>
           <div class="panel" style="max-height: 0px;">
             <textarea>
               Lorem ip
@@ -236,6 +235,7 @@ export const create_node_element = (node: Node, state: State): void => {
               false,
             );
           });
+          (accordions[i] as HTMLElement).click();
         }
       }
       break;
