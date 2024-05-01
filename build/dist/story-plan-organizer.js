@@ -163,6 +163,7 @@ for (const type in NodeType) {
     });
     console.log(type);
     console.log(NodeType[type]);
+    console.log(NodeType.Character);
     console.log('\n\n\n');
 }
 /*
