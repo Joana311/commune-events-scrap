@@ -165,6 +165,9 @@ export const create_node_element = (node: Node, state: State): void => {
   const temp = newNodeElement.getElementsByTagName('input');
   for (let i = 0; i < temp.length; i++) {
     console.log(temp[i]);
+    temp[i].addEventListener('input', (): void => {
+      console.log('aaaaaaaaaaaaaaa');
+    })
   }
   console.log('\n\n\n\n');
 
