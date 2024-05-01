@@ -185,8 +185,6 @@ export const create_node_element = (node: Node, state: State): void => {
               <input class='name' value='${node.name}'></input>
             </div>
           </div>
-          <p>${node.id}</p>
-          <p>====================================================</p>
           <button class="accordion">Objective</button>
           <div class="panel" style="max-height: 0px;">
             <textarea>
