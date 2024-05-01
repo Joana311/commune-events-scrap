@@ -11,8 +11,8 @@ export enum NodeType {
 
 export enum NodeStatus {
   None = 'None',
-  Good = 'Good',
   Maybe = 'Maybe',
+  Good = 'Good',
   Investigate = 'Investigate',
   Rejected = 'Rejected',
 }

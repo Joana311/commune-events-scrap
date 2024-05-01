@@ -46,57 +46,69 @@ export const add_node = (location: Point, type: NodeType, state: State): void =>
   let node: Node | undefined;
   switch (type) {
     case NodeType.Character:
-      node = {
-        ...base,
-        imageSrc: '',
-        importance: CharacterImportance.Other,
-        personality: '',
-        quirk: '',
-        like: '',
-        dislike: '',
-        strength: '',
-        weakness: '',
-        flaw: '',
-        motivation: '',
-        other: '',
-      } as Character;
+      {
+        node = {
+          ...base,
+          imageSrc: '',
+          importance: CharacterImportance.Other,
+          personality: '',
+          quirk: '',
+          like: '',
+          dislike: '',
+          strength: '',
+          weakness: '',
+          flaw: '',
+          motivation: '',
+          other: '',
+        } as Character;
+      }
       break;
     case NodeType.Location:
-      node = {
-        ...base,
-        imageSrc: '',
-        description: '',
-        memorable: '',
-      } as Location;
+      {
+        node = {
+          ...base,
+          imageSrc: '',
+          description: '',
+          memorable: '',
+        } as Location;
+      }
       break;
     case NodeType.Organization:
-      node = {
-        ...base,
-        objective: '',
-        description: '',
-      } as Organization;
+      {
+        node = {
+          ...base,
+          objective: '',
+          description: '',
+        } as Organization;
+      }
       break;
     case NodeType.Plot:
-      node = {
-        ...base,
-        description: '',
-        events: '',
-        aftermath: '',
-      } as Plot;
+      {
+        node = {
+          ...base,
+          description: '',
+          events: '',
+          aftermath: '',
+        } as Plot;
+      }
       break;
     case NodeType.Story:
-      node = {
-        ...base,
-        description: '',
-      } as Story;
+      {
+        node = {
+          ...base,
+          description: '',
+        } as Story;
+      }
       break;
     case NodeType.Relation:
-      node = {
-        ...base,
-        history: '',
-        conflict: '',
-        description: '',
-      } as Relation;
+      {
+        node = {
+          ...base,
+          history: '',
+          conflict: '',
+          description: '',
+        } as Relation;
+      }
       break;
     default:
       break;
@@ -139,7 +151,7 @@ export const create_node_element = (node: Node, state: State): void => {
       </div>
     </div>
   `;
-  
+
   const input_name = newNodeElement.getElementsByClassName('node-name')[0] as HTMLInputElement;
   // prettier-ignore
   input_name.addEventListener('input', (): void => {
@@ -149,8 +161,35 @@ export const create_node_element = (node: Node, state: State): void => {
   const button_status = newNodeElement.getElementsByClassName('node-status')[0] as HTMLButtonElement;
   // prettier-ignore
   button_status.addEventListener('click', (): void => {
-    //node.status = NodeStatus[button_status.value];
-    node.status = NodeStatus.Investigate;
+    switch (node.status) {
+      case NodeStatus.None:
+        {
+          node.status = NodeStatus.Maybe;
+        }
+        break;
+      case NodeStatus.Maybe:
+        {
+          node.status = NodeStatus.Good;
+        }
+        break;
+      case NodeStatus.Good:
+        {
+          node.status = NodeStatus.Investigate;
+        }
+        break;
+      case NodeStatus.Investigate:
+        {
+          node.status = NodeStatus.Rejected;
+        }
+        break;
+      case NodeStatus.Rejected:
+        {
+          node.status = NodeStatus.None;
+        }
+        break;
+      default:
+        break;
+    }
     refresh(state);
   }, false);
 

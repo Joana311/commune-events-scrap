@@ -10,8 +10,8 @@ export var NodeType;
 export var NodeStatus;
 (function (NodeStatus) {
     NodeStatus["None"] = "None";
-    NodeStatus["Good"] = "Good";
     NodeStatus["Maybe"] = "Maybe";
+    NodeStatus["Good"] = "Good";
     NodeStatus["Investigate"] = "Investigate";
     NodeStatus["Rejected"] = "Rejected";
 })(NodeStatus || (NodeStatus = {}));

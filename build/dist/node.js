@@ -28,22 +28,34 @@ export const add_node = (location, type, state) => {
     let node;
     switch (type) {
         case NodeType.Character:
-            node = Object.assign(Object.assign({}, base), { imageSrc: '', importance: CharacterImportance.Other, personality: '', quirk: '', like: '', dislike: '', strength: '', weakness: '', flaw: '', motivation: '', other: '' });
+            {
+                node = Object.assign(Object.assign({}, base), { imageSrc: '', importance: CharacterImportance.Other, personality: '', quirk: '', like: '', dislike: '', strength: '', weakness: '', flaw: '', motivation: '', other: '' });
+            }
             break;
         case NodeType.Location:
-            node = Object.assign(Object.assign({}, base), { imageSrc: '', description: '', memorable: '' });
+            {
+                node = Object.assign(Object.assign({}, base), { imageSrc: '', description: '', memorable: '' });
+            }
             break;
         case NodeType.Organization:
-            node = Object.assign(Object.assign({}, base), { objective: '', description: '' });
+            {
+                node = Object.assign(Object.assign({}, base), { objective: '', description: '' });
+            }
             break;
         case NodeType.Plot:
-            node = Object.assign(Object.assign({}, base), { description: '', events: '', aftermath: '' });
+            {
+                node = Object.assign(Object.assign({}, base), { description: '', events: '', aftermath: '' });
+            }
             break;
         case NodeType.Story:
-            node = Object.assign(Object.assign({}, base), { description: '' });
+            {
+                node = Object.assign(Object.assign({}, base), { description: '' });
+            }
             break;
         case NodeType.Relation:
-            node = Object.assign(Object.assign({}, base), { history: '', conflict: '', description: '' });
+            {
+                node = Object.assign(Object.assign({}, base), { history: '', conflict: '', description: '' });
+            }
             break;
         default:
             break;
@@ -89,8 +101,35 @@ export const create_node_element = (node, state) => {
     const button_status = newNodeElement.getElementsByClassName('node-status')[0];
     // prettier-ignore
     button_status.addEventListener('click', () => {
-        //node.status = NodeStatus[button_status.value];
-        node.status = NodeStatus.Investigate;
+        switch (node.status) {
+            case NodeStatus.None:
+                {
+                    node.status = NodeStatus.Maybe;
+                }
+                break;
+            case NodeStatus.Maybe:
+                {
+                    node.status = NodeStatus.Good;
+                }
+                break;
+            case NodeStatus.Good:
+                {
+                    node.status = NodeStatus.Investigate;
+                }
+                break;
+            case NodeStatus.Investigate:
+                {
+                    node.status = NodeStatus.Rejected;
+                }
+                break;
+            case NodeStatus.Rejected:
+                {
+                    node.status = NodeStatus.None;
+                }
+                break;
+            default:
+                break;
+        }
         refresh(state);
     }, false);
     const input_color = newNodeElement.getElementsByClassName('node-color')[0];

@@ -9,8 +9,8 @@ export declare enum NodeType {
 }
 export declare enum NodeStatus {
     None = "None",
-    Good = "Good",
     Maybe = "Maybe",
+    Good = "Good",
     Investigate = "Investigate",
     Rejected = "Rejected"
 }
