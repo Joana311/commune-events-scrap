@@ -76,9 +76,7 @@ export const create_node_element = (node, state) => {
     newNodeElement.style.borderColor = node.color;
     const iconText = ((_a = document
         .getElementById('create-node-' + NodeType[node.type])) === null || _a === void 0 ? void 0 : _a.getElementsByClassName('material-icons')[0]).innerText;
-    // addEventListener doesn't work when innerHTML is set. It works when it is appended.
-    newNodeElement.innerHTML = '';
-    newNodeElement.innerHTML += `
+    newNodeElement.innerHTML = `
     <div style="display: flex;">
       <div class='move tooltip'>
         <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
@@ -93,54 +91,6 @@ export const create_node_element = (node, state) => {
       </div>
     </div>
   `;
-    const input_name = newNodeElement.getElementsByClassName('node-name')[0];
-    // prettier-ignore
-    input_name.addEventListener('input', () => {
-        node.name = input_name.value;
-    }, false);
-    const button_status = newNodeElement.getElementsByClassName('node-status')[0];
-    // prettier-ignore
-    button_status.addEventListener('click', () => {
-        switch (node.status) {
-            case NodeStatus.None:
-                {
-                    node.status = NodeStatus.Maybe;
-                }
-                break;
-            case NodeStatus.Maybe:
-                {
-                    node.status = NodeStatus.Good;
-                }
-                break;
-            case NodeStatus.Good:
-                {
-                    node.status = NodeStatus.Investigate;
-                }
-                break;
-            case NodeStatus.Investigate:
-                {
-                    node.status = NodeStatus.Rejected;
-                }
-                break;
-            case NodeStatus.Rejected:
-                {
-                    node.status = NodeStatus.None;
-                }
-                break;
-            default:
-                break;
-        }
-        refresh(state);
-    }, false);
-    const input_color = newNodeElement.getElementsByClassName('node-color')[0];
-    // prettier-ignore
-    input_color.addEventListener('input', () => {
-        console.log('\n\n\nPOINT_A');
-        console.log(input_color.value);
-        node.color = input_color.value;
-        newNodeElement.style.borderColor = node.color;
-        redraw_lines(state);
-    }, false);
     switch (node.type) {
         case NodeType.Character:
             {
@@ -278,6 +228,53 @@ export const create_node_element = (node, state) => {
         default:
             break;
     }
+    // addEventListeners need to be after all the += innerHTML
+    const input_name = newNodeElement.getElementsByClassName('node-name')[0];
+    // prettier-ignore
+    input_name.addEventListener('input', () => {
+        node.name = input_name.value;
+    }, false);
+    const button_status = newNodeElement.getElementsByClassName('node-status')[0];
+    // prettier-ignore
+    button_status.addEventListener('click', () => {
+        switch (node.status) {
+            case NodeStatus.None:
+                {
+                    node.status = NodeStatus.Maybe;
+                }
+                break;
+            case NodeStatus.Maybe:
+                {
+                    node.status = NodeStatus.Good;
+                }
+                break;
+            case NodeStatus.Good:
+                {
+                    node.status = NodeStatus.Investigate;
+                }
+                break;
+            case NodeStatus.Investigate:
+                {
+                    node.status = NodeStatus.Rejected;
+                }
+                break;
+            case NodeStatus.Rejected:
+                {
+                    node.status = NodeStatus.None;
+                }
+                break;
+            default:
+                break;
+        }
+        refresh(state);
+    }, false);
+    const input_color = newNodeElement.getElementsByClassName('node-color')[0];
+    // prettier-ignore
+    input_color.addEventListener('input', () => {
+        node.color = input_color.value;
+        newNodeElement.style.borderColor = node.color;
+        redraw_lines(state);
+    }, false);
     setup_accordions(newNodeElement, state);
     drag_node_element(newElement, state);
     state.nodesCached.push(newElement);
