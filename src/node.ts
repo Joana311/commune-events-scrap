@@ -174,8 +174,9 @@ export const create_node_element = (node: Node, state: State): void => {
         ).innerText;
         newNodeElement.innerHTML = `
           <div style="display: flex;">
-            <div class='move'>
+            <div class='move tooltip'>
               <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
+              <span class="tooltip-text">${NodeType[node.type]}</span>
             </div>
             <div style="display: flex; flex-direction: column; width: 100%;">
               <div style="display: flex; flex-direction: row; height: 20px;">
@@ -193,22 +194,7 @@ export const create_node_element = (node: Node, state: State): void => {
           </div>
           <button class="accordion">Description</button>
           <div class="panel" style="max-height: 0px;">
-            <textarea>
-              Lorem ip
-              sum dolor sit amet, conse
-              ctetur adipis
-              icing elit, sed do eius
-              mod tempor incid
-              idunt ut labore et dolore mag
-              na aliqua. Ut enim ad mi
-              nim veniam, quis nos
-              trud exercita
-              tion ullamco lab
-              oris nisi ut ali
-              quip ex ea com
-              modo cons
-              equat.
-            </textarea>
+            <textarea>${(node as Organization).description}</textarea>
           </div>
         `;
         const accordions = newNodeElement.getElementsByClassName('accordion');
@@ -225,7 +211,7 @@ export const create_node_element = (node: Node, state: State): void => {
             }
 
             const textarea = panel.getElementsByTagName('textarea')[0];
-            textarea.setAttribute('style', 'height:' + textarea.scrollHeight + 'px;overflow-y:hidden;');
+            textarea.setAttribute('style', 'height:' + textarea.scrollHeight + 'px; overflow-y:hidden;');
             textarea.addEventListener(
               'input',
               () => {
