@@ -186,15 +186,14 @@ export const create_node_element = (node: Node, state: State): void => {
       {
         newNodeElement.innerHTML += `
           <div class="panel" style="max-height: 0px;">
-            <textarea>${(node as Location).description}</textarea>
+            <input class='node-name' value='${node.name}'></input>
           </div>
         `;
-        const textarea_description = newNodeElement.getElementsByTagName('textarea')[0];
+        const temp1 = newNodeElement.getElementsByClassName('node-name')[0];
         // prettier-ignore
-        textarea_description.addEventListener('input', (): void => {
-          console.log('\n\n\n\nPOINT_C');
+        temp1.addEventListener('input', (): void => {
+          console.log('\n\n\n\nPOINT_D');
           console.log('\n\n\n\n');
-          (node as Location).description = textarea_description.value;
         }, false);
       }
       break;
