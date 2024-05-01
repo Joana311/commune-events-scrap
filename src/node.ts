@@ -161,7 +161,7 @@ export const create_node_element = (node: Node, state: State): void => {
 
 
 
-  console.log('\n\n\n\nPOINT_A');
+  console.log('\n\n\n\nPOINT_B');
   const temp = newNodeElement.getElementsByTagName('input');
   for (let i = 0; i < temp.length; i++) {
     console.log(temp[i]);
