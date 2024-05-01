@@ -177,7 +177,8 @@ document
   });
 //document.getElementById('create-node-' + NodeType[NodeType.Character])?.firstElementChild?.style.color = '#FF0000';
 console.log(document.getElementById('create-node-' + NodeType[NodeType.Character])?.firstElementChild);
-
+console.log(document.getElementById('create-node-' + NodeType[NodeType.Character])?.firstElementChild as HTMLElement);
+(document.getElementById('create-node-' + NodeType[NodeType.Character])?.firstElementChild as HTMLElement).style.color = '#FF0000';
 
 
 document
