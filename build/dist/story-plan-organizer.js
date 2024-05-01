@@ -199,8 +199,10 @@ if (inputImportFileElement) {
                     const obj = JSON.parse(event.target.result);
                     console.log(obj);
                     if (!obj) {
+                        console.log('POINT_AAA');
                         throw new Error('aaaaaaaa');
                     }
+                    console.log('POINT_BBB');
                     load(obj, state);
                 }
                 catch (e) {

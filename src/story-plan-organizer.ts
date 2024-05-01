@@ -226,8 +226,10 @@ if (inputImportFileElement) {
           const obj = JSON.parse(event.target.result as string);
           console.log(obj);
           if (!(obj as Dto)) {
+            console.log('POINT_AAA');
             throw new Error('aaaaaaaa');
           }
+          console.log('POINT_BBB');
           load(obj as Dto, state);
         } catch (e) {
           console.error(e, 'Error: Invalid JSON file.');
