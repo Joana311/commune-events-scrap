@@ -82,6 +82,7 @@ export const create_node_element = (node, state) => {
     const input_name = newNodeElement.getElementsByClassName('node-name')[0];
     // prettier-ignore
     input_name.addEventListener('input', () => {
+        console.log('\n\n\n\nPOINT_B\n\n\n\n');
         node.name = input_name.value;
     }, false);
     const button_status = newNodeElement.getElementsByClassName('node-status')[0];
@@ -96,15 +97,8 @@ export const create_node_element = (node, state) => {
         console.log(input_color.value);
         node.color = input_color.value;
     }, false);
-    const input_color_temp = newNodeElement.getElementsByTagName('input')[0];
-    // prettier-ignore
-    input_color_temp.addEventListener('input', () => {
-        console.log(input_color_temp.value);
-        node.color = input_color_temp.value;
-    }, false);
     console.log('\n\n\n\nPOINT_A');
-    console.log(input_color);
-    console.log(input_color_temp);
+    console.log(input_name);
     console.log('\n\n\n\n');
     switch (node.type) {
         case NodeType.Character:

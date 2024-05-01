@@ -140,36 +140,29 @@ export const create_node_element = (node: Node, state: State): void => {
   
   const input_name = newNodeElement.getElementsByClassName('node-name')[0] as HTMLInputElement;
   // prettier-ignore
-  input_name.addEventListener('input', () => {
+  input_name.addEventListener('input', (): void => {
+    console.log('\n\n\n\nPOINT_B\n\n\n\n');
     node.name = input_name.value;
   }, false);
 
   const button_status = newNodeElement.getElementsByClassName('node-status')[0] as HTMLButtonElement;
   // prettier-ignore
-  button_status.addEventListener('click', () => {
+  button_status.addEventListener('click', (): void => {
     //node.status = NodeStatus[button_status.value];
     node.status = NodeStatus.Investigate;
   }, false);
 
   const input_color = newNodeElement.getElementsByClassName('node-color')[0] as HTMLInputElement;
   // prettier-ignore
-  input_color.addEventListener('input', () => {
+  input_color.addEventListener('input', (): void => {
     console.log(input_color.value);
     node.color = input_color.value as Color_Hex;
   }, false);
 
 
 
-  const input_color_temp = newNodeElement.getElementsByTagName('input')[0] as HTMLInputElement;
-  // prettier-ignore
-  input_color_temp.addEventListener('input', () => {
-    console.log(input_color_temp.value);
-    node.color = input_color_temp.value as Color_Hex;
-  }, false);
-
   console.log('\n\n\n\nPOINT_A');
-  console.log(input_color);
-  console.log(input_color_temp);
+  console.log(input_name);
   console.log('\n\n\n\n');
 
 
@@ -199,12 +192,12 @@ export const create_node_element = (node: Node, state: State): void => {
         `;
         const textarea_description = newNodeElement.getElementsByTagName('textarea')[0];
         // prettier-ignore
-        textarea_description.addEventListener('input', () => {
+        textarea_description.addEventListener('input', (): void => {
           (node as Location).description = textarea_description.value;
         }, false);
         const textarea_memorable = newNodeElement.getElementsByTagName('textarea')[1];
         // prettier-ignore
-        textarea_memorable.addEventListener('input', () => {
+        textarea_memorable.addEventListener('input', (): void => {
           (node as Location).memorable = textarea_memorable.value;
         }, false);
       }
@@ -223,12 +216,12 @@ export const create_node_element = (node: Node, state: State): void => {
         `;
         const textarea_objective = newNodeElement.getElementsByTagName('textarea')[0];
         // prettier-ignore
-        textarea_objective.addEventListener('input', () => {
+        textarea_objective.addEventListener('input', (): void => {
           (node as Organization).objective = textarea_objective.value;
         }, false);
         const textarea_description = newNodeElement.getElementsByTagName('textarea')[1];
         // prettier-ignore
-        textarea_description.addEventListener('input', () => {
+        textarea_description.addEventListener('input', (): void => {
           (node as Organization).description = textarea_description.value;
         }, false);
       }
@@ -251,17 +244,17 @@ export const create_node_element = (node: Node, state: State): void => {
         `;
         const textarea_description = newNodeElement.getElementsByTagName('textarea')[0];
         // prettier-ignore
-        textarea_description.addEventListener('input', () => {
+        textarea_description.addEventListener('input', (): void => {
           (node as Plot).description = textarea_description.value;
         }, false);
         const textarea_events = newNodeElement.getElementsByTagName('textarea')[1];
         // prettier-ignore
-        textarea_events.addEventListener('input', () => {
+        textarea_events.addEventListener('input', (): void => {
           (node as Plot).events = textarea_events.value;
         }, false);
         const textarea_aftermath = newNodeElement.getElementsByTagName('textarea')[2];
         // prettier-ignore
-        textarea_aftermath.addEventListener('input', () => {
+        textarea_aftermath.addEventListener('input', (): void => {
           (node as Plot).aftermath = textarea_aftermath.value;
         }, false);
       }
@@ -276,7 +269,7 @@ export const create_node_element = (node: Node, state: State): void => {
         `;
         const textarea_description = newNodeElement.getElementsByTagName('textarea')[0];
         // prettier-ignore
-        textarea_description.addEventListener('input', () => {
+        textarea_description.addEventListener('input', (): void => {
           (node as Story).description = textarea_description.value;
         }, false);
       }
@@ -299,17 +292,17 @@ export const create_node_element = (node: Node, state: State): void => {
         `;
         const textarea_history = newNodeElement.getElementsByTagName('textarea')[0];
         // prettier-ignore
-        textarea_history.addEventListener('input', () => {
+        textarea_history.addEventListener('input', (): void => {
           (node as Relation).history = textarea_history.value;
         }, false);
         const textarea_conflict = newNodeElement.getElementsByTagName('textarea')[1];
         // prettier-ignore
-        textarea_conflict.addEventListener('input', () => {
+        textarea_conflict.addEventListener('input', (): void => {
           (node as Relation).conflict = textarea_conflict.value;
         }, false);
         const textarea_description = newNodeElement.getElementsByTagName('textarea')[2];
         // prettier-ignore
-        textarea_description.addEventListener('input', () => {
+        textarea_description.addEventListener('input', (): void => {
           (node as Relation).description = textarea_description.value;
         }, false);
       }
