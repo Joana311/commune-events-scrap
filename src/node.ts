@@ -185,6 +185,21 @@ export const create_node_element = (node: Node, state: State): void => {
   switch (node.type) {
     case NodeType.Character:
       {
+        newNodeElement.innerHTML += `
+          <button class="accordion">Personality</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${(node as Character).personality}</textarea>
+          </div>
+          <button class="accordion">Quirk(s)</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${(node as Character).quirk}</textarea>
+          </div>
+          <button class="accordion">Likes and Dislikes</button>
+          <div class="panel" style="max-height: 0px; display: flex; gap: 20px;">
+            <textarea>${(node as Character).like}</textarea>
+            <textarea>${(node as Character).dislike}</textarea>
+          </div>
+        `;
       }
       break;
     case NodeType.Location:
