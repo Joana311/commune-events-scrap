@@ -67,48 +67,41 @@ export const add_node = (location, type, state) => {
 const get_icon = (type) => {
     var _a;
     let color;
-    let backgroundColor;
+    let backgroundColor = '#DEF4FF';
     switch (type) {
         case NodeType.Character:
             {
-                color = '#FF495E';
-                backgroundColor = '#292929';
+                color = '#FF0000';
             }
             break;
         case NodeType.Location:
             {
-                color = '#5DADE2';
-                backgroundColor = '#EAEAEA';
+                color = '#00FF00';
             }
             break;
         case NodeType.Organization:
             {
-                color = '#F7CA18';
-                backgroundColor = '#292929';
+                color = '#0000FF';
             }
             break;
         case NodeType.Event:
             {
-                color = '#29ABCA';
-                backgroundColor = '#EAEAEA';
+                color = '#FFFF00';
             }
             break;
         case NodeType.Story:
             {
-                color = '#C02942';
-                backgroundColor = '#333333';
+                color = '#FF9999';
             }
             break;
         case NodeType.Lore:
             {
-                color = '#D3A029';
-                backgroundColor = '#C0C0B1';
+                color = '#C700C7';
             }
             break;
         default:
             {
                 color = '#FFFFFF';
-                backgroundColor = '#000000';
             }
             break;
     }
