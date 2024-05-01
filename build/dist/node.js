@@ -164,12 +164,12 @@ export const create_node_element = (node, state) => {
                 const textarea_conflict = newNodeElement.getElementsByTagName('textarea')[1];
                 // prettier-ignore
                 textarea_conflict.addEventListener('input', () => {
-                    node.history = textarea_conflict.value;
+                    node.conflict = textarea_conflict.value;
                 }, false);
                 const textarea_description = newNodeElement.getElementsByTagName('textarea')[2];
                 // prettier-ignore
                 textarea_description.addEventListener('input', () => {
-                    node.history = textarea_description.value;
+                    node.description = textarea_description.value;
                 }, false);
             }
             break;
