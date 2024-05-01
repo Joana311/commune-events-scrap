@@ -161,7 +161,8 @@ export const create_node_element = (node: Node, state: State): void => {
 
 
 
-  console.log('\n\n\n\nPOINT_B');
+  /*
+  console.log('\n\n\n\nPOINT_C');
   const temp = newNodeElement.getElementsByTagName('input');
   for (let i = 0; i < temp.length; i++) {
     console.log(temp[i]);
@@ -170,6 +171,7 @@ export const create_node_element = (node: Node, state: State): void => {
     })
   }
   console.log('\n\n\n\n');
+  */
 
 
 
@@ -182,6 +184,18 @@ export const create_node_element = (node: Node, state: State): void => {
   switch (node.type) {
     case NodeType.Character:
       {
+        newNodeElement.innerHTML += `
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${(node as Location).description}</textarea>
+          </div>
+        `;
+        const textarea_description = newNodeElement.getElementsByTagName('textarea')[0];
+        // prettier-ignore
+        textarea_description.addEventListener('input', (): void => {
+          console.log('\n\n\n\nPOINT_C');
+          console.log('\n\n\n\n');
+          (node as Location).description = textarea_description.value;
+        }, false);
       }
       break;
     case NodeType.Location:

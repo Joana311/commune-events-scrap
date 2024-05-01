@@ -97,18 +97,32 @@ export const create_node_element = (node, state) => {
         console.log(input_color.value);
         node.color = input_color.value;
     }, false);
-    console.log('\n\n\n\nPOINT_B');
+    /*
+    console.log('\n\n\n\nPOINT_C');
     const temp = newNodeElement.getElementsByTagName('input');
     for (let i = 0; i < temp.length; i++) {
-        console.log(temp[i]);
-        temp[i].addEventListener('input', () => {
-            console.log('aaaaaaaaaaaaaaa');
-        });
+      console.log(temp[i]);
+      temp[i].addEventListener('input', (): void => {
+        console.log('aaaaaaaaaaaaaaa');
+      })
     }
     console.log('\n\n\n\n');
+    */
     switch (node.type) {
         case NodeType.Character:
             {
+                newNodeElement.innerHTML += `
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${node.description}</textarea>
+          </div>
+        `;
+                const textarea_description = newNodeElement.getElementsByTagName('textarea')[0];
+                // prettier-ignore
+                textarea_description.addEventListener('input', () => {
+                    console.log('\n\n\n\nPOINT_C');
+                    console.log('\n\n\n\n');
+                    node.description = textarea_description.value;
+                }, false);
             }
             break;
         case NodeType.Location:
