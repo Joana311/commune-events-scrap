@@ -151,19 +151,26 @@ export const create_node_element = (node: Node, state: State): void => {
     node.status = NodeStatus.Investigate;
   }, false);
 
-
-  console.log('\n\n\n\nPOINT_A');
-  console.log(newNodeElement.getElementsByClassName('node-color')[0]);
-  console.log(newNodeElement.getElementsByClassName('node-color')[0] as HTMLInputElement);
-  console.log('\n\n\n\n');
-
-
   const input_color = newNodeElement.getElementsByClassName('node-color')[0] as HTMLInputElement;
   // prettier-ignore
   input_color.addEventListener('input', () => {
     console.log(input_color.value);
     node.color = input_color.value as Color_Hex;
   }, false);
+
+
+
+  console.log('\n\n\n\nPOINT_A');
+  console.log(input_color);
+  console.log('\n\n\n\n');
+
+
+
+
+
+
+
+
 
   switch (node.type) {
     case NodeType.Character:
