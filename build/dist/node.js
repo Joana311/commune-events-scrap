@@ -169,8 +169,13 @@ export const create_node_element = (node, state) => {
                             textarea.style.height = 'auto';
                             textarea.style.height = textarea.scrollHeight + 'px';
                         }, false);
+                        redraw_lines(state);
                     });
-                    accordions[i].click();
+                    const panel = accordions[i].nextElementSibling;
+                    const textarea = panel.getElementsByTagName('textarea')[0];
+                    if (textarea.value !== '') {
+                        accordions[i].click();
+                    }
                 }
             }
             break;

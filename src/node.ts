@@ -234,8 +234,15 @@ export const create_node_element = (node: Node, state: State): void => {
               },
               false,
             );
+
+            redraw_lines(state);
           });
-          (accordions[i] as HTMLElement).click();
+
+          const panel = accordions[i].nextElementSibling as HTMLDivElement;
+          const textarea = panel.getElementsByTagName('textarea')[0];
+          if (textarea.value !== '') {
+            (accordions[i] as HTMLElement).click();
+          }
         }
       }
       break;
