@@ -116,77 +116,38 @@ export const create_node_element = (node: Node, state: State): void => {
   newNodeElement.style.left = node.location.x + 'px';
   newNodeElement.style.borderColor = node.color;
 
+  const iconText: string = (
+    document
+      .getElementById('create-node-' + NodeType[node.type])
+      ?.getElementsByClassName('material-icons')[0] as HTMLElement
+  ).innerText;
+  newNodeElement.innerHTML = `
+    <div style="display: flex;">
+      <div class='move tooltip'>
+        <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
+        <span class="tooltip-text">${NodeType[node.type]}</span>
+      </div>
+      <div style="display: flex; flex-direction: column; width: 100%;">
+        <div style="display: flex; flex-direction: row;">
+          <button id="node-status">${NodeStatus[node.status]}</button>
+          <input id="node-color" type="color" value="${node.color}">
+        </div>
+        <input class='name' value='${node.name}'></input>
+      </div>
+    </div>
+  `;
+
   switch (node.type) {
     case NodeType.Character:
       {
-        const iconText = (
-          document.getElementById('create-node-character')?.getElementsByClassName('material-icons')[0] as HTMLElement
-        ).innerText;
-        newNodeElement.innerHTML = `
-          <div style="display: flex;">
-            <div class='move'>
-              <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
-            </div>
-            <div style="display: flex; flex-direction: column;">
-              <div style="display: flex; flex-direction: row; height: 20px;">
-                <button id="node-status">${NodeStatus[node.status]}</button>
-                <input id="node-color" type="color" value="${node.color}">
-              </div>
-              <input class='name' value='${node.name}'></input>
-            </div>
-          </div>
-          <p>${node.id}</p>
-          <p>this</p>
-          <p>DIV</p>
-        `;
       }
       break;
     case NodeType.Location:
       {
-        const iconText = (
-          document.getElementById('create-node-location')?.getElementsByClassName('material-icons')[0] as HTMLElement
-        ).innerText;
-        newNodeElement.innerHTML = `
-          <div style="display: flex;">
-            <div class='move'>
-              <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
-            </div>
-            <div style="display: flex; flex-direction: column;">
-              <div style="display: flex; flex-direction: row; height: 20px;">
-                <button id="node-status">${NodeStatus[node.status]}</button>
-                <input id="node-color" type="color" value="${node.color}">
-              </div>
-              <input class='name' value='${node.name}'></input>
-            </div>
-          </div>
-          <p>${node.id}</p>
-          <p>this</p>
-          <p>DIV</p>
-        `;
       }
       break;
     case NodeType.Organization:
       {
-        const iconText: string = (
-          document
-            .getElementById('create-node-organization')
-            ?.getElementsByClassName('material-icons')[0] as HTMLElement
-        ).innerText;
-        newNodeElement.innerHTML = `
-          <div style="display: flex;">
-            <div class='move tooltip'>
-              <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
-              <span class="tooltip-text">${NodeType[node.type]}</span>
-            </div>
-            <div style="display: flex; flex-direction: column; width: 100%;">
-              <div style="display: flex; flex-direction: row;">
-                <button id="node-status">${NodeStatus[node.status]}</button>
-                <input id="node-color" type="color" value="${node.color}">
-              </div>
-              <input class='name' value='${node.name}'></input>
-            </div>
-          </div>
-        `;
         newNodeElement.innerHTML += `
           <button class="accordion">Objective</button>
           <div class="panel" style="max-height: 0px;">
@@ -234,74 +195,14 @@ export const create_node_element = (node: Node, state: State): void => {
       break;
     case NodeType.Plot:
       {
-        const iconText = (
-          document.getElementById('create-node-plot')?.getElementsByClassName('material-icons')[0] as HTMLElement
-        ).innerText;
-        newNodeElement.innerHTML = `
-          <div style="display: flex;">
-            <div class='move'>
-              <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
-            </div>
-            <div style="display: flex; flex-direction: column;">
-              <div style="display: flex; flex-direction: row; height: 20px;">
-                <button id="node-status">${NodeStatus[node.status]}</button>
-                <input id="node-color" type="color" value="${node.color}">
-              </div>
-              <input class='name' value='${node.name}'></input>
-            </div>
-          </div>
-          <p>${node.id}</p>
-          <p>this</p>
-          <p>DIV</p>
-        `;
       }
       break;
     case NodeType.Story:
       {
-        const iconText = (
-          document.getElementById('create-node-story')?.getElementsByClassName('material-icons')[0] as HTMLElement
-        ).innerText;
-        newNodeElement.innerHTML = `
-          <div style="display: flex;">
-            <div class='move'>
-              <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
-            </div>
-            <div style="display: flex; flex-direction: column;">
-              <div style="display: flex; flex-direction: row; height: 20px;">
-                <button id="node-status">${NodeStatus[node.status]}</button>
-                <input id="node-color" type="color" value="${node.color}">
-              </div>
-              <input class='name' value='${node.name}'></input>
-            </div>
-          </div>
-          <p>${node.id}</p>
-          <p>this</p>
-          <p>DIV</p>
-        `;
       }
       break;
     case NodeType.Relation:
       {
-        const iconText = (
-          document.getElementById('create-node-relation')?.getElementsByClassName('material-icons')[0] as HTMLElement
-        ).innerText;
-        newNodeElement.innerHTML = `
-          <div style="display: flex;">
-            <div class='move'>
-              <i class="material-icons" style="user-select: none; font-size: 50px;">${iconText}</i>
-            </div>
-            <div style="display: flex; flex-direction: column;">
-              <div style="display: flex; flex-direction: row; height: 20px;">
-                <button id="node-status">${NodeStatus[node.status]}</button>
-                <input id="node-color" type="color" value="${node.color}">
-              </div>
-              <input class='name' value='${node.name}'></input>
-            </div>
-          </div>
-          <p>${node.id}</p>
-          <p>this</p>
-          <p>DIV</p>
-        `;
       }
       break;
     default:
