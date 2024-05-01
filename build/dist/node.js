@@ -71,32 +71,32 @@ const get_icon = (type) => {
     switch (type) {
         case NodeType.Character:
             {
-                color = '#FF0000';
+                color = '#0000FF';
             }
             break;
         case NodeType.Location:
             {
-                color = '#00FF00';
+                color = '#C700C7';
             }
             break;
         case NodeType.Organization:
             {
-                color = '#0000FF';
+                color = '#FFA500';
             }
             break;
         case NodeType.Event:
             {
-                color = '#FFFF00';
+                color = '#00FF00';
             }
             break;
         case NodeType.Story:
             {
-                color = '#FF9999';
+                color = '#FF0000';
             }
             break;
         case NodeType.Lore:
             {
-                color = '#C700C7';
+                color = '#008080';
             }
             break;
         default:
