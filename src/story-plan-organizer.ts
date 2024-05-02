@@ -134,7 +134,7 @@ const state: State = {
   deleting: false,
 };
 
-window.onbeforeunload = function(event: BeforeUnloadEvent) {
+window.onbeforeunload = function (event: BeforeUnloadEvent) {
   console.log(event);
   //event.preventDefault();
 };
@@ -217,6 +217,7 @@ const validJson = (json: string): boolean => {
       if (validJson(jsonString)) {
         const jsonObject = JSON.parse(jsonString);
         load(jsonObject as Dto, state);
+        (document.getElementById('inputLoadFile') as HTMLInputElement).disabled = true;
       }
     }
   }

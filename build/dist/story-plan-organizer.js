@@ -193,6 +193,7 @@ document.getElementById('inputLoadFile').onchange = (event) => {
             if (validJson(jsonString)) {
                 const jsonObject = JSON.parse(jsonString);
                 load(jsonObject, state);
+                document.getElementById('inputLoadFile').disabled = true;
             }
         }
     }
