@@ -140,9 +140,26 @@ export const create_node_element = (node, state) => {
             <textarea>${node.quirk}</textarea>
           </div>
           <button class="accordion">Likes and Dislikes</button>
-          <div class="panel" style="max-height: 0px; display: flex; gap: 0px;">
-            <textarea style="min-width: 50%; max-width: 50%; padding: 0px; padding-left: 1px;">${node.like}</textarea>
-            <textarea style="min-width: 50%; max-width: 50%; padding: 0px; padding-right: 1px;">${node.dislike}</textarea>
+          <div class="panel" style="max-height: 0px; display: flex;">
+            <textarea class="textarea-half" style="padding-left: 1px;">${node.like}</textarea>
+            <textarea class="textarea-half" style="padding-right: 1px;">${node.dislike}</textarea>
+          </div>
+          <button class="accordion">Strengths and Weaknesses</button>
+          <div class="panel" style="max-height: 0px; display: flex;">
+            <textarea class="textarea-half" style="padding-left: 1px;">${node.strength}</textarea>
+            <textarea class="textarea-half" style="padding-right: 1px;">${node.weakness}</textarea>
+          </div>
+          <button class="accordion">Flaw(s)</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${node.flaw}</textarea>
+          </div>
+          <button class="accordion">Motivation(s)</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${node.motivation}</textarea>
+          </div>
+          <button class="accordion">Other</button>
+          <div class="panel" style="max-height: 0px;">
+            <textarea>${node.other}</textarea>
           </div>
         `;
             }

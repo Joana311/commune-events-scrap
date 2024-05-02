@@ -205,3 +205,10 @@ textarea
     padding: 0px 2px;
     margin: 0px;
 }
+
+.textarea-half
+{
+    min-width: 50%;
+    max-width: 50%;
+    padding: 0px;
+}
