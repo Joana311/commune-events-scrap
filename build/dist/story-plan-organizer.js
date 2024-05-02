@@ -182,19 +182,17 @@ const validJson = (json) => {
 document.getElementById('inputLoadFile').onchange = (event) => {
     const reader = new FileReader();
     reader.onload = onReaderLoad;
-    const temp = event.target;
-    if (temp && temp.files) {
-        reader.readAsText(temp.files[0]);
+    const tempElement = event.target;
+    if (tempElement && tempElement.files) {
+        reader.readAsText(tempElement.files[0]);
     }
     function onReaderLoad(event) {
         console.log(event);
         if (event.target && event.target.result) {
-            //console.log(event.target.result);
             const jsonString = event.target.result;
             if (validJson(jsonString)) {
-                const obj = JSON.parse(jsonString);
-                console.log(obj);
-                load(obj, state);
+                const jsonObject = JSON.parse(jsonString);
+                load(jsonObject, state);
             }
         }
     }

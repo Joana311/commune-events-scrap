@@ -378,9 +378,6 @@ const drag_node_element = (element, state) => {
             redraw_lines(state);
         }
     }
-    /**
-     *
-     */
     function closeDragElement() {
         document.onmouseup = null;
         document.onmousemove = null;

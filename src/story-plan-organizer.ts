@@ -134,7 +134,7 @@ const state: State = {
   deleting: false,
 };
 
-window.onbeforeunload = function (event: BeforeUnloadEvent) {
+window.onbeforeunload = function(event: BeforeUnloadEvent) {
   console.log(event);
   //event.preventDefault();
 };
@@ -201,25 +201,22 @@ const validJson = (json: string): boolean => {
   return true;
 };
 
-
 (document.getElementById('inputLoadFile') as HTMLInputElement).onchange = (event: Event) => {
   const reader = new FileReader();
   reader.onload = onReaderLoad;
 
-  const temp = event.target as HTMLInputElement;
-  if (temp && temp.files) {
-    reader.readAsText(temp.files[0]);
+  const tempElement = event.target as HTMLInputElement;
+  if (tempElement && tempElement.files) {
+    reader.readAsText(tempElement.files[0]);
   }
 
   function onReaderLoad(event: ProgressEvent<FileReader>): void {
     console.log(event);
     if (event.target && event.target.result) {
-      //console.log(event.target.result);
       const jsonString = event.target.result as string;
       if (validJson(jsonString)) {
-        const obj = JSON.parse(jsonString);
-        console.log(obj);
-        load(obj as Dto, state);
+        const jsonObject = JSON.parse(jsonString);
+        load(jsonObject as Dto, state);
       }
     }
   }

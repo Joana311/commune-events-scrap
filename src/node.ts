@@ -458,9 +458,6 @@ const drag_node_element = (element: HTMLDivElement, state: State): void => {
     }
   }
 
-  /**
-   *
-   */
   function closeDragElement() {
     document.onmouseup = null;
     document.onmousemove = null;
