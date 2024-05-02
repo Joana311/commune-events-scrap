@@ -162,6 +162,11 @@ export const create_node_element = (node, state) => {
             <textarea>${node.other}</textarea>
           </div>
         `;
+                const textarea_description = newNodeElement.getElementsByTagName('textarea')[0];
+                // prettier-ignore
+                textarea_description.addEventListener('input', () => {
+                    node.description = textarea_description.value;
+                }, false);
             }
             break;
         case NodeType.Location:
