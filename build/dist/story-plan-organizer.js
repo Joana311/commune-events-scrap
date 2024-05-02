@@ -110,6 +110,9 @@ function keydownResponse(event, state) {
     if (event.key === 'd') {
         state.deleting = true;
     }
+    if (event.key === 'Space') {
+        console.log('\nI will now min/max all textareas\n');
+    }
 }
 function keyupResponse(event, state) {
     if (event.key === 'd') {
