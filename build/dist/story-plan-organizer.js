@@ -187,7 +187,7 @@ document.getElementById('inputLoadFile').onchange = (event) => {
         reader.readAsText(tempElement.files[0]);
     }
     function onReaderLoad(event) {
-        var _a, _b, _c;
+        var _a, _b, _c, _d;
         console.log(event);
         if (event.target && event.target.result) {
             const jsonString = event.target.result;
@@ -199,6 +199,7 @@ document.getElementById('inputLoadFile').onchange = (event) => {
                 console.log((_a = document.getElementById('inputLoadFile')) === null || _a === void 0 ? void 0 : _a.nextElementSibling);
                 console.log((_b = document.getElementById('inputLoadFile')) === null || _b === void 0 ? void 0 : _b.nextElementSibling);
                 ((_c = document.getElementById('inputLoadFile')) === null || _c === void 0 ? void 0 : _c.nextElementSibling).disabled = true;
+                ((_d = document.getElementById('inputLoadFile')) === null || _d === void 0 ? void 0 : _d.nextElementSibling).innerText = '';
             }
         }
     }

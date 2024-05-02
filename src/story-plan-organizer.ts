@@ -222,6 +222,7 @@ const validJson = (json: string): boolean => {
         console.log(document.getElementById('inputLoadFile')?.nextElementSibling);
         console.log(document.getElementById('inputLoadFile')?.nextElementSibling as HTMLButtonElement);
         (document.getElementById('inputLoadFile')?.nextElementSibling as HTMLButtonElement).disabled = true;
+        (document.getElementById('inputLoadFile')?.nextElementSibling as HTMLButtonElement).innerText = '';
       }
     }
   }
