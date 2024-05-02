@@ -415,6 +415,7 @@ export const create_node_element = (node: Node, state: State): void => {
     false,
   );
   input_name.addEventListener('click', (event: MouseEvent): void => {
+    console.log('\nPOINT_A\n');
     if (event.button === 1) {
       // Middle mouse button
       console.log('\nI will now hide all accordions\n');
