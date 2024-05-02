@@ -214,8 +214,4 @@ if (inputImportFileElement) {
         }
     };
 }
-let newItem = document.createElement("div");
-let newImg = document.createElement("img");
-newItem.appendChild(newImg);
-newImg.src = "images/splash.png";
 //# sourceMappingURL=story-plan-organizer.js.map

@@ -306,6 +306,24 @@ export const create_node_element = (node: Node, state: State): void => {
         textarea_detail.addEventListener('input', (): void => {
           (node as Lore).detail = textarea_detail.value;
         }, false);
+
+
+
+
+
+        let newItem = document.createElement("div");
+        let newImg = document.createElement("img");
+        newItem.appendChild(newImg);
+        newNodeElement.appendChild(newItem);
+        
+        newImg.src = "images/splash.png";
+        
+        
+
+
+
+
+
       }
       break;
     default:
