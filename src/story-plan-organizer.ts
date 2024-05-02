@@ -217,7 +217,11 @@ const validJson = (json: string): boolean => {
       if (validJson(jsonString)) {
         const jsonObject = JSON.parse(jsonString);
         load(jsonObject as Dto, state);
-        (document.getElementById('inputLoadFile') as HTMLInputElement).disabled = true;
+        console.log('\n\n\nPOINT_A');
+        console.log(document.getElementById('inputLoadFile'));
+        console.log(document.getElementById('inputLoadFile')?.nextElementSibling);
+        console.log(document.getElementById('inputLoadFile')?.nextElementSibling as HTMLButtonElement);
+        (document.getElementById('inputLoadFile')?.nextElementSibling as HTMLButtonElement).disabled = true;
       }
     }
   }

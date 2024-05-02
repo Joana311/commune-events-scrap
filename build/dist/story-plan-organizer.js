@@ -187,13 +187,18 @@ document.getElementById('inputLoadFile').onchange = (event) => {
         reader.readAsText(tempElement.files[0]);
     }
     function onReaderLoad(event) {
+        var _a, _b, _c;
         console.log(event);
         if (event.target && event.target.result) {
             const jsonString = event.target.result;
             if (validJson(jsonString)) {
                 const jsonObject = JSON.parse(jsonString);
                 load(jsonObject, state);
-                document.getElementById('inputLoadFile').disabled = true;
+                console.log('\n\n\nPOINT_A');
+                console.log(document.getElementById('inputLoadFile'));
+                console.log((_a = document.getElementById('inputLoadFile')) === null || _a === void 0 ? void 0 : _a.nextElementSibling);
+                console.log((_b = document.getElementById('inputLoadFile')) === null || _b === void 0 ? void 0 : _b.nextElementSibling);
+                ((_c = document.getElementById('inputLoadFile')) === null || _c === void 0 ? void 0 : _c.nextElementSibling).disabled = true;
             }
         }
     }
