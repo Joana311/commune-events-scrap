@@ -1,6 +1,5 @@
 import {
   Character,
-  CharacterImportance,
   Color_Hex,
   Event,
   Location,
@@ -48,7 +47,6 @@ export const add_node = (location: Point, type: NodeType, state: State): void =>
         node = {
           ...base,
           imageSrc: '',
-          importance: CharacterImportance.Other,
           personality: '',
           quirk: '',
           like: '',

@@ -201,7 +201,7 @@ const download = (filename: string, text: string): void => {
 document.getElementById('export')?.addEventListener('click', () => {
   console.log(state);
 
-  const fileName: string = 'exported.json';
+  const fileName: string = 'story.json';
   const dto: Dto = { nodes: state.nodes, links: state.links };
   const fileContent: string = JSON.stringify(dto, null, 2);
 

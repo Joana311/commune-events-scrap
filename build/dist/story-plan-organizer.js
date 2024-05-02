@@ -178,7 +178,7 @@ const download = (filename, text) => {
 };
 (_a = document.getElementById('export')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
     console.log(state);
-    const fileName = 'exported.json';
+    const fileName = 'story.json';
     const dto = { nodes: state.nodes, links: state.links };
     const fileContent = JSON.stringify(dto, null, 2);
     download(fileName, fileContent);

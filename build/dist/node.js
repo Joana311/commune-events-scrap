@@ -1,4 +1,4 @@
-import { CharacterImportance, NodeType, } from './definition.js';
+import { NodeType, } from './definition.js';
 import { randomUUID } from './uuid.js';
 import { add_link, redraw_lines } from './link.js';
 import { refresh, validate } from './story-plan-organizer.js';
@@ -28,7 +28,7 @@ export const add_node = (location, type, state) => {
     switch (type) {
         case NodeType.Character:
             {
-                node = Object.assign(Object.assign({}, base), { imageSrc: '', importance: CharacterImportance.Other, personality: '', quirk: '', like: '', dislike: '', strength: '', weakness: '', flaw: '', motivation: '', other: '' });
+                node = Object.assign(Object.assign({}, base), { imageSrc: '', personality: '', quirk: '', like: '', dislike: '', strength: '', weakness: '', flaw: '', motivation: '', other: '' });
             }
             break;
         case NodeType.Location:

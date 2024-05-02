@@ -9,13 +9,6 @@ export enum NodeType {
   Lore = 'Lore',
 }
 
-export enum CharacterImportance {
-  Other = 'Other',
-  Main = 'Main',
-  Supporting = 'Supporting',
-  Minor = 'Minor',
-}
-
 /**
  * Point.
  */
@@ -42,7 +35,6 @@ export type Node = {
 
 export type Character = Node & {
   imageSrc: string;
-  importance: CharacterImportance;
   personality: string;
   quirk: string;
   like: string;
