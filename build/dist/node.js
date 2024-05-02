@@ -141,8 +141,8 @@ export const create_node_element = (node, state) => {
           </div>
           <button class="accordion">Likes and Dislikes</button>
           <div class="panel" style="max-height: 0px; display: flex; gap: 0px;">
-            <textarea style="min-width: 50%; max-width: 50%; padding: 0px;">${node.like}</textarea>
-            <textarea style="min-width: 50%; max-width: 50%; padding: 0px;">${node.dislike}</textarea>
+            <textarea style="min-width: 50%; max-width: 50%; padding: 0px; padding-left: 1px;">${node.like}</textarea>
+            <textarea style="min-width: 50%; max-width: 50%; padding: 0px; padding-right: 1px;">${node.dislike}</textarea>
           </div>
         `;
             }
