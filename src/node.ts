@@ -185,6 +185,11 @@ export const create_node_element = (node: Node, state: State): void => {
   switch (node.type) {
     case NodeType.Character:
       {
+        if ((node as Character).imageSrc) {
+          newNodeElement.innerHTML += `
+            <img height="100" src="${(node as Character).imageSrc}" />
+          `;
+        }
         newNodeElement.innerHTML += `
           <button class="accordion">Personality</button>
           <div class="panel" style="max-height: 0px;">
@@ -226,6 +231,11 @@ export const create_node_element = (node: Node, state: State): void => {
       break;
     case NodeType.Location:
       {
+        if ((node as Location).imageSrc) {
+          newNodeElement.innerHTML += `
+            <img height="100" src="${(node as Location).imageSrc}" />
+          `;
+        }
         newNodeElement.innerHTML += `
           <button class="accordion">Description</button>
           <div class="panel" style="max-height: 0px;">
@@ -306,25 +316,6 @@ export const create_node_element = (node: Node, state: State): void => {
         textarea_detail.addEventListener('input', (): void => {
           (node as Lore).detail = textarea_detail.value;
         }, false);
-
-
-
-
-
-        let newItem = document.createElement("div");
-        let newImg = document.createElement("img");
-        newItem.appendChild(newImg);
-        newNodeElement.appendChild(newItem);
-        
-        newImg.src = "images/splash.png";
-        //newImg.src = ""
-        
-        
-
-
-
-
-
       }
       break;
     default:
