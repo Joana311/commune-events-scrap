@@ -24,6 +24,12 @@ body
     opacity: 1;
 }
 
+.toolbar-button:disabled
+{
+    background-color: white;
+    opacity: 0.2;
+}
+
 .tooltip
 {
     position: relative;
@@ -73,12 +79,6 @@ body
 .icon:hover
 {
     color: black;
-}
-
-.icon:disabled
-{
-    opacity: 0.2;
-    color: grey;
 }
 
 input[type="file"]
