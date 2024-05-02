@@ -191,7 +191,7 @@ export const redraw_lines = (state) => {
 export const add_link = (nodeId1, nodeId2, state) => {
     if (nodeId1 && nodeId2 && !does_link_exist(nodeId1, nodeId2, state.links)) {
         state.links.push({ nodeFromId: nodeId1, nodeToId: nodeId2 });
-        redraw_lines(state);
+        refresh(state);
     }
 };
 //# sourceMappingURL=link.js.map

@@ -213,6 +213,6 @@ export const redraw_lines = (state: State): void => {
 export const add_link = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
   if (nodeId1 && nodeId2 && !does_link_exist(nodeId1, nodeId2, state.links)) {
     state.links.push({ nodeFromId: nodeId1, nodeToId: nodeId2 });
-    redraw_lines(state);
+    refresh(state);
   }
 };
