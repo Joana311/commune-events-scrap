@@ -127,14 +127,6 @@ window.onbeforeunload = function (event) {
 document.addEventListener('contextmenu', (event) => event.preventDefault());
 window.addEventListener('keydown', (event) => keydownResponse(event, state), false);
 window.addEventListener('keyup', (event) => keyupResponse(event, state), false);
-/**
- *
- * @param event
- * @param nodes Array of all the nodes.
- * @param links Array of all the links.
- * @param linesCached Array of HTML elements of lines.
- * @param state
- */
 function keydownResponse(event, state) {
     if (event.key === 'Escape') {
         clear(state);
@@ -143,11 +135,6 @@ function keydownResponse(event, state) {
         state.deleting = true;
     }
 }
-/**
- *
- * @param event
- * @param state
- */
 function keyupResponse(event, state) {
     if (event.key === 'd') {
         state.deleting = false;
@@ -192,33 +179,24 @@ const validJson = (json) => {
     }
     return true;
 };
-const inputLoadFileElement = document.getElementById('inputLoadFile');
-if (inputLoadFileElement) {
-    inputLoadFileElement.onchange = (event) => {
-        const reader = new FileReader();
-        reader.onload = onReaderLoad;
-        const temp = event.target;
-        if (temp && temp.files) {
-            //console.log(event as InputEvent);
-            //console.log(event.target as HTMLInputElement);
-            reader.readAsText(temp.files[0]);
-        }
-        /**
-         *
-         * @param event
-         */
-        function onReaderLoad(event) {
-            console.log(event);
-            if (event.target && event.target.result) {
-                //console.log(event.target.result);
-                const jsonString = event.target.result;
-                if (validJson(jsonString)) {
-                    const obj = JSON.parse(jsonString);
-                    console.log(obj);
-                    load(obj, state);
-                }
+document.getElementById('inputLoadFile').onchange = (event) => {
+    const reader = new FileReader();
+    reader.onload = onReaderLoad;
+    const temp = event.target;
+    if (temp && temp.files) {
+        reader.readAsText(temp.files[0]);
+    }
+    function onReaderLoad(event) {
+        console.log(event);
+        if (event.target && event.target.result) {
+            //console.log(event.target.result);
+            const jsonString = event.target.result;
+            if (validJson(jsonString)) {
+                const obj = JSON.parse(jsonString);
+                console.log(obj);
+                load(obj, state);
             }
         }
-    };
-}
+    }
+};
 //# sourceMappingURL=story-plan-organizer.js.map

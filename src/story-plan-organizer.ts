@@ -142,14 +142,6 @@ document.addEventListener('contextmenu', (event) => event.preventDefault());
 window.addEventListener('keydown', (event) => keydownResponse(event, state), false);
 window.addEventListener('keyup', (event) => keyupResponse(event, state), false);
 
-/**
- *
- * @param event
- * @param nodes Array of all the nodes.
- * @param links Array of all the links.
- * @param linesCached Array of HTML elements of lines.
- * @param state
- */
 function keydownResponse(event: KeyboardEvent, state: State): void {
   if (event.key === 'Escape') {
     clear(state);
@@ -159,11 +151,6 @@ function keydownResponse(event: KeyboardEvent, state: State): void {
   }
 }
 
-/**
- *
- * @param event
- * @param state
- */
 function keyupResponse(event: KeyboardEvent, state: State): void {
   if (event.key === 'd') {
     state.deleting = false;
@@ -189,12 +176,9 @@ const download = (filename: string, text: string): void => {
   const element = document.createElement('a');
   element.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(text));
   element.setAttribute('download', filename);
-
   element.style.display = 'none';
   document.body.appendChild(element);
-
   element.click();
-
   document.body.removeChild(element);
 };
 
@@ -217,34 +201,26 @@ const validJson = (json: string): boolean => {
   return true;
 };
 
-const inputLoadFileElement = document.getElementById('inputLoadFile');
-if (inputLoadFileElement) {
-  inputLoadFileElement.onchange = (event: Event) => {
-    const reader = new FileReader();
-    reader.onload = onReaderLoad;
 
-    const temp = event.target as HTMLInputElement;
-    if (temp && temp.files) {
-      //console.log(event as InputEvent);
-      //console.log(event.target as HTMLInputElement);
-      reader.readAsText(temp.files[0]);
-    }
+(document.getElementById('inputLoadFile') as HTMLInputElement).onchange = (event: Event) => {
+  const reader = new FileReader();
+  reader.onload = onReaderLoad;
 
-    /**
-     *
-     * @param event
-     */
-    function onReaderLoad(event: ProgressEvent<FileReader>): void {
-      console.log(event);
-      if (event.target && event.target.result) {
-        //console.log(event.target.result);
-        const jsonString = event.target.result as string;
-        if (validJson(jsonString)) {
-          const obj = JSON.parse(jsonString);
-          console.log(obj);
-          load(obj as Dto, state);
-        }
+  const temp = event.target as HTMLInputElement;
+  if (temp && temp.files) {
+    reader.readAsText(temp.files[0]);
+  }
+
+  function onReaderLoad(event: ProgressEvent<FileReader>): void {
+    console.log(event);
+    if (event.target && event.target.result) {
+      //console.log(event.target.result);
+      const jsonString = event.target.result as string;
+      if (validJson(jsonString)) {
+        const obj = JSON.parse(jsonString);
+        console.log(obj);
+        load(obj as Dto, state);
       }
     }
-  };
-}
+  }
+};
