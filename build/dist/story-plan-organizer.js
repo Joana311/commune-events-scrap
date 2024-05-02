@@ -132,10 +132,10 @@ for (const nodeType of [
     (button_create === null || button_create === void 0 ? void 0 : button_create.firstElementChild).style.color = get_icon(nodeType).color;
 }
 // Export
-const download = (filename, text) => {
+const download = (fileName, text) => {
     const element = document.createElement('a');
     element.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
+    element.setAttribute('download', fileName);
     element.style.display = 'none';
     document.body.appendChild(element);
     element.click();

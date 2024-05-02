@@ -144,10 +144,10 @@ for (const nodeType of [
 }
 
 // Export
-const download = (filename: string, text: string): void => {
+const download = (fileName: string, text: string): void => {
   const element = document.createElement('a');
   element.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(text));
-  element.setAttribute('download', filename);
+  element.setAttribute('download', fileName);
   element.style.display = 'none';
   document.body.appendChild(element);
   element.click();
@@ -160,7 +160,6 @@ document.getElementById('export')?.addEventListener('click', (): void => {
   const fileName: string = 'story.json';
   const dto: Dto = { nodes: state.nodes, links: state.links };
   const fileContent: string = JSON.stringify(dto, null, 2);
-
   download(fileName, fileContent);
 });
 
