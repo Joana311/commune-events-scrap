@@ -217,7 +217,7 @@ const validJson = (json: string): boolean => {
       if (validJson(jsonString)) {
         const jsonObject = JSON.parse(jsonString);
         load(jsonObject as Dto, state);
-        const button = document.getElementById('buttonLoad') as HTMLButtonElement;
+        const button = document.getElementById('button-load') as HTMLButtonElement;
         button.disabled = true;
         button.innerText = '';
       }

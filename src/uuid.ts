@@ -2,9 +2,6 @@
 
 export type UUID = `${string}-${string}-${string}-${string}-${string}`;
 
-/**
- *
- */
 export function randomUUID(): UUID {
   // https://stackoverflow.com/questions/105034/how-do-i-create-a-guid-uuid
   // Timestamp

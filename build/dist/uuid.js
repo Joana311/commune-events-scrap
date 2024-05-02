@@ -1,7 +1,4 @@
 // Note: `@types/node/crypto` doesn't seem to work with .ts when bundled, it cannot be imported properly when viewed from the browser
-/**
- *
- */
 export function randomUUID() {
     // https://stackoverflow.com/questions/105034/how-do-i-create-a-guid-uuid
     // Timestamp

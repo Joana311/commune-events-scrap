@@ -9,17 +9,8 @@ export enum NodeType {
   Lore = 'Lore',
 }
 
-/**
- * Point.
- */
 export type Point = {
-  /**
-   * X coordinate.
-   */
   x: number;
-  /**
-   * Y coordinate.
-   */
   y: number;
 };
 

@@ -7,17 +7,8 @@ export declare enum NodeType {
     Story = "Story",
     Lore = "Lore"
 }
-/**
- * Point.
- */
 export type Point = {
-    /**
-     * X coordinate.
-     */
     x: number;
-    /**
-     * Y coordinate.
-     */
     y: number;
 };
 export type Color_Hex = `#${string}`;

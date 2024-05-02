@@ -193,7 +193,7 @@ document.getElementById('inputLoadFile').onchange = (event) => {
             if (validJson(jsonString)) {
                 const jsonObject = JSON.parse(jsonString);
                 load(jsonObject, state);
-                const button = document.getElementById('buttonLoad');
+                const button = document.getElementById('button-load');
                 button.disabled = true;
                 button.innerText = '';
             }

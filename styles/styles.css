@@ -1,170 +1,170 @@
 body
 {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #0E0E10;
-    margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0E0E10;
+  margin: 0px;
 }
 
 .toolbar-button
 {
-    background-color: white;
-    font-size: 18px;
-    text-align: center;
-    text-decoration: none;
-    opacity: 1;
-    border: 2px solid grey;
-    display: inline-block;
-    transition: 0.3s;
-    padding: 5px;
+  background-color: white;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  opacity: 1;
+  border: 2px solid grey;
+  display: inline-block;
+  transition: 0.3s;
+  padding: 5px;
 }
 
 .toolbar-button:hover
 {
-    background-color: #89CFF0;
-    opacity: 1;
+  background-color: #89CFF0;
+  opacity: 1;
 }
 
 .toolbar-button:disabled
 {
-    background-color: grey;
-    opacity: 0.2;
+  background-color: grey;
+  opacity: 0.2;
 }
 
 .tooltip
 {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .tooltip .tooltip-text
 {
-    visibility: hidden;
-    background-color: #555555;
-    color: #fff;
-    text-align: center;
-    padding: 5px;
-    border-radius: 6px;
-    position: absolute;
-    z-index: 2;
-    top: 115%;
-    left: 50%;
-    margin-left: -50%;
-    opacity: 0;
-    transition: opacity 0.3s;
+  visibility: hidden;
+  background-color: #555555;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 2;
+  top: 115%;
+  left: 50%;
+  margin-left: -50%;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .tooltip .tooltip-text::after
 {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555555 transparent transparent transparent;
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555555 transparent transparent transparent;
 }
 
 .tooltip:hover .tooltip-text
 {
-    visibility: visible;
-    opacity: 1.0;
+  visibility: visible;
+  opacity: 1.0;
 }
 
 .icon
 {
-    color: grey;
+  color: grey;
 }
 
 .icon:hover
 {
-    color: black;
+  color: black;
 }
 
 input[type="file"]
 {
-    display: none;
+  display: none;
 }
 
 .node
 {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    z-index: 1;
-    background-color: white;
-    border: 4px solid white;
-    border-radius: 6px;
-    opacity: 1.0;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  border: 4px solid white;
+  border-radius: 6px;
+  opacity: 1.0;
 }
 
 .node-highlighted
 {
-    border-width: 8px;
+  border-width: 8px;
 }
 
 .node-unhighlighted
 {
-    opacity: 0.3;
+  opacity: 0.3;
 }
 
 .move
 {
-    width: 45px;
-    height: 45px;
-    cursor: move;
-    background-color: #2196F3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 45px;
+  height: 45px;
+  cursor: move;
+  background-color: #2196F3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .node-name
 {
-    flex: 1;
-    width: 300px;
-    font-size: 26px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-align: center;
-    color: black;
-    background-color: lightblue;
-    border: 0px;
+  flex: 1;
+  width: 300px;
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+  color: black;
+  background-color: lightblue;
+  border: 0px;
 }
 
 .node-color
 {
-    width: 10px;
-    height: 45px;
-    border: 0px;
-    padding: 0px;
-    margin: 0px;
+  width: 10px;
+  height: 45px;
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 
 img
 {
-    align-self: center;
+  align-self: center;
 }
 
 .line
 {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    pointer-events: none;
-    z-index: 0;
-    stroke-width: 6px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  pointer-events: none;
+  z-index: 0;
+  stroke-width: 6px;
 }
 
 .line-highlighted
 {
-    stroke-width: 8px;
+  stroke-width: 8px;
 }
 
 .line-unhighlighted
 {
-    stroke-width: 4px;
-    stroke-opacity: 0.3;
+  stroke-width: 4px;
+  stroke-opacity: 0.3;
 }
 
 .accordion
@@ -201,27 +201,27 @@ img
 
 .panel
 {
-    width: calc(100% - 6px);
-    background-color: white;
-    overflow: hidden;
-    padding-right: 6px;
+  width: calc(100% - 6px);
+  background-color: white;
+  overflow: hidden;
+  padding-right: 6px;
 }
 
 textarea
 {
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
-    max-height: 100%;
-    font-size: 18px;
-    border: 1px solid gray;
-    padding: 0px 2px;
-    margin: 0px;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  font-size: 18px;
+  border: 1px solid gray;
+  padding: 0px 2px;
+  margin: 0px;
 }
 
 .textarea-half
 {
-    min-width: 50%;
-    max-width: 50%;
-    padding: 0px;
+  min-width: 50%;
+  max-width: 50%;
+  padding: 0px;
 }
