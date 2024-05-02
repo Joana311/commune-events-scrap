@@ -296,6 +296,12 @@ export const create_node_element = (node, state) => {
     input_name.addEventListener('input', () => {
         node.name = input_name.value;
     }, false);
+    input_name.addEventListener('click', (event) => {
+        if (event.button === 1) {
+            // Middle mouse button
+            console.log('\nI will now hide all accordions\n');
+        }
+    });
     const input_color = newNodeElement.getElementsByClassName('node-color')[0];
     input_color.addEventListener('input', () => {
         node.color = input_color.value;
