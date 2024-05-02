@@ -142,6 +142,7 @@ export const create_node_element = (node, state) => {
           <button class="accordion">Likes and Dislikes</button>
           <div class="panel" style="max-height: 0px; display: flex; gap: 0px;">
             <textarea style="min-width: 50%; max-width: 50%;">${node.like}</textarea>
+            <textarea style="min-width: 50%; max-width: 50%;">${node.dislike}</textarea>
           </div>
         `;
             }
@@ -265,6 +266,8 @@ const setup_accordions = (nodeElement, state) => {
                 }
             }
             const textarea = panel.getElementsByTagName('textarea')[0];
+            console.log('\n\n\n\nPOINT_A');
+            console.log(textarea.getAttribute('style'));
             textarea.setAttribute('style', 'height:' + textarea.scrollHeight + 'px; overflow-y:hidden;');
             textarea.addEventListener('input', () => {
                 textarea.style.height = 'auto';
