@@ -1,2 +1,2 @@
 export type UUID = `${string}-${string}-${string}-${string}-${string}`;
-export declare function randomUUID(): UUID;
+export declare const randomUUID: () => UUID;

@@ -1,7 +1,7 @@
 import { NodeType, } from './definition.js';
-import { randomUUID } from './uuid.js';
 import { add_link, redraw_lines } from './link.js';
 import { refresh, validate } from './story-plan-organizer.js';
+import { randomUUID } from './uuid.js';
 export const get_node = (id, nodes) => {
     let foundNode;
     for (const node of nodes) {
@@ -167,10 +167,41 @@ export const create_node_element = (node, state) => {
             <textarea>${node.other}</textarea>
           </div>
         `;
-                const textarea_description = newNodeElement.getElementsByTagName('textarea')[0];
-                // prettier-ignore
-                textarea_description.addEventListener('input', () => {
-                    node.description = textarea_description.value;
+                const textarea_personality = newNodeElement.getElementsByTagName('textarea')[0];
+                textarea_personality.addEventListener('input', () => {
+                    node.personality = textarea_personality.value;
+                }, false);
+                const textarea_quirk = newNodeElement.getElementsByTagName('textarea')[1];
+                textarea_quirk.addEventListener('input', () => {
+                    node.quirk = textarea_quirk.value;
+                }, false);
+                const textarea_like = newNodeElement.getElementsByTagName('textarea')[2];
+                textarea_like.addEventListener('input', () => {
+                    node.like = textarea_like.value;
+                }, false);
+                const textarea_dislike = newNodeElement.getElementsByTagName('textarea')[3];
+                textarea_dislike.addEventListener('input', () => {
+                    node.dislike = textarea_dislike.value;
+                }, false);
+                const textarea_strength = newNodeElement.getElementsByTagName('textarea')[4];
+                textarea_strength.addEventListener('input', () => {
+                    node.strength = textarea_strength.value;
+                }, false);
+                const textarea_weakness = newNodeElement.getElementsByTagName('textarea')[5];
+                textarea_weakness.addEventListener('input', () => {
+                    node.weakness = textarea_weakness.value;
+                }, false);
+                const textarea_flaw = newNodeElement.getElementsByTagName('textarea')[6];
+                textarea_flaw.addEventListener('input', () => {
+                    node.flaw = textarea_flaw.value;
+                }, false);
+                const textarea_motivation = newNodeElement.getElementsByTagName('textarea')[7];
+                textarea_motivation.addEventListener('input', () => {
+                    node.motivation = textarea_motivation.value;
+                }, false);
+                const textarea_other = newNodeElement.getElementsByTagName('textarea')[8];
+                textarea_other.addEventListener('input', () => {
+                    node.other = textarea_other.value;
                 }, false);
             }
             break;
@@ -188,7 +219,6 @@ export const create_node_element = (node, state) => {
           </div>
         `;
                 const textarea_description = newNodeElement.getElementsByTagName('textarea')[0];
-                // prettier-ignore
                 textarea_description.addEventListener('input', () => {
                     node.description = textarea_description.value;
                 }, false);
@@ -207,12 +237,10 @@ export const create_node_element = (node, state) => {
           </div>
         `;
                 const textarea_objective = newNodeElement.getElementsByTagName('textarea')[0];
-                // prettier-ignore
                 textarea_objective.addEventListener('input', () => {
                     node.objective = textarea_objective.value;
                 }, false);
                 const textarea_detail = newNodeElement.getElementsByTagName('textarea')[1];
-                // prettier-ignore
                 textarea_detail.addEventListener('input', () => {
                     node.detail = textarea_detail.value;
                 }, false);
@@ -227,7 +255,6 @@ export const create_node_element = (node, state) => {
           </div>
         `;
                 const textarea_detail = newNodeElement.getElementsByTagName('textarea')[0];
-                // prettier-ignore
                 textarea_detail.addEventListener('input', () => {
                     node.detail = textarea_detail.value;
                 }, false);
@@ -242,7 +269,6 @@ export const create_node_element = (node, state) => {
           </div>
         `;
                 const textarea_description = newNodeElement.getElementsByTagName('textarea')[0];
-                // prettier-ignore
                 textarea_description.addEventListener('input', () => {
                     node.description = textarea_description.value;
                 }, false);
@@ -257,7 +283,6 @@ export const create_node_element = (node, state) => {
           </div>
         `;
                 const textarea_detail = newNodeElement.getElementsByTagName('textarea')[0];
-                // prettier-ignore
                 textarea_detail.addEventListener('input', () => {
                     node.detail = textarea_detail.value;
                 }, false);
@@ -268,12 +293,10 @@ export const create_node_element = (node, state) => {
     }
     // addEventListeners need to be after all the += innerHTML
     const input_name = newNodeElement.getElementsByClassName('node-name')[0];
-    // prettier-ignore
     input_name.addEventListener('input', () => {
         node.name = input_name.value;
     }, false);
     const input_color = newNodeElement.getElementsByClassName('node-color')[0];
-    // prettier-ignore
     input_color.addEventListener('input', () => {
         node.color = input_color.value;
         newNodeElement.style.borderColor = node.color;
@@ -331,10 +354,6 @@ const drag_node_element = (element, state) => {
             state.createOngoingLinkId = null;
         }
     });
-    /**
-     *
-     * @param event
-     */
     function dragMouseDown(event) {
         event = event || window.event;
         event.preventDefault();
@@ -358,10 +377,6 @@ const drag_node_element = (element, state) => {
             state.createOngoingLinkId = element.id;
         }
     }
-    /**
-     *
-     * @param event
-     */
     function elementDrag(event) {
         event = event || window.event;
         event.preventDefault();

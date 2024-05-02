@@ -1,7 +1,39 @@
 var _a;
 import { NodeType } from './definition.js';
-import { add_node, create_node_element, get_icon, get_node, get_node_element } from './node.js';
 import { redraw_lines } from './link.js';
+import { add_node, create_node_element, get_icon, get_node, get_node_element } from './node.js';
+// Does not handle refreshing, just validating
+export const validate = (state) => {
+    // Validate node elements
+    for (const node of state.nodes) {
+        const nodeElement = get_node_element(node.id);
+        if (!nodeElement) {
+            create_node_element(node, state);
+        }
+    }
+    for (let i = state.nodesCached.length - 1; i >= 0; i--) {
+        const nodeElement = state.nodesCached[i];
+        const node = get_node(nodeElement.id, state.nodes);
+        if (!node) {
+            const index = state.nodesCached.indexOf(nodeElement);
+            if (index !== -1) {
+                state.nodesCached.splice(index, 1);
+            }
+            nodeElement.remove();
+        }
+    }
+    // Validate links
+    for (let i = state.links.length - 1; i >= 0; i--) {
+        const link = state.links[i];
+        const validNode1 = get_node(link.nodeFromId, state.nodes) ? true : false;
+        const validNode2 = get_node(link.nodeToId, state.nodes) ? true : false;
+        if (!validNode1 || !validNode2) {
+            state.links.splice(i, 1);
+        }
+    }
+    // Validate highlights and redraw lines
+    refresh(state);
+};
 export const refresh = (state) => {
     for (const nodeElement of state.nodesCached) {
         if (state.selectedNodeElement) {
@@ -55,9 +87,76 @@ export const refresh = (state) => {
     }
     redraw_lines(state);
 };
-const clear = (state) => {
-    state.selectedNodeElement = null;
-    refresh(state);
+const state = {
+    nodes: [],
+    nodesCached: [],
+    links: [],
+    linesCached: [],
+    selectedNodeElement: null,
+    createOngoingLinkId: null,
+    deleting: false,
+};
+window.onbeforeunload = function (event) {
+    event.preventDefault();
+};
+document.addEventListener('contextmenu', (event) => event.preventDefault());
+window.addEventListener('keydown', (event) => keydownResponse(event, state), false);
+window.addEventListener('keyup', (event) => keyupResponse(event, state), false);
+function keydownResponse(event, state) {
+    if (event.key === 'Escape') {
+        state.selectedNodeElement = null;
+        refresh(state);
+    }
+    if (event.key === 'd') {
+        state.deleting = true;
+    }
+}
+function keyupResponse(event, state) {
+    if (event.key === 'd') {
+        state.deleting = false;
+    }
+}
+// Loading Toolbar create node button icon colors
+for (const nodeType of [
+    NodeType.Character,
+    NodeType.Location,
+    NodeType.Organization,
+    NodeType.Event,
+    NodeType.Story,
+    NodeType.Lore,
+]) {
+    const button_create = document.getElementById('create-node-' + NodeType[nodeType]);
+    button_create === null || button_create === void 0 ? void 0 : button_create.addEventListener('click', (event) => {
+        add_node({ x: event.x - 20, y: event.y - 20 }, nodeType, state);
+    });
+    (button_create === null || button_create === void 0 ? void 0 : button_create.firstElementChild).style.color = get_icon(nodeType).color;
+}
+// Export
+const download = (filename, text) => {
+    const element = document.createElement('a');
+    element.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+};
+(_a = document.getElementById('export')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
+    console.log(state);
+    const fileName = 'story.json';
+    const dto = { nodes: state.nodes, links: state.links };
+    const fileContent = JSON.stringify(dto, null, 2);
+    download(fileName, fileContent);
+});
+// Import
+const validJson = (json) => {
+    try {
+        JSON.parse(json);
+    }
+    catch (e) {
+        return false;
+    }
+    return true;
 };
 const load = (dto, state) => {
     reset(state);
@@ -78,106 +177,6 @@ const reset = (state) => {
     state.selectedNodeElement = null;
     state.createOngoingLinkId = null;
     state.deleting = false;
-};
-// Does not handle refreshing, just validating
-export const validate = (state) => {
-    // Validate node elements
-    for (const node of state.nodes) {
-        const nodeElement = get_node_element(node.id);
-        if (!nodeElement) {
-            create_node_element(node, state);
-        }
-    }
-    for (let i = state.nodesCached.length - 1; i >= 0; i--) {
-        const nodeElement = state.nodesCached[i];
-        const node = get_node(nodeElement.id, state.nodes);
-        if (!node) {
-            const index = state.nodesCached.indexOf(nodeElement);
-            if (index !== -1) {
-                state.nodesCached.splice(index, 1);
-            }
-            nodeElement.remove();
-        }
-    }
-    // Validate links
-    for (let i = state.links.length - 1; i >= 0; i--) {
-        const link = state.links[i];
-        const validNode1 = get_node(link.nodeFromId, state.nodes) ? true : false;
-        const validNode2 = get_node(link.nodeToId, state.nodes) ? true : false;
-        if (!validNode1 || !validNode2) {
-            state.links.splice(i, 1);
-        }
-    }
-    // Validate highlights and redraw lines
-    refresh(state);
-};
-const state = {
-    nodes: [],
-    nodesCached: [],
-    links: [],
-    linesCached: [],
-    selectedNodeElement: null,
-    createOngoingLinkId: null,
-    deleting: false,
-};
-window.onbeforeunload = function (event) {
-    console.log(event);
-    //event.preventDefault();
-};
-document.addEventListener('contextmenu', (event) => event.preventDefault());
-window.addEventListener('keydown', (event) => keydownResponse(event, state), false);
-window.addEventListener('keyup', (event) => keyupResponse(event, state), false);
-function keydownResponse(event, state) {
-    if (event.key === 'Escape') {
-        clear(state);
-    }
-    if (event.key === 'd') {
-        state.deleting = true;
-    }
-}
-function keyupResponse(event, state) {
-    if (event.key === 'd') {
-        state.deleting = false;
-    }
-}
-for (const nodeType of [
-    NodeType.Character,
-    NodeType.Location,
-    NodeType.Organization,
-    NodeType.Event,
-    NodeType.Story,
-    NodeType.Lore,
-]) {
-    const button_create = document.getElementById('create-node-' + NodeType[nodeType]);
-    button_create === null || button_create === void 0 ? void 0 : button_create.addEventListener('click', (event) => {
-        add_node({ x: event.x - 20, y: event.y - 20 }, nodeType, state);
-    });
-    (button_create === null || button_create === void 0 ? void 0 : button_create.firstElementChild).style.color = get_icon(nodeType).color;
-}
-const download = (filename, text) => {
-    const element = document.createElement('a');
-    element.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
-    element.style.display = 'none';
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
-};
-(_a = document.getElementById('export')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
-    console.log(state);
-    const fileName = 'story.json';
-    const dto = { nodes: state.nodes, links: state.links };
-    const fileContent = JSON.stringify(dto, null, 2);
-    download(fileName, fileContent);
-});
-const validJson = (json) => {
-    try {
-        JSON.parse(json);
-    }
-    catch (e) {
-        return false;
-    }
-    return true;
 };
 document.getElementById('inputLoadFile').onchange = (event) => {
     const reader = new FileReader();

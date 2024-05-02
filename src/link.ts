@@ -1,7 +1,7 @@
 import { CALCULATION_INCREMENT, Link, Node, NodePositionResults, Point, State } from './definition.js';
-import { UUID } from './uuid.js';
 import { get_node, get_node_element } from './node.js';
 import { refresh } from './story-plan-organizer.js';
+import { UUID } from './uuid.js';
 
 const does_link_exist = (nodeId1: UUID, nodeId2: UUID, links: Link[]): boolean => {
   for (const link of links) {
@@ -177,7 +177,7 @@ const create_line = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
         lineElement.classList.remove('line-unhighlighted');
       }
 
-      lineElement.addEventListener('click', () => {
+      lineElement.addEventListener('click', (): void => {
         if (state.deleting) {
           delete_link(nodeId1, nodeId2, state);
         }

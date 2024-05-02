@@ -11,9 +11,9 @@ import {
   State,
   Story,
 } from './definition.js';
-import { UUID, randomUUID } from './uuid.js';
 import { add_link, redraw_lines } from './link.js';
 import { refresh, validate } from './story-plan-organizer.js';
+import { randomUUID, UUID } from './uuid.js';
 
 export const get_node = (id: UUID, nodes: Node[]): Node | undefined => {
   let foundNode;
@@ -220,11 +220,78 @@ export const create_node_element = (node: Node, state: State): void => {
             <textarea>${(node as Character).other}</textarea>
           </div>
         `;
-        const textarea_description = newNodeElement.getElementsByTagName('textarea')[0];
-        // prettier-ignore
-        textarea_description.addEventListener('input', (): void => {
-          (node as Location).description = textarea_description.value;
-        }, false);
+        const textarea_personality = newNodeElement.getElementsByTagName('textarea')[0];
+        textarea_personality.addEventListener(
+          'input',
+          (): void => {
+            (node as Character).personality = textarea_personality.value;
+          },
+          false,
+        );
+        const textarea_quirk = newNodeElement.getElementsByTagName('textarea')[1];
+        textarea_quirk.addEventListener(
+          'input',
+          (): void => {
+            (node as Character).quirk = textarea_quirk.value;
+          },
+          false,
+        );
+        const textarea_like = newNodeElement.getElementsByTagName('textarea')[2];
+        textarea_like.addEventListener(
+          'input',
+          (): void => {
+            (node as Character).like = textarea_like.value;
+          },
+          false,
+        );
+        const textarea_dislike = newNodeElement.getElementsByTagName('textarea')[3];
+        textarea_dislike.addEventListener(
+          'input',
+          (): void => {
+            (node as Character).dislike = textarea_dislike.value;
+          },
+          false,
+        );
+        const textarea_strength = newNodeElement.getElementsByTagName('textarea')[4];
+        textarea_strength.addEventListener(
+          'input',
+          (): void => {
+            (node as Character).strength = textarea_strength.value;
+          },
+          false,
+        );
+        const textarea_weakness = newNodeElement.getElementsByTagName('textarea')[5];
+        textarea_weakness.addEventListener(
+          'input',
+          (): void => {
+            (node as Character).weakness = textarea_weakness.value;
+          },
+          false,
+        );
+        const textarea_flaw = newNodeElement.getElementsByTagName('textarea')[6];
+        textarea_flaw.addEventListener(
+          'input',
+          (): void => {
+            (node as Character).flaw = textarea_flaw.value;
+          },
+          false,
+        );
+        const textarea_motivation = newNodeElement.getElementsByTagName('textarea')[7];
+        textarea_motivation.addEventListener(
+          'input',
+          (): void => {
+            (node as Character).motivation = textarea_motivation.value;
+          },
+          false,
+        );
+        const textarea_other = newNodeElement.getElementsByTagName('textarea')[8];
+        textarea_other.addEventListener(
+          'input',
+          (): void => {
+            (node as Character).other = textarea_other.value;
+          },
+          false,
+        );
       }
       break;
     case NodeType.Location:
@@ -241,10 +308,13 @@ export const create_node_element = (node: Node, state: State): void => {
           </div>
         `;
         const textarea_description = newNodeElement.getElementsByTagName('textarea')[0];
-        // prettier-ignore
-        textarea_description.addEventListener('input', (): void => {
-          (node as Location).description = textarea_description.value;
-        }, false);
+        textarea_description.addEventListener(
+          'input',
+          (): void => {
+            (node as Location).description = textarea_description.value;
+          },
+          false,
+        );
       }
       break;
     case NodeType.Organization:
@@ -260,15 +330,21 @@ export const create_node_element = (node: Node, state: State): void => {
           </div>
         `;
         const textarea_objective = newNodeElement.getElementsByTagName('textarea')[0];
-        // prettier-ignore
-        textarea_objective.addEventListener('input', (): void => {
-          (node as Organization).objective = textarea_objective.value;
-        }, false);
+        textarea_objective.addEventListener(
+          'input',
+          (): void => {
+            (node as Organization).objective = textarea_objective.value;
+          },
+          false,
+        );
         const textarea_detail = newNodeElement.getElementsByTagName('textarea')[1];
-        // prettier-ignore
-        textarea_detail.addEventListener('input', (): void => {
-          (node as Organization).detail = textarea_detail.value;
-        }, false);
+        textarea_detail.addEventListener(
+          'input',
+          (): void => {
+            (node as Organization).detail = textarea_detail.value;
+          },
+          false,
+        );
       }
       break;
     case NodeType.Event:
@@ -280,10 +356,13 @@ export const create_node_element = (node: Node, state: State): void => {
           </div>
         `;
         const textarea_detail = newNodeElement.getElementsByTagName('textarea')[0];
-        // prettier-ignore
-        textarea_detail.addEventListener('input', (): void => {
-          (node as Event).detail = textarea_detail.value;
-        }, false);
+        textarea_detail.addEventListener(
+          'input',
+          (): void => {
+            (node as Event).detail = textarea_detail.value;
+          },
+          false,
+        );
       }
       break;
     case NodeType.Story:
@@ -295,10 +374,13 @@ export const create_node_element = (node: Node, state: State): void => {
           </div>
         `;
         const textarea_description = newNodeElement.getElementsByTagName('textarea')[0];
-        // prettier-ignore
-        textarea_description.addEventListener('input', (): void => {
-          (node as Story).description = textarea_description.value;
-        }, false);
+        textarea_description.addEventListener(
+          'input',
+          (): void => {
+            (node as Story).description = textarea_description.value;
+          },
+          false,
+        );
       }
       break;
     case NodeType.Lore:
@@ -310,10 +392,13 @@ export const create_node_element = (node: Node, state: State): void => {
           </div>
         `;
         const textarea_detail = newNodeElement.getElementsByTagName('textarea')[0];
-        // prettier-ignore
-        textarea_detail.addEventListener('input', (): void => {
-          (node as Lore).detail = textarea_detail.value;
-        }, false);
+        textarea_detail.addEventListener(
+          'input',
+          (): void => {
+            (node as Lore).detail = textarea_detail.value;
+          },
+          false,
+        );
       }
       break;
     default:
@@ -322,18 +407,24 @@ export const create_node_element = (node: Node, state: State): void => {
 
   // addEventListeners need to be after all the += innerHTML
   const input_name = newNodeElement.getElementsByClassName('node-name')[0] as HTMLInputElement;
-  // prettier-ignore
-  input_name.addEventListener('input', (): void => {
-    node.name = input_name.value;
-  }, false);
+  input_name.addEventListener(
+    'input',
+    (): void => {
+      node.name = input_name.value;
+    },
+    false,
+  );
 
   const input_color = newNodeElement.getElementsByClassName('node-color')[0] as HTMLInputElement;
-  // prettier-ignore
-  input_color.addEventListener('input', (): void => {
-    node.color = input_color.value as Color_Hex;
-    newNodeElement.style.borderColor = node.color;
-    redraw_lines(state);
-  }, false);
+  input_color.addEventListener(
+    'input',
+    (): void => {
+      node.color = input_color.value as Color_Hex;
+      newNodeElement.style.borderColor = node.color;
+      redraw_lines(state);
+    },
+    false,
+  );
 
   setup_accordions(newNodeElement, state);
 
@@ -365,7 +456,7 @@ const setup_accordions = (nodeElement: HTMLDivElement, state: State): void => {
         );
         textarea.addEventListener(
           'input',
-          () => {
+          (): void => {
             textarea.style.height = 'auto';
             textarea.style.height = textarea.scrollHeight + 'px';
           },
@@ -392,7 +483,7 @@ const drag_node_element = (element: HTMLDivElement, state: State): void => {
 
   const moveElement: HTMLDivElement = element.getElementsByClassName('move')[0] as HTMLDivElement;
   moveElement.onmousedown = dragMouseDown;
-  moveElement.addEventListener('mouseup', (event: MouseEvent) => {
+  moveElement.addEventListener('mouseup', (event: MouseEvent): void => {
     if (event.button === 2) {
       // Right mouse button
       if (element.id && state.createOngoingLinkId) {
@@ -402,10 +493,6 @@ const drag_node_element = (element: HTMLDivElement, state: State): void => {
     }
   });
 
-  /**
-   *
-   * @param event
-   */
   function dragMouseDown(event: MouseEvent): void {
     event = event || window.event;
     event.preventDefault();
@@ -433,10 +520,6 @@ const drag_node_element = (element: HTMLDivElement, state: State): void => {
     }
   }
 
-  /**
-   *
-   * @param event
-   */
   function elementDrag(event: MouseEvent): void {
     event = event || window.event;
     event.preventDefault();
@@ -458,7 +541,7 @@ const drag_node_element = (element: HTMLDivElement, state: State): void => {
     }
   }
 
-  function closeDragElement() {
+  function closeDragElement(): void {
     document.onmouseup = null;
     document.onmousemove = null;
   }

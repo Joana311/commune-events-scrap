@@ -1,5 +1,5 @@
 // Note: `@types/node/crypto` doesn't seem to work with .ts when bundled, it cannot be imported properly when viewed from the browser
-export function randomUUID() {
+export const randomUUID = () => {
     // https://stackoverflow.com/questions/105034/how-do-i-create-a-guid-uuid
     // Timestamp
     let d = new Date().getTime();
@@ -20,5 +20,5 @@ export function randomUUID() {
         }
         return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
     });
-}
+};
 //# sourceMappingURL=uuid.js.map
