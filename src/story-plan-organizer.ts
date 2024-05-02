@@ -170,11 +170,18 @@ function keyupResponse(event: KeyboardEvent, state: State): void {
   }
 }
 
-for (const nodeType of [NodeType.Character, NodeType.Location, NodeType.Organization, NodeType.Event, NodeType.Story, NodeType.Lore]) {
+for (const nodeType of [
+  NodeType.Character,
+  NodeType.Location,
+  NodeType.Organization,
+  NodeType.Event,
+  NodeType.Story,
+  NodeType.Lore,
+]) {
   const button_create = document.getElementById('create-node-' + NodeType[nodeType]);
   button_create?.addEventListener('click', (event: MouseEvent) => {
-      add_node({ x: event.x - 20, y: event.y - 20 }, nodeType, state);
-    });
+    add_node({ x: event.x - 20, y: event.y - 20 }, nodeType, state);
+  });
   (button_create?.firstElementChild as HTMLElement).style.color = get_icon(nodeType).color;
 }
 
@@ -201,7 +208,6 @@ document.getElementById('export')?.addEventListener('click', () => {
   download(fileName, fileContent);
 });
 
-
 const validJson = (json: string): boolean => {
   try {
     JSON.parse(json);
@@ -209,12 +215,11 @@ const validJson = (json: string): boolean => {
     return false;
   }
   return true;
-}
+};
 
-
-const inputImportFileElement = document.getElementById('inputImportFile');
-if (inputImportFileElement) {
-  inputImportFileElement.onchange = (event: Event) => {
+const inputLoadFileElement = document.getElementById('inputLoadFile');
+if (inputLoadFileElement) {
+  inputLoadFileElement.onchange = (event: Event) => {
     const reader = new FileReader();
     reader.onload = onReaderLoad;
 

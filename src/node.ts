@@ -115,7 +115,7 @@ export const add_node = (location: Point, type: NodeType, state: State): void =>
 
 export const get_icon = (type: NodeType): { color: Color_Hex; backgroundColor: Color_Hex; text: string } => {
   let color: Color_Hex;
-  let backgroundColor: Color_Hex = '#DEF4FF';
+  const backgroundColor: Color_Hex = '#DEF4FF';
   switch (type) {
     case NodeType.Character:
       {
@@ -361,7 +361,10 @@ const setup_accordions = (nodeElement: HTMLDivElement, state: State): void => {
       const textareas = panel.getElementsByTagName('textarea');
       for (let i = 0; i < textareas.length; i++) {
         const textarea = textareas[i];
-        textarea.setAttribute('style', textarea.getAttribute('style') + 'height:' + textarea.scrollHeight + 'px; overflow-y:hidden;');
+        textarea.setAttribute(
+          'style',
+          textarea.getAttribute('style') + 'height:' + textarea.scrollHeight + 'px; overflow-y:hidden;',
+        );
         textarea.addEventListener(
           'input',
           () => {

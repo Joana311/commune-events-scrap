@@ -67,7 +67,7 @@ export const add_node = (location, type, state) => {
 export const get_icon = (type) => {
     var _a;
     let color;
-    let backgroundColor = '#DEF4FF';
+    const backgroundColor = '#DEF4FF';
     switch (type) {
         case NodeType.Character:
             {

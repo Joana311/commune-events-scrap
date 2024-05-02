@@ -153,7 +153,14 @@ function keyupResponse(event, state) {
         state.deleting = false;
     }
 }
-for (const nodeType of [NodeType.Character, NodeType.Location, NodeType.Organization, NodeType.Event, NodeType.Story, NodeType.Lore]) {
+for (const nodeType of [
+    NodeType.Character,
+    NodeType.Location,
+    NodeType.Organization,
+    NodeType.Event,
+    NodeType.Story,
+    NodeType.Lore,
+]) {
     const button_create = document.getElementById('create-node-' + NodeType[nodeType]);
     button_create === null || button_create === void 0 ? void 0 : button_create.addEventListener('click', (event) => {
         add_node({ x: event.x - 20, y: event.y - 20 }, nodeType, state);
@@ -185,9 +192,9 @@ const validJson = (json) => {
     }
     return true;
 };
-const inputImportFileElement = document.getElementById('inputImportFile');
-if (inputImportFileElement) {
-    inputImportFileElement.onchange = (event) => {
+const inputLoadFileElement = document.getElementById('inputLoadFile');
+if (inputLoadFileElement) {
+    inputLoadFileElement.onchange = (event) => {
         const reader = new FileReader();
         reader.onload = onReaderLoad;
         const temp = event.target;
