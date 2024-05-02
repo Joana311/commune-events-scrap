@@ -154,11 +154,11 @@ function keyupResponse(event, state) {
     }
 }
 for (const nodeType of [NodeType.Character, NodeType.Location, NodeType.Organization, NodeType.Event, NodeType.Story, NodeType.Lore]) {
-    const button_create_character = document.getElementById('create-node-' + NodeType[nodeType]);
-    button_create_character === null || button_create_character === void 0 ? void 0 : button_create_character.addEventListener('click', (event) => {
+    const button_create = document.getElementById('create-node-' + NodeType[nodeType]);
+    button_create === null || button_create === void 0 ? void 0 : button_create.addEventListener('click', (event) => {
         add_node({ x: event.x - 20, y: event.y - 20 }, nodeType, state);
     });
-    (button_create_character === null || button_create_character === void 0 ? void 0 : button_create_character.firstElementChild).style.color = get_icon(nodeType).color;
+    (button_create === null || button_create === void 0 ? void 0 : button_create.firstElementChild).style.color = get_icon(nodeType).color;
 }
 const download = (filename, text) => {
     const element = document.createElement('a');

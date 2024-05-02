@@ -86,12 +86,12 @@ export const get_icon = (type) => {
             break;
         case NodeType.Event:
             {
-                color = '#C700C7';
+                color = '#FF0000';
             }
             break;
         case NodeType.Story:
             {
-                color = '#FF0000';
+                color = '#C700C7';
             }
             break;
         case NodeType.Lore:
@@ -265,14 +265,15 @@ const setup_accordions = (nodeElement, state) => {
                     panel.style.maxHeight = '0px';
                 }
             }
-            const textarea = panel.getElementsByTagName('textarea')[0];
-            console.log('\n\n\n\nPOINT_A');
-            console.log(textarea.getAttribute('style'));
-            textarea.setAttribute('style', 'height:' + textarea.scrollHeight + 'px; overflow-y:hidden;');
-            textarea.addEventListener('input', () => {
-                textarea.style.height = 'auto';
-                textarea.style.height = textarea.scrollHeight + 'px';
-            }, false);
+            const textareas = panel.getElementsByTagName('textarea');
+            for (let i = 0; i < textareas.length; i++) {
+                const textarea = textareas[i];
+                textarea.setAttribute('style', textarea.getAttribute('style') + 'height:' + textarea.scrollHeight + 'px; overflow-y:hidden;');
+                textarea.addEventListener('input', () => {
+                    textarea.style.height = 'auto';
+                    textarea.style.height = textarea.scrollHeight + 'px';
+                }, false);
+            }
             redraw_lines(state);
         });
         const panel = accordions[i].nextElementSibling;
