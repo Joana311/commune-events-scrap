@@ -256,6 +256,7 @@ export const create_node_element = (node, state) => {
                 newItem.appendChild(newImg);
                 newNodeElement.appendChild(newItem);
                 newImg.src = "images/splash.png";
+                //newImg.src = ""
             }
             break;
         default:

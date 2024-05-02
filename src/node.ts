@@ -317,6 +317,7 @@ export const create_node_element = (node: Node, state: State): void => {
         newNodeElement.appendChild(newItem);
         
         newImg.src = "images/splash.png";
+        //newImg.src = ""
         
         
 
