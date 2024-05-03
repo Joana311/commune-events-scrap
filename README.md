@@ -23,8 +23,8 @@ https://hyssopi.github.io/Story-Plan-Organizer/
 ```
 npm install
 npm run clean
-npm run build
 npm run lint
+npm run build
 ```
 
 ## Run
