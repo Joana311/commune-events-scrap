@@ -186,7 +186,7 @@ document.getElementById('inputLoadFile').onchange = (event) => {
         reader.readAsText(tempElement.files[0]);
     }
     function onReaderLoad(event) {
-        var _a, _b, _c;
+        var _a, _b;
         console.log(event);
         if (event.target && event.target.result) {
             const jsonString = event.target.result;
@@ -198,8 +198,8 @@ document.getElementById('inputLoadFile').onchange = (event) => {
                 button.innerText = '';
                 // To maximize the textareas the next time user shows all
                 (_a = document.getElementById('toggle-visibility')) === null || _a === void 0 ? void 0 : _a.click();
+                //document.getElementById('toggle-visibility')?.click();
                 (_b = document.getElementById('toggle-visibility')) === null || _b === void 0 ? void 0 : _b.click();
-                (_c = document.getElementById('toggle-visibility')) === null || _c === void 0 ? void 0 : _c.click();
             }
         }
     }

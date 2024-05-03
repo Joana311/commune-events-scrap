@@ -219,7 +219,7 @@ const reset = (state: State): void => {
 
         // To maximize the textareas the next time user shows all
         document.getElementById('toggle-visibility')?.click();
-        document.getElementById('toggle-visibility')?.click();
+        //document.getElementById('toggle-visibility')?.click();
         document.getElementById('toggle-visibility')?.click();
       }
     }
