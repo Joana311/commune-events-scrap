@@ -77,8 +77,8 @@ export const refresh = (state) => {
                 nodeElement.style.left = node.location.x.toString();
             }
         }
-        if (node.location.y < 0) {
-            node.location.y = 0;
+        if (node.location.y < 100) {
+            node.location.y = 100;
             const nodeElement = get_node_element(node.id);
             if (nodeElement) {
                 nodeElement.style.top = node.location.y.toString();
