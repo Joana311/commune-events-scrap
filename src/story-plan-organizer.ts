@@ -220,3 +220,15 @@ const reset = (state: State): void => {
     }
   }
 };
+
+// Hide / Show All
+document.getElementById('toggle-visibility')?.addEventListener('click', (): void => {
+  const accordions = document.getElementsByClassName('accordion');
+  for (let i = 0; i < accordions.length; i++) {
+    const panel = accordions[i].nextElementSibling as HTMLDivElement;
+    const textarea = panel.getElementsByTagName('textarea')[0];
+    if (textarea.value !== '') {
+      (accordions[i] as HTMLElement).click();
+    }
+  }
+});

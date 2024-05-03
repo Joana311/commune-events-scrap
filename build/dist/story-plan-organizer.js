@@ -1,4 +1,4 @@
-var _a;
+var _a, _b;
 import { NodeType } from './definition.js';
 import { redraw_lines } from './link.js';
 import { add_node, create_node_element, get_icon, get_node, get_node_element } from './node.js';
@@ -199,4 +199,15 @@ document.getElementById('inputLoadFile').onchange = (event) => {
         }
     }
 };
+// Hide / Show All
+(_b = document.getElementById('toggle-visibility')) === null || _b === void 0 ? void 0 : _b.addEventListener('click', () => {
+    const accordions = document.getElementsByClassName('accordion');
+    for (let i = 0; i < accordions.length; i++) {
+        const panel = accordions[i].nextElementSibling;
+        const textarea = panel.getElementsByTagName('textarea')[0];
+        if (textarea.value !== '') {
+            accordions[i].click();
+        }
+    }
+});
 //# sourceMappingURL=story-plan-organizer.js.map
