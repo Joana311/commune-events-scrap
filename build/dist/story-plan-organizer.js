@@ -186,6 +186,7 @@ document.getElementById('inputLoadFile').onchange = (event) => {
         reader.readAsText(tempElement.files[0]);
     }
     function onReaderLoad(event) {
+        var _a, _b;
         console.log(event);
         if (event.target && event.target.result) {
             const jsonString = event.target.result;
@@ -195,6 +196,8 @@ document.getElementById('inputLoadFile').onchange = (event) => {
                 const button = document.getElementById('button-load');
                 button.disabled = true;
                 button.innerText = '';
+                (_a = document.getElementById('toggle-visibility')) === null || _a === void 0 ? void 0 : _a.click();
+                (_b = document.getElementById('toggle-visibility')) === null || _b === void 0 ? void 0 : _b.click();
             }
         }
     }
@@ -205,7 +208,6 @@ let toggleVisibility = true;
     const accordions = document.getElementsByClassName('accordion');
     for (let i = 0; i < accordions.length; i++) {
         const panel = accordions[i].nextElementSibling;
-        const textarea = panel.getElementsByTagName('textarea')[0];
         if (panel) {
             if (toggleVisibility) {
                 // Hide All
@@ -217,6 +219,7 @@ let toggleVisibility = true;
             }
             else {
                 // Show All
+                const textarea = panel.getElementsByTagName('textarea')[0];
                 if (panel.style.maxHeight === '0px' && textarea.value !== '') {
                     accordions[i].click();
                 }

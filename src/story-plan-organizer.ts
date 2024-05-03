@@ -216,6 +216,9 @@ const reset = (state: State): void => {
         const button = document.getElementById('button-load') as HTMLButtonElement;
         button.disabled = true;
         button.innerText = '';
+
+        document.getElementById('toggle-visibility')?.click();
+        document.getElementById('toggle-visibility')?.click();
       }
     }
   }
@@ -227,8 +230,6 @@ document.getElementById('toggle-visibility')?.addEventListener('click', (): void
   const accordions = document.getElementsByClassName('accordion');
   for (let i = 0; i < accordions.length; i++) {
     const panel = accordions[i].nextElementSibling as HTMLDivElement;
-    const textarea = panel.getElementsByTagName('textarea')[0];
-
     if (panel) {
       if (toggleVisibility) {
         // Hide All
@@ -238,6 +239,7 @@ document.getElementById('toggle-visibility')?.addEventListener('click', (): void
         }
       } else {
         // Show All
+        const textarea = panel.getElementsByTagName('textarea')[0];
         if (panel.style.maxHeight === '0px' && textarea.value !== '') {
           (accordions[i] as HTMLElement).click();
         }
