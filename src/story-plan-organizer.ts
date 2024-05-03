@@ -238,9 +238,8 @@ document.getElementById('toggle-visibility')?.addEventListener('click', (): void
       } else {
         // Show All
         const textarea: HTMLTextAreaElement = panel.getElementsByTagName('textarea')[0];
-        const textarea2 = panel.getElementsByTagName('textarea')[1];
-        console.log(textarea2);
-        if (panel.style.maxHeight === '0px' && textarea.value !== '') {
+        const textarea2: HTMLTextAreaElement | undefined = panel.getElementsByTagName('textarea')[1];
+        if (panel.style.maxHeight === '0px' && textarea.value !== '' && (!textarea2 || textarea2 && textarea2.value !== '')) {
           (accordions[i] as HTMLElement).click();
         }
       }
