@@ -331,11 +331,6 @@ const setup_accordions = (nodeElement, state) => {
             }
             redraw_lines(state);
         });
-        const panel = accordions[i].nextElementSibling;
-        const textarea = panel.getElementsByTagName('textarea')[0];
-        if (textarea.value !== '') {
-            accordions[i].click();
-        }
     }
 };
 const drag_node_element = (element, state) => {

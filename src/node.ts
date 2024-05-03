@@ -466,12 +466,6 @@ const setup_accordions = (nodeElement: HTMLDivElement, state: State): void => {
 
       redraw_lines(state);
     });
-
-    const panel = accordions[i].nextElementSibling as HTMLDivElement;
-    const textarea = panel.getElementsByTagName('textarea')[0];
-    if (textarea.value !== '') {
-      (accordions[i] as HTMLElement).click();
-    }
   }
 };
 

@@ -217,6 +217,8 @@ let toggleVisibility = true;
             else {
                 // Show All
                 const textarea = panel.getElementsByTagName('textarea')[0];
+                const textarea2 = panel.getElementsByTagName('textarea')[1];
+                console.log(textarea2);
                 if (panel.style.maxHeight === '0px' && textarea.value !== '') {
                     accordions[i].click();
                 }
