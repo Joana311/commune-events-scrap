@@ -172,7 +172,7 @@ export const create_node_element = (node: Node, state: State): void => {
   newNodeElement.innerHTML = `
     <div style="display: flex;">
       <div class='move tooltip'>
-        <i class="material-icons" style="user-select: none; font-size: 40px; color: ${icon.color}; background-color: ${icon.backgroundColor};">${icon.text}</i>
+        <i class="material-icons" style="user-select: none; font-size: 30px; color: ${icon.color}; background-color: ${icon.backgroundColor};">${icon.text}</i>
         <span class="tooltip-text">${NodeType[node.type]}</span>
       </div>
       <input class='node-name' value='${node.name}'></input>
