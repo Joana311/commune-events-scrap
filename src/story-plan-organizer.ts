@@ -138,7 +138,8 @@ for (const nodeType of [
 ]) {
   const button_create = document.getElementById('create-node-' + NodeType[nodeType]);
   button_create?.addEventListener('click', (event: MouseEvent): void => {
-    add_node({ x: event.x - 20, y: event.y - 20 }, nodeType, state);
+    console.log(event);
+    add_node({ x: event.x - 20, y: event.y - 100 }, nodeType, state);
   });
   (button_create?.firstElementChild as HTMLElement).style.color = get_icon(nodeType).color;
 }
@@ -219,7 +220,8 @@ const reset = (state: State): void => {
 
         // To maximize the textareas the next time user shows all
         document.getElementById('toggle-visibility')?.click();
-        //document.getElementById('toggle-visibility')?.click();
+        document.getElementById('toggle-visibility')?.click();
+        document.getElementById('toggle-visibility')?.click();
         document.getElementById('toggle-visibility')?.click();
       }
     }
