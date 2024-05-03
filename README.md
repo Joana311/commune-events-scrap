@@ -3,6 +3,11 @@ Visually maps characters, events, stories, and their connections using diagrams.
 
 ![splash](images/splash.png)
 
+## Usage Instructions
+- `esc` to unhighlight all nodes
+- `d` + left mouse click to delete node/link
+- Manually edit JSON to add image link in `imageSrc` for Character and Location nodes
+
 ## Working Demo
 TODO
 
