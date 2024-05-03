@@ -79,20 +79,14 @@ export const refresh = (state: State): void => {
       node.location.x = 0;
       const nodeElement: HTMLDivElement | null = get_node_element(node.id);
       if (nodeElement) {
-        nodeElement.style.left = node.location.x.toString();
+        nodeElement.style.left = node.location.x.toString() + 'px';
       }
     }
     if (node.location.y < 110) {
       node.location.y = 110;
       const nodeElement: HTMLDivElement | null = get_node_element(node.id);
-      console.log('\n\n\nPOINT_A');
-      console.log(nodeElement);
-      console.log(nodeElement?.style.top);
       if (nodeElement) {
-        console.log('\n\n\nPOINT_B');
-        nodeElement.style.top = node.location.y.toString();
-        console.log(nodeElement);
-        console.log(nodeElement?.style.top);
+        nodeElement.style.top = node.location.y.toString() + 'px';
       }
     }
   }
