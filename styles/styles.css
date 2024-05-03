@@ -95,14 +95,14 @@ input[type="file"]
   position: absolute;
   z-index: 1;
   background-color: white;
-  border: 2px solid white;
+  border: 3px solid white;
   border-radius: 4px;
   opacity: 1.0;
 }
 
 .node-highlighted
 {
-  border-width: 4px;
+  border-width: 5px;
 }
 
 .node-unhighlighted
@@ -155,26 +155,26 @@ img
   left: 0px;
   pointer-events: none;
   z-index: 0;
-  stroke-width: 4px;
+  stroke-width: 2px;
 }
 
 .line-highlighted
 {
-  stroke-width: 6px;
+  stroke-width: 4px;
 }
 
 .line-unhighlighted
 {
-  stroke-width: 2px;
+  stroke-width: 1px;
   stroke-opacity: 0.3;
 }
 
 .accordion
 {
   width: 100%;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   outline: none;
   color: #222222;
   background-color: #EEEEEE;
