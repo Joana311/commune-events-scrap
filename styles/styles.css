@@ -55,18 +55,6 @@ body
   transition: opacity 0.3s;
 }
 
-.tooltip .tooltip-text::after
-{
-  content: "";
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555555 transparent transparent transparent;
-}
-
 .tooltip:hover .tooltip-text
 {
   visibility: visible;
