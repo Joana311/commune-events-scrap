@@ -217,8 +217,8 @@ let toggleVisibility = true;
             else {
                 // Show All
                 const textarea = panel.getElementsByTagName('textarea')[0];
-                const textarea2 = panel.getElementsByTagName('textarea')[1];
-                if (panel.style.maxHeight === '0px' && textarea.value !== '' && (!textarea2 || textarea2 && textarea2.value !== '')) {
+                const textareaRight = panel.getElementsByTagName('textarea')[1];
+                if (panel.style.maxHeight === '0px' && (textarea.value !== '' || textareaRight.value !== '')) {
                     accordions[i].click();
                 }
             }
