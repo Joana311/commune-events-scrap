@@ -77,10 +77,13 @@ export const refresh = (state) => {
                 nodeElement.style.left = node.location.x.toString();
             }
         }
-        if (node.location.y < 100) {
-            node.location.y = 100;
+        if (node.location.y < 110) {
+            node.location.y = 110;
             const nodeElement = get_node_element(node.id);
+            console.log('\n\n\nPOINT_A');
+            console.log(nodeElement);
             if (nodeElement) {
+                console.log('\n\n\nPOINT_B');
                 nodeElement.style.top = node.location.y.toString();
             }
         }
