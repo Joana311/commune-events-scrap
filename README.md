@@ -11,7 +11,7 @@ Visually maps characters, events, stories, and their connections using diagrams.
 - Manually edit JSON to add image link in `imageSrc` for Character and Location nodes
 
 ## Working Demo
-TODO
+https://www.youtube.com/watch?v=gHan1uBmqHI
 
 ## Try It Out
 https://hyssopi.github.io/Story-Plan-Organizer/
