@@ -87,9 +87,12 @@ export const refresh = (state: State): void => {
       const nodeElement: HTMLDivElement | null = get_node_element(node.id);
       console.log('\n\n\nPOINT_A');
       console.log(nodeElement);
+      console.log(nodeElement?.style.top);
       if (nodeElement) {
         console.log('\n\n\nPOINT_B');
         nodeElement.style.top = node.location.y.toString();
+        console.log(nodeElement);
+        console.log(nodeElement?.style.top);
       }
     }
   }

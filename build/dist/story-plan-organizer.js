@@ -82,9 +82,12 @@ export const refresh = (state) => {
             const nodeElement = get_node_element(node.id);
             console.log('\n\n\nPOINT_A');
             console.log(nodeElement);
+            console.log(nodeElement === null || nodeElement === void 0 ? void 0 : nodeElement.style.top);
             if (nodeElement) {
                 console.log('\n\n\nPOINT_B');
                 nodeElement.style.top = node.location.y.toString();
+                console.log(nodeElement);
+                console.log(nodeElement === null || nodeElement === void 0 ? void 0 : nodeElement.style.top);
             }
         }
     }
