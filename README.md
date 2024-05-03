@@ -2,6 +2,7 @@
 Visually maps characters, events, stories, and their connections using diagrams.
 
 ![splash1](images/splash1.png)
+
 ![splash2](images/splash2.png)
 
 ## Usage Instructions
