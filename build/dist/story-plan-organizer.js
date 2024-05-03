@@ -218,7 +218,8 @@ let toggleVisibility = true;
                 // Show All
                 const textarea = panel.getElementsByTagName('textarea')[0];
                 const textareaRight = panel.getElementsByTagName('textarea')[1];
-                if (panel.style.maxHeight === '0px' && (textarea.value !== '' || (textareaRight && textareaRight.value !== ''))) {
+                if (panel.style.maxHeight === '0px' &&
+                    (textarea.value !== '' || (textareaRight && textareaRight.value !== ''))) {
                     accordions[i].click();
                 }
             }

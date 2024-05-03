@@ -239,7 +239,10 @@ document.getElementById('toggle-visibility')?.addEventListener('click', (): void
         // Show All
         const textarea: HTMLTextAreaElement = panel.getElementsByTagName('textarea')[0];
         const textareaRight: HTMLTextAreaElement | undefined = panel.getElementsByTagName('textarea')[1];
-        if (panel.style.maxHeight === '0px' && (textarea.value !== '' || (textareaRight && textareaRight.value !== ''))) {
+        if (
+          panel.style.maxHeight === '0px' &&
+          (textarea.value !== '' || (textareaRight && textareaRight.value !== ''))
+        ) {
           (accordions[i] as HTMLElement).click();
         }
       }
