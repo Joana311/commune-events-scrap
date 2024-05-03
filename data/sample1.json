@@ -1,0 +1,416 @@
+{
+  "nodes": [
+    {
+      "id": "24ec3ea7-81c2-4d42-8016-3c6d8d37b693",
+      "location": {
+        "x": 694,
+        "y": 340
+      },
+      "type": "Character",
+      "name": "Hanako Hoshizora",
+      "color": "#ff80c0",
+      "imageSrc": "",
+      "personality": "Energetic, optimistic, loyal, strong sense of justice",
+      "quirk": "Hums anime tunes, twirls hair when stressed",
+      "like": "Cute things, sweets (taiyaki), fashion (Harajuku)",
+      "dislike": "Bullies, manipulation, burnt toast, spicy food",
+      "strength": "Optimism, inspiring, agile, quick reflexes",
+      "weakness": "Naive, impulsive, easily distracted, limited magical power",
+      "flaw": "Self-doubt, overworks herself",
+      "motivation": "Protects dreams of the innocent, wants to make the world a better place",
+      "other": ""
+    },
+    {
+      "id": "ff923a1c-50bb-4ee7-9bc2-9c9fcedb60f0",
+      "location": {
+        "x": 1135,
+        "y": 340
+      },
+      "type": "Character",
+      "name": "Yuuri Kageyama",
+      "color": "#ff8040",
+      "imageSrc": "",
+      "personality": "Calm, sarcastic wit, dry humor, secretly admires Hanako's bravery",
+      "quirk": "Raises an eyebrow skeptically at Hanako's flights of fancy, excellent doodler (often captures funny sketches of Hanako's antics)",
+      "like": "Reading, spending time at cafes, witty banter, a good mystery novel",
+      "dislike": "Crowds, overly emotional situations, sugary foods",
+      "strength": "Level-headed, analytical thinker, keeps Hanako grounded, resourceful",
+      "weakness": "Can be overly cautious, struggles to express emotions openly",
+      "flaw": "Sometimes comes across as cynical, lacks self-confidence in her own abilities",
+      "motivation": "Cares deeply for Hanako and wants to ensure her safety, secretly finds Hanako's magical adventures exciting",
+      "other": ""
+    },
+    {
+      "id": "6d9a8af6-2f25-4af7-ae6a-ff9bf38d02be",
+      "location": {
+        "x": 227,
+        "y": 329
+      },
+      "type": "Character",
+      "name": "Hoshihikari Amane",
+      "color": "#ff0080",
+      "imageSrc": "",
+      "personality": "Calm, enigmatic, possesses immense knowledge of magic",
+      "quirk": "Speaks in riddles and proverbs, enjoys sipping green tea while gazing at the stars",
+      "like": "Peace, tranquility, sharing wisdom with worthy students",
+      "dislike": "Disruption of the natural balance, misuse of magic for personal gain",
+      "strength": "Powerful magic user, vast knowledge of celestial lore, excellent teacher",
+      "weakness": "Can be cryptic and difficult to understand at times, limited physical mobility",
+      "flaw": "Holds magic in high regard, possibly hesitant to trust humans fully",
+      "motivation": "Seeks to maintain the balance between the human world and the magical realm, desires to pass on her knowledge to a worthy successor",
+      "other": ""
+    },
+    {
+      "id": "ec7f5de0-aa19-421f-812c-77a286737214",
+      "location": {
+        "x": 1585,
+        "y": 341
+      },
+      "type": "Character",
+      "name": "Akira Sato",
+      "color": "#00ffff",
+      "imageSrc": "",
+      "personality": "Outgoing, enthusiastic, always has a joke or story to tell",
+      "quirk": "Trips over his own feet frequently, has a knack for getting into trouble (often unintentionally)",
+      "like": "Spending time with Hanako, trying new foods, participating in local festivals",
+      "dislike": "Boredom, loneliness, seeing his friends upset",
+      "strength": "Loyal, supportive, brings out the lighter side in Hanako",
+      "weakness": "Can be oblivious to social cues, sometimes lacks focus",
+      "flaw": "Can be a bit clingy and overprotective of Hanako",
+      "motivation": "Secretly harbors a deeper affection for Hanako, wants to be there for her no matter what, even if it means helping her with her magical battles (despite not knowing the full extent of them)",
+      "other": ""
+    },
+    {
+      "id": "6aa7369b-d01c-4e41-a07d-3ac14ae828db",
+      "location": {
+        "x": 2029,
+        "y": 340
+      },
+      "type": "Character",
+      "name": "Yami-D",
+      "color": "#808000",
+      "imageSrc": "",
+      "personality": "Malicious, manipulative, feeds on the weaknesses and desires of others.",
+      "quirk": "Speaks in glitching fragments of code and advertisements, enjoys toying with its victims before consuming them.",
+      "like": "Feeding on negative emotions, spreading chaos and despair, corrupting dreams.",
+      "dislike": "Purity, genuine happiness, acts of selflessness that disrupt its control.",
+      "strength": "Powerful digital manipulation, can create hypnotic illusions and advertisements, possesses vast knowledge of consumer desires.",
+      "weakness": "Vulnerable to pure celestial energy, can be disrupted by strong emotions like love and hope. Reliant on technology - a power outage or EMP could be disastrous.",
+      "flaw": "Overconfident, underestimates the power of human connection and genuine desire.",
+      "motivation": "Consumes dreams to fuel its own power and existence. Believes humans are weak and easily manipulated by their desires. Wants to control the world by turning everyone's dreams into a twisted reflection of their materialistic wants.",
+      "other": ""
+    },
+    {
+      "id": "122ee6a4-0e6f-4822-abd8-60c509ad579d",
+      "location": {
+        "x": 1253,
+        "y": 208
+      },
+      "type": "Location",
+      "name": "Sakura High School",
+      "color": "#008040",
+      "imageSrc": "",
+      "description": "By day, Sakura High hides its secret as a training ground for magical girls, its classrooms doubling as enchantment chambers under the glow of cherry blossom trees."
+    },
+    {
+      "id": "6427a20e-226d-4df6-8f12-b4ec82c192c2",
+      "location": {
+        "x": 1875,
+        "y": 186
+      },
+      "type": "Organization",
+      "name": "Glitching Horde",
+      "color": "#400000",
+      "objective": "Seeks to infect the world with corrupted desires, turning humanity into mindless consumers trapped in a digital nightmare.",
+      "detail": "Yami-D's scattered followers, the Glitching Horde, spread like a digital virus, hijacking dreams and desires through corrupted internet connections."
+    },
+    {
+      "id": "02d3adf1-5907-4a05-9b8f-37c1e36fe20e",
+      "location": {
+        "x": 2191,
+        "y": 202
+      },
+      "type": "Location",
+      "name": "Yami-D's lair",
+      "color": "#804000",
+      "imageSrc": "",
+      "description": "Atop a skyscraper shaped like a distorted smartphone screen, Yami-D's lair pulsed with hypnotic advertisements, bleeding digital nightmares into the Tokyo night."
+    },
+    {
+      "id": "dab3851a-e0f1-4185-b905-c7962780ed1f",
+      "location": {
+        "x": 904,
+        "y": 200
+      },
+      "type": "Organization",
+      "name": "Dream Weavers",
+      "color": "#00ff80",
+      "objective": "Bound by the power of the stars, fight to protect humanity's dreams from the digital corruption of Yami-D and the Glitching Horde.",
+      "detail": "A network of young women who use celestial magic to safeguard dreams from the clutches of digital nightmares."
+    },
+    {
+      "id": "5a04aa04-d648-4882-9296-b5a8571d223c",
+      "location": {
+        "x": 537,
+        "y": 226
+      },
+      "type": "Location",
+      "name": "Star Tea House",
+      "color": "#ffff00",
+      "imageSrc": "",
+      "description": "Disguised as a charming, traditional tea house, the Hoshi Chaya (Star Tea House) serves as a meeting point for the Dream Weavers. Beneath the fragrant steam and delicate teacups, they strategize and share information."
+    },
+    {
+      "id": "b503d84e-67e5-4448-9f03-5523ccd9c104",
+      "location": {
+        "x": 1278,
+        "y": 1171
+      },
+      "type": "Story",
+      "name": "Season 1",
+      "color": "#00ffff",
+      "description": "In modern Tokyo, bubbly high school student Hanako leads a double life. By day, she serves sugary treats at a maid cafe. By night, she transforms into Hoshizora, a magical girl who joins the Dream Weavers, a hidden network protecting humanity's dreams from the nightmarish digital corruption spread by Yami-D and its Glitching Horde."
+    },
+    {
+      "id": "45c3cd76-5c96-4a02-84ee-036e8d7bdb66",
+      "location": {
+        "x": 694,
+        "y": 845
+      },
+      "type": "Lore",
+      "name": "Hoshizora",
+      "color": "#ff00ff",
+      "detail": "Hoshizora isn't just a magical girl persona; it's a title and a legacy. Passed down through generations of Dream Weavers, Hoshizora signifies the protector who wields the power of the stars. By day, Hanako might be an ordinary student, but under the moonlight, she transforms, channeling the celestial energy to become the newest Hoshizora, the Star Weaver."
+    },
+    {
+      "id": "4bd611a5-c114-41b8-b156-e85c3b82010a",
+      "location": {
+        "x": 854,
+        "y": 549
+      },
+      "type": "Lore",
+      "name": "Dream Weaver Magic",
+      "color": "#0080c0",
+      "detail": "Source: Celestial Energy (stars & constellations)\nFuel: Positive Emotions (hope, courage)\nTransformation: Personal Item (imbued with celestial energy) - e.g., Hanako's hair clip\nAbilities:\n- Defense: Shimmering curtains of starlight to block nightmares and attacks\n- Offense: Celestial blasts or constellation-inspired attacks (e.g., Starlight Serenade)\n- Dream Navigation: Enter dreamscapes to fight nightmares directly\n\nLimitations:\n- Negative Emotions weaken magic\n- Limited Power for young Dream Weavers\n- Weak Celestial Connection hinders abilities (e.g., heavy clouds)"
+    },
+    {
+      "id": "5fcf2528-599c-4330-8b69-30f3dd0e3067",
+      "location": {
+        "x": 2180,
+        "y": 568
+      },
+      "type": "Lore",
+      "name": "Yami-D's Digital Corruption",
+      "color": "#400080",
+      "detail": "Source: Digital Manipulation\nPower:\n- Hypnotic Advertisements: Creates captivating ads that manipulate desires and trap minds in a digital dream world.\n- Corrupted Code Tendrils: Lashes out with corrupted code to physically restrain and harm opponents.\n- Dream Infiltration: Can access and distort human dreams, feeding on negativity and amplifying desires.\n\nWeakness:\n- Pure Celestial Energy: Disrupted by powerful displays of starlight magic used by the Dream Weavers.\n- Technology Reliance: Vulnerable to disruptions in its digital infrastructure (e.g., EMP attack).\n- Overconfidence: Underestimates the power of human connection and genuine desires."
+    },
+    {
+      "id": "f0e625ce-41fb-4fa8-bcf8-8a2a121de151",
+      "location": {
+        "x": 1636,
+        "y": 720
+      },
+      "type": "Event",
+      "name": "Witnessing Evil",
+      "color": "#FFFFFF",
+      "detail": "Hanako witnesses Yami-D's corrupted advertisements manipulating people in Shibuya Crossing."
+    },
+    {
+      "id": "570fbc1a-8954-4054-9b30-48615acd3864",
+      "location": {
+        "x": 1637,
+        "y": 552
+      },
+      "type": "Event",
+      "name": "Confrontation",
+      "color": "#FFFFFF",
+      "detail": "As Hoshizora, she confronts Yami-D in a battle across the neon-lit rooftops of Tokyo."
+    },
+    {
+      "id": "4c0c1746-5fd3-40fa-a70c-1c5396b55f12",
+      "location": {
+        "x": 1155,
+        "y": 551
+      },
+      "type": "Event",
+      "name": "Battle Assist",
+      "color": "#FFFFFF",
+      "detail": "While battling, Hoshizora encounters another Dream Weaver (potentially Yuuri or a new character) who assists her."
+    },
+    {
+      "id": "5b720633-f29d-46fb-9f82-61161962401b",
+      "location": {
+        "x": 725,
+        "y": 628
+      },
+      "type": "Event",
+      "name": "Worries",
+      "color": "#FFFFFF",
+      "detail": "Back in her normal life, Hanako ponders the growing threat of Yami-D and the responsibility of being Hoshizora."
+    },
+    {
+      "id": "bf35b66e-10a8-4158-813b-7e632f9b0cdd",
+      "location": {
+        "x": 300,
+        "y": 541
+      },
+      "type": "Event",
+      "name": "Mentoring",
+      "color": "#FFFFFF",
+      "detail": "Hanako seeks guidance from her mentor Hoshihikari to learn more about Yami-D and her powers."
+    },
+    {
+      "id": "9dd9473a-44a7-42fb-8ce7-d1dcf1d88d81",
+      "location": {
+        "x": 780,
+        "y": 920
+      },
+      "type": "Event",
+      "name": "Double Life",
+      "color": "#FFFFFF",
+      "detail": "Hanako's double life becomes more complicated as she juggles school, her part-time job, and her duties as Hoshizora."
+    }
+  ],
+  "links": [
+    {
+      "nodeFromId": "5a04aa04-d648-4882-9296-b5a8571d223c",
+      "nodeToId": "ff923a1c-50bb-4ee7-9bc2-9c9fcedb60f0"
+    },
+    {
+      "nodeFromId": "24ec3ea7-81c2-4d42-8016-3c6d8d37b693",
+      "nodeToId": "5a04aa04-d648-4882-9296-b5a8571d223c"
+    },
+    {
+      "nodeFromId": "4bd611a5-c114-41b8-b156-e85c3b82010a",
+      "nodeToId": "24ec3ea7-81c2-4d42-8016-3c6d8d37b693"
+    },
+    {
+      "nodeFromId": "ff923a1c-50bb-4ee7-9bc2-9c9fcedb60f0",
+      "nodeToId": "4bd611a5-c114-41b8-b156-e85c3b82010a"
+    },
+    {
+      "nodeFromId": "4bd611a5-c114-41b8-b156-e85c3b82010a",
+      "nodeToId": "6d9a8af6-2f25-4af7-ae6a-ff9bf38d02be"
+    },
+    {
+      "nodeFromId": "5a04aa04-d648-4882-9296-b5a8571d223c",
+      "nodeToId": "6d9a8af6-2f25-4af7-ae6a-ff9bf38d02be"
+    },
+    {
+      "nodeFromId": "24ec3ea7-81c2-4d42-8016-3c6d8d37b693",
+      "nodeToId": "6d9a8af6-2f25-4af7-ae6a-ff9bf38d02be"
+    },
+    {
+      "nodeFromId": "24ec3ea7-81c2-4d42-8016-3c6d8d37b693",
+      "nodeToId": "45c3cd76-5c96-4a02-84ee-036e8d7bdb66"
+    },
+    {
+      "nodeFromId": "24ec3ea7-81c2-4d42-8016-3c6d8d37b693",
+      "nodeToId": "122ee6a4-0e6f-4822-abd8-60c509ad579d"
+    },
+    {
+      "nodeFromId": "122ee6a4-0e6f-4822-abd8-60c509ad579d",
+      "nodeToId": "ff923a1c-50bb-4ee7-9bc2-9c9fcedb60f0"
+    },
+    {
+      "nodeFromId": "ec7f5de0-aa19-421f-812c-77a286737214",
+      "nodeToId": "122ee6a4-0e6f-4822-abd8-60c509ad579d"
+    },
+    {
+      "nodeFromId": "5a04aa04-d648-4882-9296-b5a8571d223c",
+      "nodeToId": "dab3851a-e0f1-4185-b905-c7962780ed1f"
+    },
+    {
+      "nodeFromId": "24ec3ea7-81c2-4d42-8016-3c6d8d37b693",
+      "nodeToId": "dab3851a-e0f1-4185-b905-c7962780ed1f"
+    },
+    {
+      "nodeFromId": "6d9a8af6-2f25-4af7-ae6a-ff9bf38d02be",
+      "nodeToId": "dab3851a-e0f1-4185-b905-c7962780ed1f"
+    },
+    {
+      "nodeFromId": "dab3851a-e0f1-4185-b905-c7962780ed1f",
+      "nodeToId": "ff923a1c-50bb-4ee7-9bc2-9c9fcedb60f0"
+    },
+    {
+      "nodeFromId": "02d3adf1-5907-4a05-9b8f-37c1e36fe20e",
+      "nodeToId": "6aa7369b-d01c-4e41-a07d-3ac14ae828db"
+    },
+    {
+      "nodeFromId": "02d3adf1-5907-4a05-9b8f-37c1e36fe20e",
+      "nodeToId": "6427a20e-226d-4df6-8f12-b4ec82c192c2"
+    },
+    {
+      "nodeFromId": "6aa7369b-d01c-4e41-a07d-3ac14ae828db",
+      "nodeToId": "6427a20e-226d-4df6-8f12-b4ec82c192c2"
+    },
+    {
+      "nodeFromId": "6aa7369b-d01c-4e41-a07d-3ac14ae828db",
+      "nodeToId": "5fcf2528-599c-4330-8b69-30f3dd0e3067"
+    },
+    {
+      "nodeFromId": "ff923a1c-50bb-4ee7-9bc2-9c9fcedb60f0",
+      "nodeToId": "4c0c1746-5fd3-40fa-a70c-1c5396b55f12"
+    },
+    {
+      "nodeFromId": "4c0c1746-5fd3-40fa-a70c-1c5396b55f12",
+      "nodeToId": "24ec3ea7-81c2-4d42-8016-3c6d8d37b693"
+    },
+    {
+      "nodeFromId": "6aa7369b-d01c-4e41-a07d-3ac14ae828db",
+      "nodeToId": "570fbc1a-8954-4054-9b30-48615acd3864"
+    },
+    {
+      "nodeFromId": "24ec3ea7-81c2-4d42-8016-3c6d8d37b693",
+      "nodeToId": "570fbc1a-8954-4054-9b30-48615acd3864"
+    },
+    {
+      "nodeFromId": "6aa7369b-d01c-4e41-a07d-3ac14ae828db",
+      "nodeToId": "f0e625ce-41fb-4fa8-bcf8-8a2a121de151"
+    },
+    {
+      "nodeFromId": "24ec3ea7-81c2-4d42-8016-3c6d8d37b693",
+      "nodeToId": "f0e625ce-41fb-4fa8-bcf8-8a2a121de151"
+    },
+    {
+      "nodeFromId": "24ec3ea7-81c2-4d42-8016-3c6d8d37b693",
+      "nodeToId": "5b720633-f29d-46fb-9f82-61161962401b"
+    },
+    {
+      "nodeFromId": "24ec3ea7-81c2-4d42-8016-3c6d8d37b693",
+      "nodeToId": "9dd9473a-44a7-42fb-8ce7-d1dcf1d88d81"
+    },
+    {
+      "nodeFromId": "6d9a8af6-2f25-4af7-ae6a-ff9bf38d02be",
+      "nodeToId": "bf35b66e-10a8-4158-813b-7e632f9b0cdd"
+    },
+    {
+      "nodeFromId": "24ec3ea7-81c2-4d42-8016-3c6d8d37b693",
+      "nodeToId": "bf35b66e-10a8-4158-813b-7e632f9b0cdd"
+    },
+    {
+      "nodeFromId": "b503d84e-67e5-4448-9f03-5523ccd9c104",
+      "nodeToId": "bf35b66e-10a8-4158-813b-7e632f9b0cdd"
+    },
+    {
+      "nodeFromId": "f0e625ce-41fb-4fa8-bcf8-8a2a121de151",
+      "nodeToId": "b503d84e-67e5-4448-9f03-5523ccd9c104"
+    },
+    {
+      "nodeFromId": "b503d84e-67e5-4448-9f03-5523ccd9c104",
+      "nodeToId": "570fbc1a-8954-4054-9b30-48615acd3864"
+    },
+    {
+      "nodeFromId": "5b720633-f29d-46fb-9f82-61161962401b",
+      "nodeToId": "b503d84e-67e5-4448-9f03-5523ccd9c104"
+    },
+    {
+      "nodeFromId": "b503d84e-67e5-4448-9f03-5523ccd9c104",
+      "nodeToId": "9dd9473a-44a7-42fb-8ce7-d1dcf1d88d81"
+    },
+    {
+      "nodeFromId": "4c0c1746-5fd3-40fa-a70c-1c5396b55f12",
+      "nodeToId": "b503d84e-67e5-4448-9f03-5523ccd9c104"
+    }
+  ]
+}
