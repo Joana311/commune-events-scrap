@@ -218,7 +218,6 @@ const reset = (state: State): void => {
         button.innerText = '';
 
         document.getElementById('toggle-visibility')?.click();
-        document.getElementById('toggle-visibility')?.click();
       }
     }
   }
@@ -233,8 +232,7 @@ document.getElementById('toggle-visibility')?.addEventListener('click', (): void
     if (panel) {
       if (toggleVisibility) {
         // Hide All
-        if (panel.style.maxHeight === '0px') {
-        } else {
+        if (panel.style.maxHeight !== '0px') {
           (accordions[i] as HTMLElement).click();
         }
       } else {

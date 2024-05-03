@@ -186,7 +186,7 @@ document.getElementById('inputLoadFile').onchange = (event) => {
         reader.readAsText(tempElement.files[0]);
     }
     function onReaderLoad(event) {
-        var _a, _b;
+        var _a;
         console.log(event);
         if (event.target && event.target.result) {
             const jsonString = event.target.result;
@@ -197,7 +197,6 @@ document.getElementById('inputLoadFile').onchange = (event) => {
                 button.disabled = true;
                 button.innerText = '';
                 (_a = document.getElementById('toggle-visibility')) === null || _a === void 0 ? void 0 : _a.click();
-                (_b = document.getElementById('toggle-visibility')) === null || _b === void 0 ? void 0 : _b.click();
             }
         }
     }
@@ -211,9 +210,7 @@ let toggleVisibility = true;
         if (panel) {
             if (toggleVisibility) {
                 // Hide All
-                if (panel.style.maxHeight === '0px') {
-                }
-                else {
+                if (panel.style.maxHeight !== '0px') {
                     accordions[i].click();
                 }
             }
