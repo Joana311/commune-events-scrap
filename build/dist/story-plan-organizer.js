@@ -128,7 +128,7 @@ for (const nodeType of [
     const button_create = document.getElementById('create-node-' + NodeType[nodeType]);
     button_create === null || button_create === void 0 ? void 0 : button_create.addEventListener('click', (event) => {
         console.log(event);
-        add_node({ x: event.x - 20, y: event.y - 100 }, nodeType, state);
+        add_node({ x: event.pageX - 0, y: event.pageY - 0 }, nodeType, state);
     });
     (button_create === null || button_create === void 0 ? void 0 : button_create.firstElementChild).style.color = get_icon(nodeType).color;
 }
@@ -187,7 +187,7 @@ document.getElementById('inputLoadFile').onchange = (event) => {
         reader.readAsText(tempElement.files[0]);
     }
     function onReaderLoad(event) {
-        var _a, _b, _c, _d;
+        var _a, _b, _c, _d, _e;
         console.log(event);
         if (event.target && event.target.result) {
             const jsonString = event.target.result;
@@ -202,6 +202,7 @@ document.getElementById('inputLoadFile').onchange = (event) => {
                 (_b = document.getElementById('toggle-visibility')) === null || _b === void 0 ? void 0 : _b.click();
                 (_c = document.getElementById('toggle-visibility')) === null || _c === void 0 ? void 0 : _c.click();
                 (_d = document.getElementById('toggle-visibility')) === null || _d === void 0 ? void 0 : _d.click();
+                (_e = document.getElementById('toggle-visibility')) === null || _e === void 0 ? void 0 : _e.click();
             }
         }
     }
