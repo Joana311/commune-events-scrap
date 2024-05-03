@@ -227,18 +227,29 @@ const reset = (state: State): void => {
 };
 
 // Hide / Show All
-let toggleVisibility: boolean = true;
+let toggleVisibility: number = 0;
 document.getElementById('toggle-visibility')?.addEventListener('click', (): void => {
   const accordions = document.getElementsByClassName('accordion');
   for (let i = 0; i < accordions.length; i++) {
     const panel = accordions[i].nextElementSibling as HTMLDivElement;
     if (panel) {
-      if (toggleVisibility) {
+      if (toggleVisibility % 3 === 0) {
         // Hide All
         if (panel.style.maxHeight !== '0px') {
           (accordions[i] as HTMLElement).click();
         }
-      } else {
+      } else if (toggleVisibility % 3 === 1) {
+        // Show Events, otherwise Hide
+        const id = accordions[i].parentElement?.id;
+        if (id && get_node(id as UUID, state.nodes)?.type === NodeType.Event) {
+          const textarea: HTMLTextAreaElement = panel.getElementsByTagName('textarea')[0];
+          if (panel.style.maxHeight === '0px' && textarea.value !== '') {
+            (accordions[i] as HTMLElement).click();
+          }
+        } else if (panel.style.maxHeight !== '0px') {
+          (accordions[i] as HTMLElement).click();
+        }
+      } else if (toggleVisibility % 3 === 2) {
         // Show All
         const textarea: HTMLTextAreaElement = panel.getElementsByTagName('textarea')[0];
         const textareaRight: HTMLTextAreaElement | undefined = panel.getElementsByTagName('textarea')[1];
@@ -251,5 +262,5 @@ document.getElementById('toggle-visibility')?.addEventListener('click', (): void
       }
     }
   }
-  toggleVisibility = !toggleVisibility;
+  ++toggleVisibility;
 });
