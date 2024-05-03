@@ -222,21 +222,26 @@ const reset = (state: State): void => {
 };
 
 // Hide / Show All
+let toggleVisibility: boolean = true;
 document.getElementById('toggle-visibility')?.addEventListener('click', (): void => {
   const accordions = document.getElementsByClassName('accordion');
   for (let i = 0; i < accordions.length; i++) {
     const panel = accordions[i].nextElementSibling as HTMLDivElement;
     const textarea = panel.getElementsByTagName('textarea')[0];
 
-
-
-    //if (textarea.value !== '') {
-      if (panel) {
+    if (panel) {
+      if (toggleVisibility) {
+        // Hide All
         if (panel.style.maxHeight === '0px') {
         } else {
           (accordions[i] as HTMLElement).click();
         }
+      } else {
+        // Show All
+        if (panel.style.maxHeight === '0px' && textarea.value !== '') {
+          (accordions[i] as HTMLElement).click();
+        }
       }
-    //}
+    }
   }
 });
