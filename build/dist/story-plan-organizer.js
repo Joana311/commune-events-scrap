@@ -127,7 +127,6 @@ for (const nodeType of [
 ]) {
     const button_create = document.getElementById('create-node-' + NodeType[nodeType]);
     button_create === null || button_create === void 0 ? void 0 : button_create.addEventListener('click', (event) => {
-        console.log(button_create);
         add_node({ x: event.pageX, y: event.pageY + 100 }, nodeType, state);
     });
     (button_create === null || button_create === void 0 ? void 0 : button_create.firstElementChild).style.color = get_icon(nodeType).color;
