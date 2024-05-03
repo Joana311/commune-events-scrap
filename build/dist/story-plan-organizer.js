@@ -223,5 +223,6 @@ let toggleVisibility = true;
             }
         }
     }
+    toggleVisibility = !toggleVisibility;
 });
 //# sourceMappingURL=story-plan-organizer.js.map

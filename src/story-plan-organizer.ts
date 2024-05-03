@@ -244,4 +244,5 @@ document.getElementById('toggle-visibility')?.addEventListener('click', (): void
       }
     }
   }
+  toggleVisibility = !toggleVisibility;
 });
