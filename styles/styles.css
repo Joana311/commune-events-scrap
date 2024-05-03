@@ -95,14 +95,14 @@ input[type="file"]
   position: absolute;
   z-index: 1;
   background-color: white;
-  border: 4px solid white;
-  border-radius: 6px;
+  border: 2px solid white;
+  border-radius: 4px;
   opacity: 1.0;
 }
 
 .node-highlighted
 {
-  border-width: 8px;
+  border-width: 4px;
 }
 
 .node-unhighlighted
@@ -155,17 +155,17 @@ img
   left: 0px;
   pointer-events: none;
   z-index: 0;
-  stroke-width: 6px;
+  stroke-width: 4px;
 }
 
 .line-highlighted
 {
-  stroke-width: 8px;
+  stroke-width: 6px;
 }
 
 .line-unhighlighted
 {
-  stroke-width: 4px;
+  stroke-width: 2px;
   stroke-opacity: 0.3;
 }
 
