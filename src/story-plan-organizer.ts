@@ -218,6 +218,8 @@ const reset = (state: State): void => {
         button.innerText = '';
 
         document.getElementById('toggle-visibility')?.click();
+        document.getElementById('toggle-visibility')?.click();
+        document.getElementById('toggle-visibility')?.click();
       }
     }
   }
