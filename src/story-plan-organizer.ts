@@ -227,8 +227,16 @@ document.getElementById('toggle-visibility')?.addEventListener('click', (): void
   for (let i = 0; i < accordions.length; i++) {
     const panel = accordions[i].nextElementSibling as HTMLDivElement;
     const textarea = panel.getElementsByTagName('textarea')[0];
-    if (textarea.value !== '') {
-      (accordions[i] as HTMLElement).click();
-    }
+
+
+
+    //if (textarea.value !== '') {
+      if (panel) {
+        if (panel.style.maxHeight === '0px') {
+        } else {
+          (accordions[i] as HTMLElement).click();
+        }
+      }
+    //}
   }
 });

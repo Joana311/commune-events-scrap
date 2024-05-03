@@ -205,9 +205,15 @@ document.getElementById('inputLoadFile').onchange = (event) => {
     for (let i = 0; i < accordions.length; i++) {
         const panel = accordions[i].nextElementSibling;
         const textarea = panel.getElementsByTagName('textarea')[0];
-        if (textarea.value !== '') {
-            accordions[i].click();
+        //if (textarea.value !== '') {
+        if (panel) {
+            if (panel.style.maxHeight === '0px') {
+            }
+            else {
+                accordions[i].click();
+            }
         }
+        //}
     }
 });
 //# sourceMappingURL=story-plan-organizer.js.map
