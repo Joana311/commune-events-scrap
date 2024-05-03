@@ -217,6 +217,7 @@ const reset = (state: State): void => {
         button.disabled = true;
         button.innerText = '';
 
+        // To maximize the textareas the next time user shows all
         document.getElementById('toggle-visibility')?.click();
         document.getElementById('toggle-visibility')?.click();
         document.getElementById('toggle-visibility')?.click();

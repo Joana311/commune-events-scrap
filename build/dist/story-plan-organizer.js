@@ -196,6 +196,7 @@ document.getElementById('inputLoadFile').onchange = (event) => {
                 const button = document.getElementById('button-load');
                 button.disabled = true;
                 button.innerText = '';
+                // To maximize the textareas the next time user shows all
                 (_a = document.getElementById('toggle-visibility')) === null || _a === void 0 ? void 0 : _a.click();
                 (_b = document.getElementById('toggle-visibility')) === null || _b === void 0 ? void 0 : _b.click();
                 (_c = document.getElementById('toggle-visibility')) === null || _c === void 0 ? void 0 : _c.click();
