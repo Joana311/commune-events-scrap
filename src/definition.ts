@@ -16,6 +16,13 @@ export type Point = {
 
 export type Color_Hex = `#${string}`;
 
+export type Node = {
+  id: UUID;
+  location: Point;
+  type: NodeType;
+  name: string;
+  color: Color_Hex;
+};
 
 export type Character = Node & {
   imageSrc: string;
